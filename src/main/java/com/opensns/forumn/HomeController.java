@@ -43,7 +43,6 @@ public class HomeController {
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
-		//쿼리가 만들어질 StringBuffer 변수
 		StringBuffer request_param=new StringBuffer();
 
 		int page = modifyPageType(request);
@@ -54,7 +53,6 @@ public class HomeController {
 		String dateRangeQuery=makeDateRangeQuery(request,mav);
 		//query!
 		
-		//부가적인 파라미터들
 		String pageQuery = makePagingQuery(page);
 		String sortQuery=makeSortQuery(request,mav);
 		
@@ -65,7 +63,6 @@ public class HomeController {
 		System.out.println(url);
 		
 		
-		//요청 url로 요청한 뒤 정보를 파싱한후 받아온다.
 		RespInfo respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
@@ -110,7 +107,6 @@ public class HomeController {
 	 * @param request
 	 * @return
 	 * @description
-	 * 페이지 파라미터를 만드는 메소드
 	 */
 	private String makePagingQuery(int page) {
 		StringBuffer query=new StringBuffer();		
@@ -124,7 +120,6 @@ public class HomeController {
 	 * @param mav 
 	 * @return
 	 * @description
-	 * 정렬 파라미터를 만드는 메소드
 	 */
 
 	private String makeSortQuery(HttpServletRequest request, ModelAndView mav) {
@@ -150,7 +145,6 @@ public class HomeController {
 	 * @param mav 
 	 * @return
 	 * @description
-	 * 시작일 값과 종료일 값을 받아와서 루씬 QueryParser에서 처리할 수 있는 쿼리를 만든다.
 	 */
 	private String makeDateRangeQuery(HttpServletRequest request, ModelAndView mav) {
 		String parameter = "rank_idx_bc";
@@ -172,20 +166,20 @@ public class HomeController {
 				//startDate=changeDateFormat(request.getParameter("startDate0"));
 				//endDate=changeDateFormat(request.getParameter("endDate0"));					
 			}
-			else if(date==11){ //전체 날짜 검색
+			else if(date==11){
 				return "";
 			}
 			else{
 				switch (date) {			
-				case 12://1주 검색
+				case 12:
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.get7DayAgoDate();
 					break;
-				case 13://1개월 검색
+				case 13:
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.getMonthAgoDate();
 					break;
-				case 14://1년 검색
+				case 14:
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.get1YearAgoDate();
 					break;
