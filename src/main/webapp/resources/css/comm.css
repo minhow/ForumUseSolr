@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 텍스트 정렬 */
+.right {text-align:right !important;}
+.center {text-align:center !important;}
+.left {text-align:left !important;}
+
+/* float 관련 클래스 */
+.f_left {float:left !important;}	
+.f_right {float:right !important;}
+.clear {clear:both !important;}
+
+/* 폰트 관련 클래스 */
+.bold {font-weight:bold !important;}
+.underline {text-decoration:underline !important;}
+
+/* Display 관련 클래스 */
+.block {display:block !important;}
+.inlineBlock {display:inline-block !important ;}
+.inline {display:inline !important ;}
+
+/* none 관련 클래스 */
+.none {display:none !important;}
+.none_bg {background:none !important;}
+.none_mar {margin:0 !important;}
+.none_mt {margin-top:0 !important;}
+.none_mr {margin-right:0 !important;}
+.none_ml {margin-left:0 !important;}
+.none_mb {margin-bottom:0 !important;}
+.none_pad {padding:0 !important;}
+.none_pt {padding-right:0 !important;}
+.none_pr {padding-right:0 !important;}
+.none_pl {padding-left:0 !important;}
+.none_pb {padding-bottom:0 !important;}
+.none_bor {border:none 0 !important;}
+.none_bt {border-top:none 0 !important;}
+.none_br {border-right:none 0 !important;}
+.none_bl {border-left:none 0 !important;}
+.none_bb {border-bottom:none 0 !important;}
+.none_lft {left:0px !important;}
+
+/* 마진 관련 클래스 */
+.mar_lft5 {margin-left:5px !important;}
+.mar_lft100 {margin-left:100px !important;}
+.mar_rgt5 {margin-right:5px !important;}
+.mar_top5 {margin-top:5px !important;}
+.mar_top10 {margin-top:10px !important;}
+.mar_top20 {margin-top:20px !important;}
+.mar_top50 {margin-top:50px !important;}
+.mar_top100 {margin-top:100px !important;}
+.mar_top150 {margin-top:150px !important;}
+.mar_50 {margin:50px !important;}
+
+/* 패딩 관련 클래스 */
+.pad_top100 {padding-top:100px !important;}
+
+/* 넓이 관련 클래스 */
+.wid_100pc {width:100% !important;}
+.wid_50px {width:50px !important;}
+
+/* 높이 관련 클래스 */
+.hei_100pc {height:100% !important;}
+.hei_type1 {height:500px !important;}
+
+/* 보더 관련 클래스 */
+.bor_btm_4a { border-bottom:2px solid #4a4a4a !important;}
+.bor_rgt_222 { border-right:1px solid #222 !important;}
+.bor_top_3b { border-top:2px solid #3b3b3b !important;}
+
+/* 위치 관련 클래스 */
+.lft_300 {left:300px !important;}
+
+/* 기타 */
+.cur_pointer {cursor:pointer !important;}
+.color_black {color:#000 !important;}
+
+/* pattern Box-Layout */
+.patn {margin:0 15px;}
+.patn p {font-size:1.2em; font-weight:bold; color:#1525b6; clear:both;}
+
+/* 배경색상 관련 클래스 */
+.bg_white {background-color:#fff;}
+
+.src_wrap {margin-top:100px;}
+.src_wrap p {margin-top:30px; font-size:1.2em; font-weight:bold; color:#1525b6;}
+
+/* overflow 관련 클래스 */
+.hidden {overflow:hidden !important;}
+
+.blind {left:0; top:0; width:1px; height:1px; line-height:0; overflow:hidden; font-size:0px; visibility:hidden; position:absolute;}
