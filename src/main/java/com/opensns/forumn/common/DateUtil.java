@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 public class DateUtil {
-	// java·Î ¿À´Ã³¯Â¥ ±¸ÇÏ±â
 	public static String getCurrentDate() {
 		java.util.Date dateNow = Calendar.getInstance(
 				new SimpleTimeZone(0x1ee6280, "KST")).getTime();
@@ -15,18 +14,16 @@ public class DateUtil {
 		return formatter.format(dateNow);
 	}
 
-	// 1´Þ Àü
 	public static String getMonthAgoDate() {
 		Calendar cal = Calendar
 				.getInstance(new SimpleTimeZone(0x1ee6280, "KST"));
-		cal.add(Calendar.MONTH, -1); // ÇÑ´ÞÀü ³¯Â¥ °¡Á®¿À±â
+		cal.add(Calendar.MONTH, -1); // ï¿½Ñ´ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		java.util.Date monthago = cal.getTime();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd",
 				Locale.getDefault());
 		return formatter.format(monthago);
 	}
 
-	// ÀÏÁÖÀÏ Àü
 	public static String get7DayAgoDate() {
 		Calendar cal = Calendar
 				.getInstance(new SimpleTimeZone(0x1ee6280, "KST"));
@@ -37,7 +34,6 @@ public class DateUtil {
 		return formatter.format(weekago);
 	}
 
-	// 1³â Àü
 	public static String get1YearAgoDate() {
 		Calendar cal = Calendar
 				.getInstance(new SimpleTimeZone(0x1ee6280, "KST"));
