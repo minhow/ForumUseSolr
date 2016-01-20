@@ -66,4 +66,12 @@
 			$('.searchBar_type2 .selected .txt').text($(this).text());
 		});
 	});
+	
+	///현태---> 폼 
+	function search()
+	{
+		var form=document.searchForm;
+		alert('검색');
+		form.submit();
+	}
 </script>

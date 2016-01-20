@@ -26,9 +26,10 @@
 						<li>커뮤니티</li>
 						<li>전자도서관</li>
 					</ul>
-					<input class="sch_input" type="text" value="검색어를 입력하세요." /> <span
-						class="sch_btn"><img
-						src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif" alt="검색" /></span>
+					
+					<input class="sch_input" type="text" value="검색어를 입력하세요." /> 
+					<span class="sch_btn">
+						<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif" alt="검색" /></span>
 				</div>
 				<!-- sch_bar -->
 

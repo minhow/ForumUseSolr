@@ -89,7 +89,6 @@ public class ForumMainController {
 		
 		//쿼리가 만들어질 StringBuffer 변수
 		StringBuffer request_param=new StringBuffer();
-
 		int page = modifyPageType(request);
 		
 				
@@ -259,7 +258,7 @@ public class ForumMainController {
 
 
 	private String makingUrl(String request_param) {
-		StringBuffer url=new StringBuffer("http://1.234.16.50:9000/solr/arirang");
+		StringBuffer url=new StringBuffer("http://1.234.16.50:9000/solr/topic_posts");
 		url.append("/select?");
 		url.append(request_param);
 		url.append("&wt=json&indent=true");
@@ -301,15 +300,49 @@ public class ForumMainController {
 			Topic topic=new Topic();
 			
 			JSONObject doc=(JSONObject)docs.get(i);
-			
+		/*	
 			topic.setPosterIp((String)doc.get("poster_ip"));
 			topic.setPostSubject((String)doc.get("post_subject"));
 			topic.setPosterId((Integer)doc.get("poster_id"));
 			topic.setPostText((String)doc.get("post_text"));
 			topic.setForumId((Integer)doc.get("forum_id"));
-			topic.setTopicId((Integer)doc.get("topic_id"));
+			topic.setTopicId((Integer)doc.get("topic_id"));*/
 			
+			topic.setPostId((Long)doc.get("post_id"));
+			topic.setTopicId((Long)doc.get("topic_id"));
+			topic.setForumId((Long)doc.get("forum_id"));
+			topic.setPosterId((Long)doc.get("poster_id"));
+			topic.setIconId((Long)doc.get("icon_id"));
+			topic.setPosterIp((String)doc.get("poster_ip"));
+			topic.setPostTime((Long)doc.get("post_time"));
+			topic.setPostApproved((Long)doc.get("post_approved"));
+			topic.setPostReported((Long)doc.get("post_reported"));
+			topic.setEnableBbcode((Long)doc.get("enable_bbcode"));
+						
+			topic.setEnableSmilies((Long)doc.get("enable_smilies"));
+			topic.setEnableMagicUrl((Long)doc.get("enable_magic_url"));
+			topic.setEnableSig((Long)doc.get("enable_sig"));
+			topic.setPostUsername((String)doc.get("post_username"));
+			topic.setPostSubject((String)doc.get("post_subject"));
+			topic.setPostText((String)doc.get("post_text"));
+			topic.setPostChecksum((String)doc.get("post_checksum"));
+			topic.setPostAttachment((Long)doc.get("post_attachment"));
+			topic.setBbcodeBitfield((String)doc.get("bbcode_bitfield"));
+			topic.setBbcodeUid((String)doc.get("bbcode_uid"));
+						
 			
+			topic.setPostPostcount((Long)doc.get("post_postcount"));
+			topic.setPostEdittime((Long)doc.get("post_edit_time"));
+			topic.setPostEditReason((String)doc.get("post_edit_reason"));
+			topic.setPostEditUser((String)doc.get("post_edit_user"));
+			topic.setPostEditCount((Long)doc.get("post_edit_count"));
+			topic.setPostEditLocked((Long)doc.get("post_edit_locked"));
+			topic.setParentPostSubject((String)doc.get("parent_post_subject"));
+			topic.setParentPostText((String)doc.get("parent_post_text"));
+			topic.setParentPostUsername((String)doc.get("parent_post_username"));
+			topic.setPostDate((String)doc.get("post_date"));
+			
+			System.out.println(topic);//20160120
 			scdList.add(topic);
 		}
 		return scdList;
