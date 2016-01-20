@@ -1,17 +1,17 @@
-package com.opensns.forumn.vo;
+package com.opensns.forumn.search;
 
 import java.util.List;
 
-public class RespInfo {
-	private List<SCDVo> scdList;
+public class SearchResult {
+	private List<Topic> scdList;
 	private long totalCnt;
 	private long start;
 
-	public List<SCDVo> getScdList() {
+	public List<Topic> getScdList() {
 		return scdList;
 	}
 
-	public void setScdList(List<SCDVo> scdList) {
+	public void setScdList(List<Topic> scdList) {
 		this.scdList = scdList;
 	}
 

@@ -25,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.opensns.forumn.common.DateUtil;
 import com.opensns.forumn.common.PageUtil;
-import com.opensns.forumn.vo.RespInfo;
-import com.opensns.forumn.vo.SCDVo;
+import com.opensns.forumn.search.Topic;
+import com.opensns.forumn.search.SearchResult;
 
 /**
  * Handles requests for the application home page.
@@ -66,7 +66,7 @@ public class ForumMainController {
 		
 		
 		//요청 url로 요청한 뒤 정보를 파싱한후 받아온다.
-		RespInfo respInfo=getScdList(url);
+		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
@@ -110,7 +110,7 @@ public class ForumMainController {
 		
 		
 		//요청 url로 요청한 뒤 정보를 파싱한후 받아온다.
-		RespInfo respInfo=getScdList(url);
+		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
@@ -274,8 +274,8 @@ public class ForumMainController {
 		}
 		return null;
 	}
-	private RespInfo getScdList(String url){
-		RespInfo respInfo=new RespInfo();
+	private SearchResult getScdList(String url){
+		SearchResult respInfo=new SearchResult();
 		
 		try {
 			URLConnection conn=new URL(url).openConnection();
@@ -294,21 +294,23 @@ public class ForumMainController {
 
 
 
-	private List<SCDVo> getSCDList(JSONObject resp) {
+	private List<Topic> getSCDList(JSONObject resp) {
 		JSONArray docs=(JSONArray)resp.get("docs");
-		ArrayList<SCDVo> scdList=new ArrayList<SCDVo>();
+		ArrayList<Topic> scdList=new ArrayList<Topic>();
 		for(int i=0;i<docs.size();i++){
-			SCDVo vo=new SCDVo();
+			Topic topic=new Topic();
 			
 			JSONObject doc=(JSONObject)docs.get(i);
-			vo.setPoi_nm((String)doc.get("poi_nm"));
-			vo.setScd_addr_term((String)doc.get("scd_addr_term"));
-			vo.setScd_rd_addr((String)doc.get("scd_rd_addr"));
-			vo.setScd_tel_no_term((String)doc.get("scd_tel_no_term"));
-			vo.setXy_value((String)doc.get("xy_value"));
 			
-			vo.setRank_idx_bc((Long)doc.get("rank_idx_bc"));
-			scdList.add(vo);
+			topic.setPosterIp((String)doc.get("poster_ip"));
+			topic.setPostSubject((String)doc.get("post_subject"));
+			topic.setPosterId((Integer)doc.get("poster_id"));
+			topic.setPostText((String)doc.get("post_text"));
+			topic.setForumId((Integer)doc.get("forum_id"));
+			topic.setTopicId((Integer)doc.get("topic_id"));
+			
+			
+			scdList.add(topic);
 		}
 		return scdList;
 	}
