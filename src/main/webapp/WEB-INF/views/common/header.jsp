@@ -10,13 +10,13 @@
 	}
 
 	function searchTotal() {
-		alert("hdi");
 		var url = "searchTotal.do"
-		
+		var params = "expression=" + $("#sch_input").val();
+		params += "&field=post_text"
 			$.ajax({
 		    	type: 'POST',
 		        url: url,
-		        data: '',
+		        data: params,
 		        dataType : "text",
 		        success: function(result){
 		        	cb_loadRightBody(result);
@@ -50,7 +50,7 @@
 						<li>전자도서관</li>
 					</ul>
 					
-					<input class="sch_input" type="text" value="검색어를 입력하세요." onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" /> 
+					<input id="sch_input" class="sch_input" type="text" value="검색어를 입력하세요." onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" /> 
 					<span class="sch_btn" onClick="searchTotal();">
 						<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif" alt="검색" /></span>
 				</div>
