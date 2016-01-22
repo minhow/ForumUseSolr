@@ -8,7 +8,7 @@
 	function cb_loadRightBody(result) {
 	    $("#container").html(result);
 	}
-
+	
 	function searchTotal() {
 		alert("hdi");
 		var url = "searchTotal.do"
@@ -26,6 +26,11 @@
 		        }
 		    });  
 	}
+	
+	function switchPeriod() {
+		$("#container #period").val("custom").prop("selected",true);
+	}
+	
 </script>
 <table>
 	<tbody>

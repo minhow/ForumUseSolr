@@ -19,23 +19,28 @@
 														<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 													</dt>	
 													<dt>
-															<select>
+															정렬
+															<select id="sort" title="정렬">
 																<option>유사도순</option>
-																<option>DOC ID순</option>
-															</select> 
-															<select>
-																<option>오름차순</option>
-																<option>내림차순</option>
+																<option>최신순</option>
 															</select>
-													 
-															<label for="srch_total">리스트 출력 건수</label>
-															<select>
-																<option>3</option>
-																<option>5</option>
-																<option>10</option>
+															범위 
+															<select id="range" title="범위">
+																<option>전체</option>
+																<option>제목</option>
+																<option>본문</option>
+															</select>
+															기간
+															<select id="period" title="기간">
+																<option value="total">전체</option>
+																<option value="week">1주</option>
+																<option value="month">1개월</option>
+																<option value="year">1년</option>
+																<option value="custom">직접 입력</option>
 															</select> 
-															<span> 건수 </span>
-															<a href="#"><img src="${contextPath}/resources/images/list/type4/icon_sort.gif" alt="정렬"/></a>			
+															시작일<input id="startDate" onfocus="switchPeriod()">
+															종료일<input id="endDate" onfocus="switchPeriod()">
+															<a href="#"><img src="${contextPath}/resources/images/list/type4/icon_sort.gif" alt="정렬"/></a>
 													</dt>
 												</dl>
 											</li>
