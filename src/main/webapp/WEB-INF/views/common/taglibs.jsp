@@ -12,4 +12,4 @@
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comm.css"/>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/patterns.css"/>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/reset.css"/>
-
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
