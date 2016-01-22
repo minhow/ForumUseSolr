@@ -7,5 +7,4 @@ package com.opensns.forumn.service;
  *
  */
 public class SearchUsingSolrService {
-
 }

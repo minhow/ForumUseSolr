@@ -12,7 +12,7 @@
 		<div class="header">
 			<jsp:include page="common/header.jsp"></jsp:include>
 		</div>
-		<div class="container">
+		<div id="container" class="container">
 			<jsp:include page="common/searchResult.jsp"></jsp:include>
 		</div> 	
 	</div>

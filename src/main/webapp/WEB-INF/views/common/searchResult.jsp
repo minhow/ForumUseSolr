@@ -58,22 +58,22 @@
 												<dl>
 													<dt>
 														<span class="bu_divi">${status.index }</span>
-														<span class="bu_divi">[게시판]</span> 													 
-														<a href="#">${scd.poi_nm }</a>
+														<span class="bu_divi">[${scd.forumId }]</span> 													 
+														<a href="#">${scd.postSubject }</a>
 														<span> (유사도 : 99.9%)</span>											
 													</dt>
 
 													<dd>
-														<span class="bu_divi none_pl">작성자 : ${scd.scd_rd_addr }</span>
-														<span>작성일 : 2003-01-01</span>
+														<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+														<span>작성일 : ${scd.postDate }</span>
 													</dd>
 													<dd>
-														<span class="bu_divi none_pl">게시판명 : ${scd.scd_addr_term }</span>
+														<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
 													</dd>
 
-													<dd class="desc">${scd.xy_value }</dd>
+													<dd class="desc">${scd.postText }</dd>
 													<dd>
-														<span class="bu_divi none_pl">첨부파일 : ${scd.scd_tel_no_term }</span>
+														<span class="bu_divi none_pl">첨부파일 : ${scd.postAttachment }</span>
 													
 														<br><br><br>
 													</dd>

@@ -4,6 +4,29 @@
 <%@ include file="/WEB-INF/views/common/includejs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript">
+	function cb_loadRightBody(result) {
+	    $("#container").html(result);
+	}
+
+	function searchTotal() {
+		alert("hdi");
+		var url = "searchTotal.do"
+		
+			$.ajax({
+		    	type: 'POST',
+		        url: url,
+		        data: '',
+		        dataType : "text",
+		        success: function(result){
+		        	cb_loadRightBody(result);
+		        }, 
+		        error: function() {
+		        	alert("error");
+		        }
+		    });  
+	}
+</script>
 <table>
 	<tbody>
 		<tr>
@@ -27,8 +50,8 @@
 						<li>전자도서관</li>
 					</ul>
 					
-					<input class="sch_input" type="text" value="검색어를 입력하세요." /> 
-					<span class="sch_btn">
+					<input class="sch_input" type="text" value="검색어를 입력하세요." onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" /> 
+					<span class="sch_btn" onClick="searchTotal();">
 						<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif" alt="검색" /></span>
 				</div>
 				<!-- sch_bar -->

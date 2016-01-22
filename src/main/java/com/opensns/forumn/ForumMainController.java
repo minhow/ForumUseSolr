@@ -36,7 +36,7 @@ public class ForumMainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ForumMainController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("home");
 		
@@ -80,9 +80,54 @@ public class ForumMainController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/searchTotal", method = RequestMethod.GET)
-	public ModelAndView searchTotal(HttpServletRequest request) {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView indexHome(HttpServletRequest request) {
+		System.out.println("Call searchTotal");
 		ModelAndView mav=new ModelAndView("searchTotal");
+		
+		String expression=request.getParameter("expression");
+		String field=request.getParameter("field");
+		
+		//쿼리가 만들어질 StringBuffer 변수
+		StringBuffer request_param=new StringBuffer();
+		int page = modifyPageType(request);
+		
+				
+		//query												
+		String FieldQuery=makeFieldQuery(expression,field);
+		String dateRangeQuery=makeDateRangeQuery(request,mav);
+		//query!
+		
+		//부가적인 파라미터들
+		String pageQuery = makePagingQuery(page);
+		String sortQuery=makeSortQuery(request,mav);
+		
+	
+		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
+		System.out.println(request_param.toString());
+		String url=makingUrl(request_param.toString());
+		System.out.println(url);
+		
+		
+		//요청 url로 요청한 뒤 정보를 파싱한후 받아온다.
+		SearchResult respInfo=getScdList(url);
+
+		mav.addObject("expression", expression);
+		mav.addObject("field",field);
+		mav.addObject("scdList",respInfo.getScdList());
+		mav.addObject("total",respInfo.getTotalCnt());
+		mav.addObject("start",respInfo.getStart());
+		mav.addObject("page",page);
+		
+		PageUtil.setPaging(mav, (int)respInfo.getTotalCnt(), 10, page);
+					
+		return mav;
+	}
+	
+	@RequestMapping(value = "/searchTotal", method = RequestMethod.POST)
+	public ModelAndView searchTotal(HttpServletRequest request) {
+		System.out.println("Call searchTotal");
+		ModelAndView mav=new ModelAndView("common/searchResult");
 		
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
@@ -300,13 +345,6 @@ public class ForumMainController {
 			Topic topic=new Topic();
 			
 			JSONObject doc=(JSONObject)docs.get(i);
-		/*	
-			topic.setPosterIp((String)doc.get("poster_ip"));
-			topic.setPostSubject((String)doc.get("post_subject"));
-			topic.setPosterId((Integer)doc.get("poster_id"));
-			topic.setPostText((String)doc.get("post_text"));
-			topic.setForumId((Integer)doc.get("forum_id"));
-			topic.setTopicId((Integer)doc.get("topic_id"));*/
 			
 			topic.setPostId((Long)doc.get("post_id"));
 			topic.setTopicId((Long)doc.get("topic_id"));
@@ -342,7 +380,7 @@ public class ForumMainController {
 			topic.setParentPostUsername((String)doc.get("parent_post_username"));
 			topic.setPostDate((String)doc.get("post_date"));
 			
-			System.out.println(topic);//20160120
+			System.out.println(topic.getPostSubject());//20160120
 			scdList.add(topic);
 		}
 		return scdList;
