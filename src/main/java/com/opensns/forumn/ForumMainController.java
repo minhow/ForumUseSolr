@@ -43,7 +43,7 @@ public class ForumMainController {
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
-		//Äõ¸®°¡ ¸¸µé¾îÁú StringBuffer º¯¼ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StringBuffer ï¿½ï¿½ï¿½ï¿½
 		StringBuffer request_param=new StringBuffer();
 
 		int page = modifyPageType(request);
@@ -54,7 +54,7 @@ public class ForumMainController {
 		String dateRangeQuery=makeDateRangeQuery(request,mav);
 		//query!
 		
-		//ºÎ°¡ÀûÀÎ ÆÄ¶ó¹ÌÅÍµé
+		//ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Íµï¿½
 		String pageQuery = makePagingQuery(page);
 		String sortQuery=makeSortQuery(request,mav);
 		
@@ -65,7 +65,7 @@ public class ForumMainController {
 		System.out.println(url);
 		
 		
-		//¿äÃ» url·Î ¿äÃ»ÇÑ µÚ Á¤º¸¸¦ ÆÄ½ÌÇÑÈÄ ¹Þ¾Æ¿Â´Ù.
+		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
 		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
@@ -105,7 +105,7 @@ public class ForumMainController {
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
-		//Äõ¸®°¡ ¸¸µé¾îÁú StringBuffer º¯¼ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StringBuffer ï¿½ï¿½ï¿½ï¿½
 		StringBuffer request_param=new StringBuffer();
 		int page = modifyPageType(request);
 		
@@ -115,7 +115,7 @@ public class ForumMainController {
 		String dateRangeQuery=makeDateRangeQuery(request,mav);
 		//query!
 		
-		//ºÎ°¡ÀûÀÎ ÆÄ¶ó¹ÌÅÍµé
+		//ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Íµï¿½
 		String pageQuery = makePagingQuery(page);
 		String sortQuery=makeSortQuery(request,mav);
 		
@@ -126,7 +126,7 @@ public class ForumMainController {
 		System.out.println(url);
 		
 		
-		//¿äÃ» url·Î ¿äÃ»ÇÑ µÚ Á¤º¸¸¦ ÆÄ½ÌÇÑÈÄ ¹Þ¾Æ¿Â´Ù.
+		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
 		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
@@ -149,7 +149,9 @@ public class ForumMainController {
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
-		//Äõ¸®°¡ ¸¸µé¾îÁú StringBuffer º¯¼ö
+		System.out.println("expression --> " +expression);
+		System.out.println("field --> "+ field);
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StringBuffer ï¿½ï¿½ï¿½ï¿½
 		StringBuffer request_param=new StringBuffer();
 		int page = modifyPageType(request);
 		
@@ -159,7 +161,51 @@ public class ForumMainController {
 		String dateRangeQuery=makeDateRangeQuery(request,mav);
 		//query!
 		
-		//ºÎ°¡ÀûÀÎ ÆÄ¶ó¹ÌÅÍµé
+		//ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Íµï¿½
+		String pageQuery = makePagingQuery(page);
+		String sortQuery=makeSortQuery(request,mav);
+		
+	
+		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
+		//System.out.println(request_param.toString());
+		String url=makingUrl(request_param.toString());
+		//System.out.println(url);
+		
+		
+		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
+		SearchResult respInfo=getScdList(url);
+
+		mav.addObject("expression", expression);
+		mav.addObject("field",field);
+		mav.addObject("scdList",respInfo.getScdList());
+		mav.addObject("total",respInfo.getTotalCnt());
+		mav.addObject("start",respInfo.getStart());
+		mav.addObject("page",page);
+		
+		PageUtil.setPaging(mav, (int)respInfo.getTotalCnt(), 10, page);
+					
+		return mav;
+	}
+	
+	@RequestMapping(value = "/searchCategory", method = RequestMethod.POST)
+	public ModelAndView searchCategory(HttpServletRequest request) {
+		System.out.println("Call searchTotal");
+		ModelAndView mav=new ModelAndView("common/searchResultOfCategory");
+		
+		String expression=request.getParameter("expression");
+		String field=request.getParameter("field");
+		
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StringBuffer ï¿½ï¿½ï¿½ï¿½
+		StringBuffer request_param=new StringBuffer();
+		int page = modifyPageType(request);
+		
+				
+		//query												
+		String FieldQuery=makeFieldQuery(expression,field);
+		String dateRangeQuery=makeDateRangeQuery(request,mav);
+		//query!
+		
+		//ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Íµï¿½
 		String pageQuery = makePagingQuery(page);
 		String sortQuery=makeSortQuery(request,mav);
 		
@@ -170,9 +216,10 @@ public class ForumMainController {
 		System.out.println(url);
 		
 		
-		//¿äÃ» url·Î ¿äÃ»ÇÑ µÚ Á¤º¸¸¦ ÆÄ½ÌÇÑÈÄ ¹Þ¾Æ¿Â´Ù.
+		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
 		SearchResult respInfo=getScdList(url);
 
+		mav.addObject("category",13);
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
 		mav.addObject("scdList",respInfo.getScdList());
@@ -213,7 +260,7 @@ public class ForumMainController {
 	 * @param request
 	 * @return
 	 * @description
-	 * ÆäÀÌÁö ÆÄ¶ó¹ÌÅÍ¸¦ ¸¸µå´Â ¸Þ¼Òµå
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	 */
 	private String makePagingQuery(int page) {
 		StringBuffer query=new StringBuffer();		
@@ -227,7 +274,7 @@ public class ForumMainController {
 	 * @param mav 
 	 * @return
 	 * @description
-	 * Á¤·Ä ÆÄ¶ó¹ÌÅÍ¸¦ ¸¸µå´Â ¸Þ¼Òµå
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	 */
 
 	private String makeSortQuery(HttpServletRequest request, ModelAndView mav) {
@@ -253,7 +300,7 @@ public class ForumMainController {
 	 * @param mav 
 	 * @return
 	 * @description
-	 * ½ÃÀÛÀÏ °ª°ú Á¾·áÀÏ °ªÀ» ¹Þ¾Æ¿Í¼­ ·ç¾À QueryParser¿¡¼­ Ã³¸®ÇÒ ¼ö ÀÖ´Â Äõ¸®¸¦ ¸¸µç´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Í¼ï¿½ ï¿½ï¿½ï¿½ QueryParserï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 	 */
 	private String makeDateRangeQuery(HttpServletRequest request, ModelAndView mav) {
 		String parameter = "rank_idx_bc";
@@ -275,20 +322,20 @@ public class ForumMainController {
 				//startDate=changeDateFormat(request.getParameter("startDate0"));
 				//endDate=changeDateFormat(request.getParameter("endDate0"));					
 			}
-			else if(date==11){ //ÀüÃ¼ ³¯Â¥ °Ë»ö
+			else if(date==11){ //ï¿½ï¿½Ã¼ ï¿½ï¿½Â¥ ï¿½Ë»ï¿½
 				return "";
 			}
 			else{
 				switch (date) {			
-				case 12://1ÁÖ °Ë»ö
+				case 12://1ï¿½ï¿½ ï¿½Ë»ï¿½
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.get7DayAgoDate();
 					break;
-				case 13://1°³¿ù °Ë»ö
+				case 13://1ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.getMonthAgoDate();
 					break;
-				case 14://1³â °Ë»ö
+				case 14://1ï¿½ï¿½ ï¿½Ë»ï¿½
 					startDate=DateUtil.getCurrentDate();
 					endDate=DateUtil.get1YearAgoDate();
 					break;

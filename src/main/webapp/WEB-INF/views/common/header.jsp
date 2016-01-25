@@ -11,9 +11,32 @@
 
 	function searchTotal() {
 		var url = "searchTotal.do"
-		var params = "expression=" + $("#sch_input").val();
+		var params = "expression=" + $(".sch_input").val();
 		alert($("#sort").val());
-		params += "&field=post_text"
+		alert($(".sch_input").val());
+		params += "&field=post_text";
+		params += ""
+			$.ajax({
+		    	type: 'POST',
+		        url: url,
+		        data: params,
+		        dataType : "text",
+		        success: function(result){
+		        	cb_loadRightBody(result);
+		        }, 
+		        error: function() {
+		        	alert("error");
+		        }
+		    });  
+	}
+	
+	function searchCategory() {
+		var url = "searchCategory.do"
+		var params = "expression=" + $(".sch_input").val();
+		alert($("#sort").val());
+		alert($(".sch_input").val());
+		params += "&field=post_text";
+		params += ""
 			$.ajax({
 		    	type: 'POST',
 		        url: url,

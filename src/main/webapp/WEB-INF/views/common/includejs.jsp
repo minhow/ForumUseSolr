@@ -15,6 +15,7 @@
 		$('.tab_type1 ul li .tab').click(function(){
 			reset_tab_type1();
 			$(this).parent().addClass('on');
+			searchCategory();
 		});
 		
 	});
