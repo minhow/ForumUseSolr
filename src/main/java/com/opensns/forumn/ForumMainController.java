@@ -79,10 +79,27 @@ public class ForumMainController {
 					
 		return mav;
 	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @author
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public ModelAndView getDocument(HttpServletRequest request) {
+		ModelAndView mav=new ModelAndView("searchTotal");
+		return mav;
+	}
 
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @author jaeho
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
-		System.out.println("Call searchTotal");
 		ModelAndView mav=new ModelAndView("searchTotal");
 		
 		String expression=request.getParameter("expression");

@@ -2,6 +2,11 @@ package com.opensns.forumn.search;
 
 import java.util.List;
 
+/**
+ * 
+ * @author jaeho
+ *
+ */
 public class SearchResult {
 	private List<Topic> scdList;
 	private long totalCnt;

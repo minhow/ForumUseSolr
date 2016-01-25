@@ -12,6 +12,7 @@
 	function searchTotal() {
 		var url = "searchTotal.do"
 		var params = "expression=" + $("#sch_input").val();
+		alert($("#sort").val());
 		params += "&field=post_text"
 			$.ajax({
 		    	type: 'POST',

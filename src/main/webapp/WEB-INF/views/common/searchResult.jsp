@@ -21,14 +21,14 @@
 													<dt>
 															정렬
 															<select id="sort" title="정렬">
-																<option>유사도순</option>
-																<option>최신순</option>
+																<option value="sim">유사도순</option>
+																<option value="latest">최신순</option>
 															</select>
 															범위 
 															<select id="range" title="범위">
-																<option>전체</option>
-																<option>제목</option>
-																<option>본문</option>
+																<option value="total">전체</option>
+																<option value="subject">제목</option>
+																<option value="content">본문</option>
 															</select>
 															기간
 															<select id="period" title="기간">
