@@ -19,6 +19,7 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +28,8 @@ import com.opensns.forumn.common.DateUtil;
 import com.opensns.forumn.common.PageUtil;
 import com.opensns.forumn.search.Topic;
 import com.opensns.forumn.search.SearchResult;
+import com.opensns.forumn.service.SearchUsingSolrService;
+import com.opensns.forumn.service.vo.SearchParameterVO;
 
 /**
  * Handles requests for the application home page.
@@ -142,7 +145,7 @@ public class ForumMainController {
 	}
 	
 	@RequestMapping(value = "/searchTotal", method = RequestMethod.POST)
-	public ModelAndView searchTotal(HttpServletRequest request) {
+	public ModelAndView searchTotal(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		System.out.println("Call searchTotal");
 		ModelAndView mav=new ModelAndView("common/searchResult");
 		
@@ -165,71 +168,63 @@ public class ForumMainController {
 		
 		//�ΰ����� �Ķ���͵�
 		String pageQuery = makePagingQuery(page);
-		String sortQuery=makeSortQuery(request,mav);
 		
-	
-		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
-		//System.out.println(request_param.toString());
-		String url=makingUrl(request_param.toString());
-		//System.out.println(url);
+		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
+		SearchResult result=service.getSearchResult(vo);
+		
+		List<Topic>resultList=result.getScdList();
+		for(Topic topic:resultList)
+		{
+			System.out.println(topic);
+		}
 		
 		
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
-		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
-		mav.addObject("scdList",respInfo.getScdList());
-		mav.addObject("total",respInfo.getTotalCnt());
-		mav.addObject("start",respInfo.getStart());
+		mav.addObject("scdList",result.getScdList());
+		mav.addObject("total",result.getTotalCnt());
+		mav.addObject("start",result.getStart());
 		mav.addObject("page",page);
 		
-		PageUtil.setPaging(mav, (int)respInfo.getTotalCnt(), 10, page);
+		PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
 					
 		return mav;
 	}
 	
 	@RequestMapping(value = "/searchCategory", method = RequestMethod.POST)
-	public ModelAndView searchCategory(HttpServletRequest request) {
-		System.out.println("Call searchTotal");
-		ModelAndView mav=new ModelAndView("common/searchResultOfCategory");
+	public ModelAndView searchCategory(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		
+		System.out.println(vo);
+		System.out.println("Call searchCategory");
+		ModelAndView mav=new ModelAndView("common/searchResultOfCategory");
+		int page = modifyPageType(request);
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
-		//������ ������� StringBuffer ����
-		StringBuffer request_param=new StringBuffer();
-		int page = modifyPageType(request);
+		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
+		SearchResult result=service.getSearchResult(vo);
 		
-				
-		//query												
-		String FieldQuery=makeFieldQuery(expression,field);
-		String dateRangeQuery=makeDateRangeQuery(request,mav);
-		//query!
-		
-		//�ΰ����� �Ķ���͵�
-		String pageQuery = makePagingQuery(page);
-		String sortQuery=makeSortQuery(request,mav);
-		
-	
-		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
-		//System.out.println(request_param.toString());
-		String url=makingUrl(request_param.toString());
-		//System.out.println(url);
+		List<Topic>resultList=result.getScdList();
+		for(Topic topic:resultList)
+		{
+			System.out.println(topic);
+		}
 		
 		
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
-		SearchResult respInfo=getScdList(url);
+//		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("category",13);
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
-		mav.addObject("scdList",respInfo.getScdList());
-		mav.addObject("total",respInfo.getTotalCnt());
-		mav.addObject("start",respInfo.getStart());
-		mav.addObject("page",page);
+		mav.addObject("scdList",result.getScdList());
+		mav.addObject("total",result.getTotalCnt());
+		mav.addObject("start",result.getStart());
+//		mav.addObject("page",page);
 		
-		PageUtil.setPaging(mav, (int)respInfo.getTotalCnt(), 10, page);
+		PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
 					
 		return mav;
 	}

@@ -11,11 +11,39 @@
 
 	function searchTotal() {
 		var url = "searchTotal.do"
-		var params = "expression=" + $(".sch_input").val();
+			var params = "expression=" + $(".sch_input").val();
+		var sDate = new Date();
+		var eDate = new Date();
 		alert($("#sort").val());
-		alert($(".sch_input").val());
-		params += "&field=post_text";
-		params += ""
+		
+		params += "&field="+$("#range option:selected").val();
+		params += "&sort_field="+$("#sort option:selected").val();
+		if($("#period").val()=="week"){
+			alert(eDate.getMilliseconds());
+			sDate.setDate(sDate.getDate() - 7);
+			alert(eDate.getMilliseconds());
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		else if($("#period").val()=="month"){
+			sDate.setMonth(sDate.getMonth() - 1);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		else if($("#period").val()=="year"){
+			sDate.setFullYear(sDate.getFullYear() - 1);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		} else if($("#period").val()=="custom"){
+			var sdate = $("#sDate").val();
+			var edate = $("#eDate").val();
+			alert(sdate.substring(0,4)+"/"+sdate.substring(4,6)+"/"+sdate.substring(6,8));
+			sDate = new Date(sdate.substring(0,4),sdate.substring(4,6),sdate.substring(6,8),0,0,0,0);
+			eDate = new Date(edate.substring(0,4),edate.substring(4,6),edate.substring(6,8),0,0,0,0);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		alert(params);
 			$.ajax({
 		    	type: 'POST',
 		        url: url,
@@ -30,13 +58,42 @@
 		    });  
 	}
 	
-	function searchCategory() {
+	function searchCategory(category) {
 		var url = "searchCategory.do"
 		var params = "expression=" + $(".sch_input").val();
+		var sDate = new Date();
+		var eDate = new Date();
 		alert($("#sort").val());
-		alert($(".sch_input").val());
-		params += "&field=post_text";
-		params += ""
+		
+		params += "&field="+$("#range option:selected").val();
+		params += "&sort_field="+$("#sort option:selected").val();
+		params += "&forum_id="+category;
+		if($("#period").val()=="week"){
+			alert(eDate.getMilliseconds());
+			sDate.setDate(sDate.getDate() - 7);
+			alert(eDate.getMilliseconds());
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		else if($("#period").val()=="month"){
+			sDate.setMonth(sDate.getMonth() - 1);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		else if($("#period").val()=="year"){
+			sDate.setFullYear(sDate.getFullYear() - 1);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		} else if($("#period").val()=="custom"){
+			var sdate = $("#sDate").val();
+			var edate = $("#eDate").val();
+			alert(sdate.substring(0,4)+"/"+sdate.substring(4,6)+"/"+sdate.substring(6,8));
+			sDate = new Date(sdate.substring(0,4),sdate.substring(4,6),sdate.substring(6,8),0,0,0,0);
+			eDate = new Date(edate.substring(0,4),edate.substring(4,6),edate.substring(6,8),0,0,0,0);
+			params+="&sDate="+sDate.getTime();
+			params+="&eDate="+eDate.getTime();
+		}
+		alert(params);
 			$.ajax({
 		    	type: 'POST',
 		        url: url,
