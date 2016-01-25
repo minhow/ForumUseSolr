@@ -53,6 +53,8 @@ public class SearchUsingSolrService {
 		SearchResultMaker maker=new SearchResultMaker();
 		SearchQueryMaker qMaker=new SearchQueryMaker();
 		
+		
+		
 		//String url="http://1.234.16.50:9000/solr/topic_posts/select?q=post_text%3A%EC%A4%80%ED%98%B8%0A&wt=json&indent=true"+qMaker.getFlColumList()+qMaker.getHlQuery();
 		//System.out.println(url);
 		//SearchResult sResult=maker.getScdList(url);

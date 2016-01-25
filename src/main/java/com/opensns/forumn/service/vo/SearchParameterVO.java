@@ -21,7 +21,7 @@ public class SearchParameterVO {
 		this.expression="*";
 		this.forum_id="";
 		
-		this.sort_field="all";
+		this.sort_field="score";
 		this.sort_type="desc";				
 		
 		this.page=1;
