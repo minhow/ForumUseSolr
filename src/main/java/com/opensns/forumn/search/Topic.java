@@ -40,6 +40,8 @@ public class Topic {
 	private String parentPostText;
 	private String parentPostUsername;
 	private String postDate;
+	
+	private String hlPostText;
 			
 	public long getPostId() {
 		return postId;
@@ -124,6 +126,12 @@ public class Topic {
 	}
 	public void setPostUsername(String postUsername) {
 		this.postUsername = postUsername;
+	}
+	public String getHlPostText() {
+		return hlPostText;
+	}
+	public void setHlPostText(String hlPostText) {
+		this.hlPostText = hlPostText;
 	}
 	public String getPostSubject() {
 		return postSubject;
