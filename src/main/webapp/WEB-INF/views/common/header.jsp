@@ -82,19 +82,12 @@
 						<li>커뮤니티</li>
 						<li>전자도서관</li>
 					</ul>
-<<<<<<< HEAD
-					
-					<input id="sch_input" class="sch_input" type="text" value="검색어를 입력하세요." onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" /> 
-					<span class="sch_btn" onClick="searchTotal();">
-						<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif" alt="검색" /></span>
-=======
 
 					<input class="sch_input" type="text" value="검색어를 입력하세요."
 						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" />
 					<span class="sch_btn" onClick="searchTotal();"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
 						alt="검색" /></span>
->>>>>>> branch 'master' of https://github.com/minhow/ForumnUseSolr.git
 				</div>
 				<!-- sch_bar -->
 
