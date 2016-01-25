@@ -53,11 +53,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 게시판 -->
+					<!-- 프로젝트 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="게시판" /> 게시판
+						alt="프로젝트" /> 프로젝트
 					</span>
 					<p class="line_type2"></p>
 
@@ -68,7 +68,7 @@
 								<dl>
 									<dt>
 										<span class="bu_divi">${status.index }</span> <span
-											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.postSubject }</a>
+											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.hlPostSubject }</a>
 										<span> (유사도 : 99.9%)</span>
 									</dt>
 
@@ -80,7 +80,7 @@
 										<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
 									</dd>
 
-									<dd class="desc">${scd.postText }</dd>
+									<dd class="desc">${scd.hlPostText }</dd>
 									<dd>
 										<span class="bu_divi none_pl">첨부파일 :
 											${scd.postAttachment }</span> <br> <br> <br>
@@ -95,15 +95,55 @@
 							alt="addshow" /></a>
 					</div>
 				</div>
-				<!-- 게시판 -->
+				<!-- 프로젝트 -->
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 지식샘 -->
+					<!-- 개발이슈 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="지식샘" /> 지식샘
+						alt="개발이슈" /> 개발이슈
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+					</ul>
+					
+					<div class="line_type3">
+						<a href="#"><img
+							src="${contextPath}/resources/images/searchBar/btn_add.gif"
+							alt="addshow" /></a>
+					</div>
+				</div>
+				<!-- 개발이슈 -->
+
+				<div class="mar_top50 hei_type1">
+					<!-- 지식공유 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="지식공유" /> 지식공유
+					</span>
+					<p class="line_type2"></p>
+
+					<ul class="list_type5">
+					</ul>
+					<div class="line_type3">
+						<a href="#"><img
+							src="${contextPath}/resources/images/searchBar/btn_add.gif"
+							alt="addshow" /></a>
+					</div>
+				</div>
+				<!-- 지식공유 -->
+
+				<div class="mar_top50 hei_type1">
+					<!-- 그룹 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="그룹" /> 그룹
 					</span>
 					<p class="line_type2"></p>
 
@@ -116,33 +156,14 @@
 							alt="addshow" /></a>
 					</div>
 				</div>
-				<!-- 지식샘 -->
-
+				<!-- 그룹 -->
+				
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 기타 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
-					</span>
-					<p class="line_type2"></p>
-
-					<ul class="list_type5">
-					</ul>
-					<div class="line_type3">
-						<a href="#"><img
-							src="${contextPath}/resources/images/searchBar/btn_add.gif"
-							alt="addshow" /></a>
-					</div>
-				</div>
-				<!-- 커뮤니티 -->
-
-				<div class="mar_top50 hei_type1">
-					<!-- 전자도서관 -->
-					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="전자도서관" /> 전자도서관
+						alt="기타" /> 기타
 					</span>
 					<p class="line_type2"></p>
 
@@ -155,7 +176,49 @@
 							alt="addshow" /></a>
 					</div>
 				</div>
-				<!-- 전자도서관 -->
+				<!-- 기타 -->
+				
+				
+				<div class="mar_top50 hei_type1">
+					<!-- 포럼 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="포럼" /> 포럼
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+					</ul>
+					<div class="line_type3">
+						<a href="#"><img
+							src="${contextPath}/resources/images/searchBar/btn_add.gif"
+							alt="addshow" /></a>
+					</div>
+				</div>
+				<!-- 포럼 -->
+				
+				<div class="mar_top50 hei_type1">
+					<!-- 다운로드 및 Q&A -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="다운로드 및 Q&A" /> 다운로드 및 Q&A
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+					</ul>
+					<div class="line_type3">
+						<a href="#"><img
+							src="${contextPath}/resources/images/searchBar/btn_add.gif"
+							alt="addshow" /></a>
+					</div>
+				</div>
+				<!-- 다운로드 및 Q&A -->
+				
 
 
 
@@ -165,16 +228,30 @@
 
 
 		<li>
-			<p class="tab">게시판</p>
+			<p class="tab">프로젝트</p>
+
 		</li>
 		<li>
-			<p class="tab">지식샘</p>
+			<p class="tab">개발이슈</p>
+
 		</li>
 		<li>
-			<p class="tab">커뮤니티</p>
+			<p class="tab">지식공유</p>
+
 		</li>
 		<li>
-			<p class="tab">전자도서관</p>
+			<p class="tab">그룹</p>
+
+		</li>
+		<li>
+			<p class="tab">기타</p>
+
+		</li>
+		<li>
+			<p class="tab">포럼</p>
+		</li>
+		<li>
+			<p class="tab">다운로드 및 Q&A</p>
 		</li>
 	</ul>
 

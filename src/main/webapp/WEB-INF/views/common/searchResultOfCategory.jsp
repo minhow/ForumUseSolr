@@ -163,7 +163,7 @@
 
 
 
-		<li <c:if test="${category==11 }">class="on"</c:if>>
+		<li <c:if test="${category==13 }">class="on"</c:if>>
 			<p class="tab">게시판</p>
 			<div class="t_content">
 				<!-- t_content 게시판 -->
@@ -209,6 +209,31 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${status.index }</span> <span
+											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.hlPostSubject }</a>
+										<span> (유사도 : 99.9%)</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 				<!-- 게시판 -->
@@ -303,7 +328,7 @@
 
 			</div> <!-- t_content 지식샘 -->
 		</li>
-		<li <c:if test="${category==13 }">class="on"</c:if>>
+		<li <c:if test="${category==16 }">class="on"</c:if>>
 			<p class="tab">커뮤니티</p>
 
 			<div class="t_content">

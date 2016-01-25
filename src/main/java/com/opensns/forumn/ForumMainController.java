@@ -9,7 +9,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,6 +40,20 @@ import com.opensns.forumn.service.vo.SearchParameterVO;
 public class ForumMainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ForumMainController.class);
+	
+	private static Map<String,String> forum_map;
+	
+	static {
+		forum_map = new HashMap<String,String>();
+		forum_map.put("프로젝트","3");
+		forum_map.put("개발이슈","36");
+		forum_map.put("지식공유","37");
+		forum_map.put("그룹","7");
+		forum_map.put("기타","14");
+		forum_map.put("포럼","43");
+		forum_map.put("다운로드 및 Q&A","46");
+		
+	}
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request) {
@@ -202,6 +218,10 @@ public class ForumMainController {
 		int page = modifyPageType(request);
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
+		
+		vo.setForum_id(forum_map.get(vo.getForum_id()));
+		
+		System.out.println(vo.getForum_id());
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		SearchResult result=service.getSearchResult(vo);

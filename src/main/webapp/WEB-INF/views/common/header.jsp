@@ -64,7 +64,7 @@
 		var sDate = new Date();
 		var eDate = new Date();
 		alert($("#sort").val());
-		
+		alert(category);
 		params += "&field="+$("#range option:selected").val();
 		params += "&sort_field="+$("#sort option:selected").val();
 		params += "&forum_id="+category;
