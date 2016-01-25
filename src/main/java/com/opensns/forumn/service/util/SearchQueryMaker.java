@@ -11,6 +11,7 @@ public class SearchQueryMaker {
 		String pQuery = makePQuery(param); // complete
 		String sortQuery = makeSortQuery(param); // complete
 		String startNRowQuery = makeStartRowQuery(param); // TODO
+		String highlightQuery=makeHighlightQuery(param);
 
 		System.out.println("sortQuery" + sortQuery);
 
@@ -23,9 +24,21 @@ public class SearchQueryMaker {
 		if (startNRowQuery != null) {
 			searchQuery.append(startNRowQuery);
 		}
+		if(highlightQuery!=null){
+			searchQuery.append(highlightQuery);
+		}
 		searchQuery.append("&wt=json&indent=true");
 
 		return searchQuery.toString();
+	}
+
+	private String makeHighlightQuery(SearchParameterVO param) {
+		String field=param.getField();
+		String query;
+		query=getHlQuery(field);
+		
+		
+		return query;
 	}
 
 	private String makeStartRowQuery(SearchParameterVO param) {
@@ -82,14 +95,15 @@ public class SearchQueryMaker {
 			qQuery.append(sDate + "+TO+" + eDate);
 			qQuery.append(Encoder.encodingQueryToUTF8("]"));
 		}
+		
 
 		return qQuery.toString();
 	}
 
 	// //////////////////////////////////
 
-	public String getHlQuery() {
-		return "&hl=true&hl.fl=post_text&hl.simple.pre=<em>&hl.simple.post=<%2Fem>";
+	public String getHlQuery(String field) {
+		return "&hl=true&hl.fl=post_text,post_subject&hl.simple.pre=<em>&hl.simple.post=<%2Fem>";
 	}
 
 	/**
@@ -114,8 +128,8 @@ public class SearchQueryMaker {
 
 		String coreUrl = "1.234.16.50:9000/solr/topic_posts/";
 		SearchParameterVO param = new SearchParameterVO();
-		param.setField("post_subject");
-		param.setForum_id("8");
+		param.setField("all");
+		param.setExpression("¡ÿ»£");
 		String url = qMaker.makeQuery(param, coreUrl);
 		System.out.println(url);
 	}

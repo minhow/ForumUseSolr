@@ -42,6 +42,7 @@ public class Topic {
 	private String postDate;
 	
 	private String hlPostText;
+	private String hlPostSubject;
 			
 	public long getPostId() {
 		return postId;
@@ -84,6 +85,12 @@ public class Topic {
 	}
 	public void setPostTime(long postTime) {
 		this.postTime = postTime;
+	}
+	public String getHlPostSubject() {
+		return hlPostSubject;
+	}
+	public void setHlPostSubject(String hlPostSubject) {
+		this.hlPostSubject = hlPostSubject;
 	}
 	public long getPostApproved() {
 		return postApproved;
@@ -231,8 +238,8 @@ public class Topic {
 	}
 	@Override
 	public String toString() {
-		return "Topic [postId=" + postId + ", topicId=" + topicId
-				+ ", forumId=" + forumId + ", posterId=" + posterId
+		return "Topic [poi_nm=" + poi_nm + ", postId=" + postId + ", topicId="
+				+ topicId + ", forumId=" + forumId + ", posterId=" + posterId
 				+ ", iconId=" + iconId + ", posterIp=" + posterIp
 				+ ", postTime=" + postTime + ", postApproved=" + postApproved
 				+ ", postReported=" + postReported + ", enableBbcode="
@@ -249,6 +256,7 @@ public class Topic {
 				+ ", postEditLocked=" + postEditLocked + ", parentPostSubject="
 				+ parentPostSubject + ", parentPostText=" + parentPostText
 				+ ", parentPostUsername=" + parentPostUsername + ", postDate="
-				+ postDate + "]";
+				+ postDate + ", hlPostText=" + hlPostText + ", hlPostSubject="
+				+ hlPostSubject + "]";
 	}
 }

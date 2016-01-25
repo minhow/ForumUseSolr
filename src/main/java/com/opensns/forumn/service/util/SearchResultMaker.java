@@ -40,6 +40,8 @@ public class SearchResultMaker {
 	}
 
 	private List<Topic> getSCDList(JSONObject jObj) {
+		int wordCount =30;	//하이라이팅 안될 경우 글자수
+		
 		JSONObject resp=(JSONObject)jObj.get("response");
 		JSONArray docs = (JSONArray) resp.get("docs");
 		ArrayList<Topic> scdList = new ArrayList<Topic>();
@@ -96,7 +98,15 @@ public class SearchResultMaker {
 				topic.setPostSubject((String) doc.get("post_subject"));
 			}
 			if(doc.get("post_text")!=null){
-				topic.setPostText((String) doc.get("post_text"));
+				String postText=(String) doc.get("post_text");
+				topic.setPostText(postText);
+				if(postText.length()>wordCount)
+				{
+					topic.setHlPostText(postText.substring(0, wordCount)+"...");
+				}else{
+					topic.setHlPostText(postText);
+				}
+				
 			}
 			if(doc.get("post_checksum")!=null){
 				topic.setPostChecksum((String) doc.get("post_checksum"));
@@ -131,7 +141,11 @@ public class SearchResultMaker {
 				topic.setPostEditLocked((Long) doc.get("post_edit_locked"));
 			}
 			if(doc.get("parent_post_subject")!=null){
-				topic.setParentPostSubject((String) doc.get("parent_post_subject"));
+				String postSubject=(String) doc.get("parent_post_subject");
+				topic.setParentPostSubject((String) doc.get("parent_post_subject"));				
+				topic.setHlPostSubject(postSubject);
+			
+				
 			}
 			if(doc.get("parent_post_text")!=null){
 				topic.setParentPostText((String) doc.get("parent_post_text"));
@@ -145,9 +159,17 @@ public class SearchResultMaker {
 			
 			if(jObj.get("highlighting")!=null){
 				JSONObject hObj=(JSONObject)jObj.get("highlighting");				
-				JSONObject hObj2=(JSONObject)hObj.get(Long.toString(topic.getPostId()));				
-				JSONArray jArr=(JSONArray)hObj2.get("post_text");
-				topic.setHlPostText((String)jArr.get(0));
+				JSONObject hObj2=(JSONObject)hObj.get(Long.toString(topic.getPostId()));
+				
+				if(hObj2.get("post_text") !=null){
+					JSONArray jArr=(JSONArray)hObj2.get("post_text");
+					topic.setHlPostText((String)jArr.get(0));
+				}
+				if(hObj2.get("post_subject") !=null){
+					JSONArray jArr=(JSONArray)hObj2.get("post_subject");
+					topic.setHlPostSubject((String)jArr.get(0));
+				}
+				
 			}else{
 
 			}
