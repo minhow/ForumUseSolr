@@ -149,6 +149,8 @@ public class ForumMainController {
 		String expression=request.getParameter("expression");
 		String field=request.getParameter("field");
 		
+		System.out.println("expression --> " +expression);
+		System.out.println("field --> "+ field);
 		//쿼리가 만들어질 StringBuffer 변수
 		StringBuffer request_param=new StringBuffer();
 		int page = modifyPageType(request);
@@ -165,9 +167,9 @@ public class ForumMainController {
 		
 	
 		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
-		System.out.println(request_param.toString());
+		//System.out.println(request_param.toString());
 		String url=makingUrl(request_param.toString());
-		System.out.println(url);
+		//System.out.println(url);
 		
 		
 		//요청 url로 요청한 뒤 정보를 파싱한후 받아온다.
