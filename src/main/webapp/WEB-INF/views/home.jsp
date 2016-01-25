@@ -143,7 +143,7 @@ function initPage()
 		${scd.rank_idx_bc }<br>
 		<hr>
 	</c:forEach>
-	<c:if test="${cPage != 1 }">
+				<c:if test="${cPage != 1 }">
 					<a href="javascript:movePage('1');">&#60;&#60;</a>
 				</c:if>
 				<c:if test="${cPage - 1 > 0 }">

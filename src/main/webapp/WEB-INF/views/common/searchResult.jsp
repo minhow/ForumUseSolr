@@ -213,22 +213,7 @@
 				<!-- 게시판 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<%@ include file="/WEB-INF/views/common/page.jsp"%>
 
 			</div> <!-- t_content 게시판 -->
 		</li>
@@ -283,22 +268,7 @@
 				<!-- 지식샘 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<%@ include file="/WEB-INF/views/common/page.jsp"%>
 
 			</div> <!-- t_content 지식샘 -->
 		</li>
@@ -354,22 +324,7 @@
 				<!-- 커뮤니티 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<%@ include file="/WEB-INF/views/common/page.jsp"%>
 
 			</div> <!-- t_content 커뮤니티 -->
 
@@ -387,22 +342,7 @@
 				<!-- 전자도서관 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<%@ include file="/WEB-INF/views/common/page.jsp"%>
 
 			</div> <!-- t_content 전자도서관 -->
 		</li>
