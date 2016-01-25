@@ -151,7 +151,9 @@ public class ForumMainController {
 		
 		System.out.println("expression --> " +expression);
 		System.out.println("field --> "+ field);
+
 		//������ ������� StringBuffer ����
+
 		StringBuffer request_param=new StringBuffer();
 		int page = modifyPageType(request);
 		
@@ -211,9 +213,9 @@ public class ForumMainController {
 		
 	
 		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
-		System.out.println(request_param.toString());
+		//System.out.println(request_param.toString());
 		String url=makingUrl(request_param.toString());
-		System.out.println(url);
+		//System.out.println(url);
 		
 		
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.

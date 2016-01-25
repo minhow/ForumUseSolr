@@ -18,7 +18,7 @@ public class SearchQueryMaker {
 		return sb.toString();
 	}
 	/**
-	 * ±âº»ÀûÀÎ fl column list
+	 * ï¿½âº»ï¿½ï¿½ï¿½ï¿½ fl column list
 	 */
 	public String getBasicFlColumList(){
 		String flColumns="forum_id,forum_name,poster_ip,post_time,post_id,post_date,post_subject,post_text,parent_post_username,parent_post_id,parent_post_text,parent_post_subject";		
@@ -28,76 +28,76 @@ public class SearchQueryMaker {
 	
 	
 	/**
-	 * q ÁúÀÇ¿¡ ´ã±ä Äõ¸® Á¤Àç
+	 * q ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
-	public String getQuery(/*°Ë»öÄõ¸® °´Ã¼*/){
+	public String getQuery(/*ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼*/){
 		String query="";
 		return query;
 	}
 	
 	/**
-	 * q ÁúÀÇ ÀÌ¿ÜÀÇ ÁúÀÇ¿¡ ´ã±ä Äõ¸® Á¤Àç
+	 * q ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
-	public String getAdditionalQuery(/*°Ë»öÄõ¸® °´Ã¼*/){
+	public String getAdditionalQuery(/*ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼*/){
 		String query="";
 		return query;
 	}
 
 	
-/**************** Äõ¸® ¸¸µé±â ****************/
+/**************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ****************/
 	
-	/****** Á¤·Ä **********/
-	//À¯»çµµ¼ø
+	/****** ï¿½ï¿½ï¿½ï¿½ **********/
+	//ï¿½ï¿½ï¿½çµµï¿½ï¿½
 	public String sortBySimilarity(){
 		String result="";
 		return result;
 	}
-	//ÃÖ½Å¼ø
+	//ï¿½Ö½Å¼ï¿½
 	public String sortByDate(){
 		String result="";
 		return result;
 	}
-	/****** ¿µ¿ª **********/
-	//ÀüÃ¼(Á¦¸ñ+º»¹®)
+	/****** ï¿½ï¿½ï¿½ï¿½ **********/
+	//ï¿½ï¿½Ã¼(ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½)
 	public String fieldScopeAll(){
 		String result="";
 		return result;
 	}
-	//Á¦¸ñ
+	//ï¿½ï¿½ï¿½ï¿½
 	public String fieldScopeTitle(){
 		String result="";
 		return result;
 	}
-	//º»¹®
+	//ï¿½ï¿½ï¿½ï¿½
 	public String fieldScopeContent(){
 		String result="";
 		return result;
 	}
 	
-	/****** ±â°£ **********/	
-	//1ÀÏ
+	/****** ï¿½â°£ **********/	
+	//1ï¿½ï¿½
 	public String dateScopeOneDay(){
 		String result="";
 		return result;
 	}
-	//1ÁÖ
+	//1ï¿½ï¿½
 	public String dateScopeOneWeek(){
 		String result="";
 		return result;
 	}
-	//1°³¿ù
+	//1ï¿½ï¿½ï¿½ï¿½
 	public String dateScopeOneMonth(){
 		String result="";
 		return result;
 	}
-	//1³â
+	//1ï¿½ï¿½
 	public String dateScopeOneYear(){
 		String result="";
 		return result;
 	}
-	//±â°£ÀÔ·Â
+	//ï¿½â°£ï¿½Ô·ï¿½
 	public String dateScopeTyping(){
 		String result="";
 		return result;

@@ -149,7 +149,7 @@ public class SearchResultMaker {
 				JSONArray jArr=(JSONArray)hObj2.get("post_text");
 				topic.setHlPostText((String)jArr.get(0));
 			}else{
-				System.out.println("³ÎÀÌ¿©");
+				System.out.println("ï¿½ï¿½ï¿½Ì¿ï¿½");
 			}
 			scdList.add(topic);
 		}

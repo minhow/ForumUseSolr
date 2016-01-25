@@ -8,8 +8,8 @@ import com.opensns.forumn.service.util.SearchQueryMaker;
 import com.opensns.forumn.service.util.SearchResultMaker;
 
 /**
- * Solr °Ë»ö Àü¹ÝÀûÀÎ Èå¸§À» Á¦¾îÇÏ´Â ¼­ºñ½º. °Ë»ö Á¶°ÇÀ» Á¤º¸·Î Äõ¸®¸¦ ¸¸µé¾î Solr¿Í HTTP Åë½Å ¹× °á°ú¸¦ ÇÚµé¸µ ÈÄ, Á¤ÀÇµÈ
- * Domain Model·Î ÀúÀåÇÏ¿© ¹ÝÈ¯ÇÑ´Ù.
+ * Solr ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å¸§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Solrï¿½ï¿½ HTTP ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµé¸µ ï¿½ï¿½, ï¿½ï¿½ï¿½Çµï¿½
+ * Domain Modelï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
  * 
  * @author jaeho
  *
@@ -20,7 +20,7 @@ public class SearchUsingSolrService {
 	private String url="http://1.234.16.50:9000/solr/";;
 	private String core="topic_posts/";
 	
-	//ÃÊ±âÈ­
+	//ï¿½Ê±ï¿½È­
 	private SearchUsingSolrService(){}
 	
 	//singleton
@@ -31,7 +31,7 @@ public class SearchUsingSolrService {
 		return instance;
 	}
 	
-	public String makingQuery(/*°Ë»öÆÄ¶ó¹ÌÅÍ °´Ã¼*/){
+	public String makingQuery(/*ï¿½Ë»ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼*/){
 		String searchQuery="";
 		
 		return searchQuery;
