@@ -22,24 +22,35 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
+									정렬 
+									<select id="sort" title="정렬">
 										<option value="score">유사도순</option>
 										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
+									</select> 
+									범위
+									 <select id="range" title="범위">
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 
+									기간 
+									<select id="period" title="기간" onchange="periodCheck()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
 										<option value="year">1년</option>
 										<option value="custom">직접 입력</option>
 									</select> 
-									<input type="text" id="sDate" name="sDate"
-										onchange="day_check()" /><label for="option2_1">부터</label> 
-									<input type="text" id="eDate" name="eDate" onchange="day_check()" /><label
-										for="option2_2">까지</label>
+									<input type="text" id="sDate" name="sDate" onchange="day_check()" />
+									<label for="option2_1">부터</label> 
+									<input type="text" id="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label>
+									
+									<input type="hidden" id="hsDate" value="${sDate}"/>
+									<input type="hidden" id="heDate" value="${eDate}"/>
+									<input type="hidden" id="researchQuery" value="${expression }"/>
+									<input type="hidden" id="researchField" value="${field }"/>
+									
 									<button class="btn_reset" onclick="clearDate()">
 										<span>날짜초기화</span>
 									</button>
