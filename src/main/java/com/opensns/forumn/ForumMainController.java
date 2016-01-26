@@ -87,6 +87,7 @@ public class ForumMainController {
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
 		SearchResult respInfo=getScdList(url);
 
+		
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
 		mav.addObject("scdList",respInfo.getScdList());
@@ -119,6 +120,7 @@ public class ForumMainController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
+		System.out.println("hi");
 		ModelAndView mav=new ModelAndView("searchTotal");
 		
 		String expression=request.getParameter("expression");
@@ -162,36 +164,12 @@ public class ForumMainController {
 	
 	@RequestMapping(value = "/searchTotal", method = RequestMethod.POST)
 	public ModelAndView searchTotal(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
-		System.out.println("Call searchTotal");
+		System.out.println(vo);
 		ModelAndView mav=new ModelAndView("common/searchResult");
-		
-		String expression=request.getParameter("expression");
-		String field=request.getParameter("field");
-		
-		System.out.println("expression --> " +expression);
-		System.out.println("field --> "+ field);
-
-		//������ ������� StringBuffer ����
-
-		StringBuffer request_param=new StringBuffer();
-		int page = modifyPageType(request);
-		
-				
-		//query												
-		String FieldQuery=makeFieldQuery(expression,field);
-		String dateRangeQuery=makeDateRangeQuery(request,mav);
-		//query!
-		
-		//�ΰ����� �Ķ���͵�
-		String pageQuery = makePagingQuery(page);
 		
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
-//		vo.setExpression("(" + vo.getExpression() + ")");
-//		vo.setExpression("\"" + vo.getExpression() + "\"");
-		
-//		vo.setExpression(vo.getExpression().replaceAll(" ", ""));
 		
 		vo.setRow(3);
 		System.out.println(vo.getExpression());
@@ -219,20 +197,8 @@ public class ForumMainController {
 		//다운로드 및 Q&A
 		vo.setForum_id(forum_map.get("다운로드 및 Q&A"));
 		SearchResult result7=service.getSearchResult(vo);
-		
-		
-		System.out.println("포럼 "+result6.getScdList().size());
-		/*List<Topic>resultList=result.getScdList();
-		for(Topic topic:resultList)
-		{
-			System.out.println(topic);
-		}*/
-		
-		
-		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
 
-		mav.addObject("expression", expression);
-		mav.addObject("field",field);
+		
 		mav.addObject("scdList1",result1.getScdList());
 		mav.addObject("scdList2",result2.getScdList());
 		mav.addObject("scdList3",result3.getScdList());
@@ -240,6 +206,23 @@ public class ForumMainController {
 		mav.addObject("scdList5",result5.getScdList());
 		mav.addObject("scdList6",result6.getScdList());
 		mav.addObject("scdList7",result7.getScdList());
+		
+		String expression=vo.getExpression();
+		String field=vo.getField();
+		if(vo.getResearch().equals("y")){
+			expression+=","+vo.getResearchQuery();
+			field+=","+vo.getResearchField();
+		}
+		System.out.println("e- >"+expression);
+		System.out.println("f- >"+field);
+		System.out.println("v- >"+vo.getResearch());
+		
+		mav.addObject("expression", expression);
+		mav.addObject("field",field);
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
 		/*mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());*/
@@ -257,8 +240,7 @@ public class ForumMainController {
 		System.out.println("Call searchCategory");
 		ModelAndView mav=new ModelAndView("common/searchResultOfCategory");
 		int page = modifyPageType(request);
-		String expression=request.getParameter("expression");
-		String field=request.getParameter("field");
+		
 		
 		vo.setForum_id(forum_map.get(vo.getForum_id()));
 		
@@ -278,8 +260,15 @@ public class ForumMainController {
 //		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("category",13);
-		mav.addObject("expression", expression);
+		
+		String expression=vo.getExpression();
+		String field=vo.getField();
+		
+		
+		
+		mav.addObject("expression",expression );
 		mav.addObject("field",field);
+		mav.addObject("research",vo.getResearch());
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());
