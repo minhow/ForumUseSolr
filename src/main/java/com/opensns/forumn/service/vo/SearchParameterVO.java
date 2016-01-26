@@ -5,8 +5,13 @@ public class SearchParameterVO {
 	private String field;
 	private String expression;
 	private String forum_id;
-	private int sDate;
-	private int eDate;
+	private String sDate;
+	private String eDate;
+	private String period;
+	private String researchQuery;
+	private String researchField;
+	private String research;
+
 	
 	//sort
 	private String sort_field;
@@ -17,10 +22,12 @@ public class SearchParameterVO {
 	private int row;
 	
 	public SearchParameterVO(){
+		this.period="total";
 		this.field="all";
 		this.expression="*";
 		this.forum_id="";
 		
+		this.research="n";
 		this.sort_field="score";
 		this.sort_type="desc";				
 		
@@ -52,21 +59,6 @@ public class SearchParameterVO {
 		this.forum_id = forum_id;
 	}
 
-	public int getsDate() {
-		return sDate;
-	}
-
-	public void setsDate(int sDate) {
-		this.sDate = sDate;
-	}
-
-	public int geteDate() {
-		return eDate;
-	}
-
-	public void seteDate(int eDate) {
-		this.eDate = eDate;
-	}
 
 	public String getSort_field() {
 		return sort_field;
@@ -100,13 +92,63 @@ public class SearchParameterVO {
 		this.row = row;
 	}
 
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+	public String getsDate() {
+		return sDate;
+	}
+
+	public void setsDate(String sDate) {
+		this.sDate = sDate;
+	}
+
+	public String geteDate() {
+		return eDate;
+	}
+
+	public void seteDate(String eDate) {
+		this.eDate = eDate;
+	}
+
+	public String getResearchQuery() {
+		return researchQuery;
+	}
+
+	public void setResearchQuery(String researchQuery) {
+		this.researchQuery = researchQuery;
+	}
+
+	public String getResearch() {
+		return research;
+	}
+
+	public void setResearch(String research) {
+		this.research = research;
+	}
+
+	public String getResearchField() {
+		return researchField;
+	}
+
+	public void setResearchField(String researchField) {
+		this.researchField = researchField;
+	}
+
 	@Override
 	public String toString() {
 		return "SearchParameterVO [field=" + field + ", expression="
 				+ expression + ", forum_id=" + forum_id + ", sDate=" + sDate
-				+ ", eDate=" + eDate + ", sort_field=" + sort_field
-				+ ", sort_type=" + sort_type + ", page=" + page + ", row="
-				+ row + "]";
+				+ ", eDate=" + eDate + ", period=" + period
+				+ ", researchQuery=" + researchQuery + ", researchField="
+				+ researchField + ", research=" + research + ", sort_field="
+				+ sort_field + ", sort_type=" + sort_type + ", page=" + page
+				+ ", row=" + row + "]";
 	}
 	
 }

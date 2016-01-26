@@ -14,8 +14,6 @@ public class SearchQueryMaker {
 		String highlightQuery=makeHighlightQuery(param);
 		String flQuery=getFlColumList();
 
-		System.out.println("sortQuery" + sortQuery);
-
 		if (pQuery != null) {
 			searchQuery.append(pQuery);
 		}
@@ -73,19 +71,26 @@ public class SearchQueryMaker {
 		String field = param.getField();
 		String express = param.getExpression();
 		String forumId = param.getForum_id();
-		int sDate = param.getsDate();
-		int eDate = param.geteDate();
+		String sDate = param.getsDate();
+		String eDate = param.geteDate();
 
+		
 		if ("all".equals(field)) {
-			qQuery.append("post_text");
+			qQuery.append("(post_text");
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("||") + "+");
 			qQuery.append("post_subject");
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+			qQuery.append(")");
 		} else {
 			qQuery.append(field);
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
 		}
+		
+		if(param.getResearch().equals("y")){
+			qQuery.append(makingResearchQuery(param));
+		}
+		
 
 		if (forumId != null && !"".equals(forumId.trim())) {
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("&&") + "+");
@@ -93,7 +98,7 @@ public class SearchQueryMaker {
 					+ forumId);
 		}
 
-		if (sDate != 0 && eDate != 0) {
+		if (!param.getPeriod().toLowerCase().equals("total")) {
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("&&") + "+");
 			qQuery.append("post_time" + Encoder.encodingQueryToUTF8(":["));
 			qQuery.append(sDate + "+TO+" + eDate);
@@ -105,6 +110,35 @@ public class SearchQueryMaker {
 	}
 
 	// //////////////////////////////////
+
+	private String makingResearchQuery(SearchParameterVO param) {
+		StringBuffer qQuery=new StringBuffer();
+		String fields[]=param.getResearchField().split(",");
+		String querys[]=param.getResearchQuery().split(",");
+		
+		System.out.println(querys.length);
+		for(String q:querys){
+			System.out.println(q);
+		}
+		for(int i=0;i<fields.length;i++){
+			String field=fields[i];
+			String express=querys[i];
+			
+			if ("all".equals(field)) {
+				qQuery.append(Encoder.encodingQueryToUTF8("&&")+"(");
+				qQuery.append("post_text");
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+				qQuery.append("+" + Encoder.encodingQueryToUTF8("||") + "+");
+				qQuery.append("post_subject");
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express)+")");
+			} else {
+				qQuery.append(field);
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+			}
+		}
+		
+		return qQuery.toString();
+	}
 
 	public String getHlQuery(String field) {
 		return "&hl=true&hl.fl=post_text,post_subject&hl.simple.pre=<b>&hl.simple.post=<%2Fb>";
