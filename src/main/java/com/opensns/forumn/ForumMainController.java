@@ -185,26 +185,67 @@ public class ForumMainController {
 		//�ΰ����� �Ķ���͵�
 		String pageQuery = makePagingQuery(page);
 		
-		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
-		SearchResult result=service.getSearchResult(vo);
 		
-		List<Topic>resultList=result.getScdList();
+		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
+		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
+//		vo.setExpression("(" + vo.getExpression() + ")");
+//		vo.setExpression("\"" + vo.getExpression() + "\"");
+		
+//		vo.setExpression(vo.getExpression().replaceAll(" ", ""));
+		
+		vo.setRow(3);
+		System.out.println(vo.getExpression());
+		//project
+		vo.setForum_id(forum_map.get("프로젝트"));
+		SearchResult result1=service.getSearchResult(vo);
+		//개발이슈
+		vo.setForum_id(forum_map.get("개발이슈"));
+		SearchResult result2=service.getSearchResult(vo);
+		
+		//지식공유
+		vo.setForum_id(forum_map.get("지식공유"));
+		SearchResult result3=service.getSearchResult(vo);
+		
+		//그룹
+		vo.setForum_id(forum_map.get("그룹"));
+		SearchResult result4=service.getSearchResult(vo);
+		
+		//기타
+		vo.setForum_id(forum_map.get("기타"));
+		SearchResult result5=service.getSearchResult(vo);
+		//포럼
+		vo.setForum_id(forum_map.get("포럼"));
+		SearchResult result6=service.getSearchResult(vo);
+		//다운로드 및 Q&A
+		vo.setForum_id(forum_map.get("다운로드 및 Q&A"));
+		SearchResult result7=service.getSearchResult(vo);
+		
+		
+		System.out.println("포럼 "+result6.getScdList().size());
+		/*List<Topic>resultList=result.getScdList();
 		for(Topic topic:resultList)
 		{
 			System.out.println(topic);
-		}
+		}*/
 		
 		
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
 
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
-		mav.addObject("scdList",result.getScdList());
+		mav.addObject("scdList1",result1.getScdList());
+		mav.addObject("scdList2",result2.getScdList());
+		mav.addObject("scdList3",result3.getScdList());
+		mav.addObject("scdList4",result4.getScdList());
+		mav.addObject("scdList5",result5.getScdList());
+		mav.addObject("scdList6",result6.getScdList());
+		mav.addObject("scdList7",result7.getScdList());
+		/*mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
-		mav.addObject("start",result.getStart());
-		mav.addObject("page",page);
+		mav.addObject("start",result.getStart());*/
+		//mav.addObject("page",page);
 		
-		PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
+		//PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
 					
 		return mav;
 	}
@@ -277,7 +318,7 @@ public class ForumMainController {
 	 * @param request
 	 * @return
 	 * @description
-	 * ������ �Ķ���͸� ����� �޼ҵ�
+	 * this method make query..
 	 */
 	private String makePagingQuery(int page) {
 		StringBuffer query=new StringBuffer();		
