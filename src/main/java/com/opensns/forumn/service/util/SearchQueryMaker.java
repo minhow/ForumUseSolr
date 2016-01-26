@@ -157,7 +157,7 @@ public class SearchQueryMaker {
 	 * �⺻���� fl column list
 	 */
 	public String getBasicFlColumList() {
-		String flColumns = "post_id,forum_id,parent_forum_name,parent_post_subject,post_username,post_date,forum_name,post_text,score";
+		String flColumns = "topic_id,post_id,forum_id,parent_forum_name,parent_post_subject,post_username,post_date,forum_name,post_text,score";
 		return flColumns;
 	}
 

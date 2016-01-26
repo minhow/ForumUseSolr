@@ -53,7 +53,7 @@ public class SearchResultMaker {
 			if(doc.get("post_id")!=null){
 				topic.setPostId((Long) doc.get("post_id"));
 			}
-			if(doc.get("topic_id")!=null){
+			if(doc.get("topic_id")!=null){				
 				topic.setTopicId((Long) doc.get("topic_id"));
 			}
 			if(doc.get("forum_id")!=null){

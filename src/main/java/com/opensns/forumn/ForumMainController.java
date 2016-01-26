@@ -207,6 +207,11 @@ public class ForumMainController {
 		mav.addObject("scdList6",result6.getScdList());
 		mav.addObject("scdList7",result7.getScdList());
 		
+		for(Topic vo2:result1.getScdList())
+		{
+			System.out.println(vo2);
+		}
+		
 		String expression=vo.getExpression();
 		String field=vo.getField();
 		if(vo.getResearch().equals("y")){
