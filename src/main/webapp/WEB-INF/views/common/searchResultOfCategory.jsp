@@ -5,12 +5,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="tab_type1">
 	<!-- tab_type1 -->
+	<input type="hidden" id="whichPageSearch" value="total"/>
+	<input type="hidden" id="page" value="${page }"/>
 	<ul>
 		<li>
-			<p class="tab none_mar">통합검색</p>
-			
+			<p class="tab none_mar" id="0">통합검색</p>
+		</li>
+
+		<li <c:if test="${category==3 }">class="on"</c:if>>
+			<p class="tab" id="3">프로젝트</p>
 			<div class="t_content">
-				<!-- t_content통합검색 -->
+				<!-- t_content 프로젝트 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -22,23 +27,123 @@
 								</dt>
 								<dt>
 									정렬 <select id="sort" title="정렬">
-										<option>유사도순</option>
-										<option>최신순</option>
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
 									</select> 범위 <select id="range" title="범위">
-										<option>전체</option>
-										<option>제목</option>
-										<option>본문</option>
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
 									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
 										<option value="year">1년</option>
 										<option value="custom">직접 입력</option>
-									</select> 
-									<input type="text" id="sDate" name="sDate"
-										onchange="day_check()" /><label for="option2_1">부터</label> 
-									<input type="text" id="eDate" name="eDate" onchange="day_check()" /><label
-										for="option2_2">까지</label>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
+								</dt>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<!-- list_type1 -->
+
+
+				<div class="mar_top50 hei_type1">
+					<!-- 프로젝트 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="프로젝트" /> 프로젝트
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<!-- 프로젝트 -->
+
+
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
+
+			</div> <!-- t_content 프로젝트 -->
+
+		</li>
+		<li <c:if test="${category==36 }">class="on"</c:if>>
+			<p class="tab" id="36">개발이슈</p>
+			<div class="t_content">
+				<!-- t_content 개발이슈 -->
+
+				<div class="list_type1">
+					<!-- list_type1 -->
+					<ul>
+						<li>
+							<dl>
+								<dt>
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
+								</dt>
+								<dt>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
 									<button class="btn_reset" onclick="clearDate()">
 										<span>날짜초기화</span>
 									</button>
@@ -52,11 +157,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 게시판 -->
+					<!-- 개발이슈 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="게시판" /> 게시판
+						alt="개발이슈" /> 개발이슈
 					</span>
 					<p class="line_type2"></p>
 
@@ -66,169 +171,23 @@
 							<li>
 								<dl>
 									<dt>
-										<span class="bu_divi">${status.index }</span> <span
-											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.postSubject }</a>
-										<span> (유사도 : 99.9%)</span>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
 									</dt>
 
 									<dd>
 										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
-										<span>작성일 : ${scd.postDate }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
 									</dd>
 									<dd>
-										<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
-									</dd>
-
-									<dd class="desc">${scd.postText }</dd>
-									<dd>
-										<span class="bu_divi none_pl">첨부파일 :
-											${scd.postAttachment }</span> <br> <br> <br>
-									</dd>
-								</dl>
-							</li>
-						</c:forEach>
-					</ul>
-					<div class="line_type3">
-						<a href="#"><img
-							src="${contextPath}/resources/images/searchBar/btn_add.gif"
-							alt="addshow" /></a>
-					</div>
-				</div>
-				<!-- 게시판 -->
-
-
-				<div class="mar_top50 hei_type1">
-					<!-- 지식샘 -->
-					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="지식샘" /> 지식샘
-					</span>
-					<p class="line_type2"></p>
-
-
-					<ul class="list_type5">
-					</ul>
-					<div class="line_type3">
-						<a href="#"><img
-							src="${contextPath}/resources/images/searchBar/btn_add.gif"
-							alt="addshow" /></a>
-					</div>
-				</div>
-				<!-- 지식샘 -->
-
-				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
-					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
-					</span>
-					<p class="line_type2"></p>
-
-					<ul class="list_type5">
-					</ul>
-					<div class="line_type3">
-						<a href="#"><img
-							src="${contextPath}/resources/images/searchBar/btn_add.gif"
-							alt="addshow" /></a>
-					</div>
-				</div>
-				<!-- 커뮤니티 -->
-
-				<div class="mar_top50 hei_type1">
-					<!-- 전자도서관 -->
-					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="전자도서관" /> 전자도서관
-					</span>
-					<p class="line_type2"></p>
-
-
-					<ul class="list_type5">
-					</ul>
-					<div class="line_type3">
-						<a href="#"><img
-							src="${contextPath}/resources/images/searchBar/btn_add.gif"
-							alt="addshow" /></a>
-					</div>
-				</div>
-				<!-- 전자도서관 -->
-
-
-
-			</div> <!-- t_content통합검색 -->
-		</li>
-
-
-
-		<li <c:if test="${category==13 }">class="on"</c:if>>
-			<p class="tab">게시판</p>
-			<div class="t_content">
-				<!-- t_content 게시판 -->
-	
-				<div class="list_type1">
-					<!-- list_type1 -->
-					<ul>
-						<li>
-							<dl>
-								<dt>
-									<span class="bold">총 821 건을 검색하였습니다.</span>
-								</dt>
-								<dt>
-									<select>
-										<option>유사도순</option>
-										<option>DOC ID순</option>
-									</select> <select>
-										<option>오름차순</option>
-										<option>내림차순</option>
-									</select> <label for="srch_total">리스트 출력 건수</label> <select>
-										<option>3</option>
-										<option>5</option>
-										<option>10</option>
-									</select> <span> 건수 </span> <a href="#"><img
-										src="${contextPath}/resources/images/list/type4/icon_sort.gif"
-										alt="정렬" /></a>
-								</dt>
-							</dl>
-						</li>
-					</ul>
-				</div>
-				<!-- list_type1 -->
-
-
-				<div class="mar_top50 hei_type1">
-					<!-- 게시판 -->
-					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="게시판" /> 게시판
-					</span>
-					<p class="line_type2"></p>
-
-
-					<ul class="list_type5">
-						<c:forEach var="scd" items="${scdList }" varStatus="status">
-							<li>
-								<dl>
-									<dt>
-										<span class="bu_divi">${status.index }</span> <span
-											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.hlPostSubject }</a>
-										<span> (유사도 : 99.9%)</span>
-									</dt>
-
-									<dd>
-										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
-										<span>작성일 : ${scd.postDate }</span>
-									</dd>
-									<dd>
-										<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
 									</dd>
 
 									<dd class="desc">${scd.hlPostText }</dd>
 									<dd>
-										<span class="bu_divi none_pl">첨부파일 :
+										<span class="bu_divi none_pl">첨부파일수 :
 											${scd.postAttachment }</span> <br> <br> <br>
 									</dd>
 								</dl>
@@ -236,32 +195,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 게시판 -->
+				<!-- 개발이슈 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
 
-			</div> <!-- t_content 게시판 -->
+			</div> <!-- t_content 개발이슈 -->
+
 		</li>
-		<li <c:if test="${category==12 }">class="on"</c:if>>
-			<p class="tab">지식샘</p>
+		<li <c:if test="${category==37 }">class="on"</c:if>>
+			<p class="tab" id="37">지식공유</p>
 			<div class="t_content">
-				<!-- t_content 지식샘 -->
+				<!-- t_content 지식공유 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -269,70 +216,96 @@
 						<li>
 							<dl>
 								<dt>
-									<span class="bold">총 821 건을 검색하였습니다.</span>
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									<select>
-										<option>유사도순</option>
-										<option>DOC ID순</option>
-									</select> <select>
-										<option>오름차순</option>
-										<option>내림차순</option>
-									</select> <label for="srch_total">리스트 출력 건수</label> <select>
-										<option>3</option>
-										<option>5</option>
-										<option>10</option>
-									</select> <span> 건수 </span> <a href="#"><img
-										src="${contextPath}/resources/images/list/type4/icon_sort.gif"
-										alt="정렬" /></a>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
 								</dt>
 							</dl>
 						</li>
 					</ul>
+
 				</div>
 				<!-- list_type1 -->
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 지식샘 -->
+					<!-- 지식공유 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="지식샘" /> 지식샘
+						alt="지식공유" /> 지식공유
 					</span>
 					<p class="line_type2"></p>
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
-				<!-- 지식샘 -->
+				<!-- 지식공유 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
 
-			</div> <!-- t_content 지식샘 -->
+			</div> <!-- t_content 지식공유 -->
+
 		</li>
-		<li <c:if test="${category==16 }">class="on"</c:if>>
-			<p class="tab">커뮤니티</p>
-
+		<li <c:if test="${category==7 }">class="on"</c:if>>
+			<p class="tab" id="7">그룹</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 그룹 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -340,100 +313,382 @@
 						<li>
 							<dl>
 								<dt>
-									<span class="bold">총 821 건을 검색하였습니다.</span>
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									<select>
-										<option>유사도순</option>
-										<option>DOC ID순</option>
-									</select> <select>
-										<option>오름차순</option>
-										<option>내림차순</option>
-									</select> <label for="srch_total">리스트 출력 건수</label> <select>
-										<option>3</option>
-										<option>5</option>
-										<option>10</option>
-									</select> <span> 건수 </span> <a href="#"><img
-										src="${contextPath}/resources/images/list/type4/icon_sort.gif"
-										alt="정렬" /></a>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
 								</dt>
 							</dl>
 						</li>
 					</ul>
+
 				</div>
 				<!-- list_type1 -->
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 그룹 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="그룹" /> 그룹
 					</span>
 					<p class="line_type2"></p>
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 그룹 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 그룹 -->
 
 		</li>
 		<li <c:if test="${category==14 }">class="on"</c:if>>
-			<p class="tab">전자도서관</p>
+			<p class="tab" id="14">기타</p>
 			<div class="t_content">
-				<!-- t_content 전자도서관 -->
+				<!-- t_content 기타 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
 					<ul>
+						<li>
+							<dl>
+								<dt>
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
+								</dt>
+								<dt>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
+								</dt>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+				<!-- list_type1 -->
+
+
+				<div class="mar_top50 hei_type1">
+					<!-- 기타 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="기타" /> 기타
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
-				<!-- 전자도서관 -->
+				<!-- 기타 -->
 
 
-				<p class="pagging_type1 mar_top10">
-					<span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_first.gif"
-							alt="첫페이지" /></a></span> <span class="pre"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_pre.gif"
-							alt="이전페이지" /></a></span> <span><a href="#">1</a></span> <span><a
-						href="#">2</a></span> <span><a href="#">3</a></span> <span><a
-						href="#">4</a></span> <span><a href="#">5</a></span> <span><a
-						href="#">6</a></span> <span><a href="#">7</a></span> <span><a
-						href="#">8</a></span> <span><a href="#">9</a></span> <span><a
-						href="#">10</a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_next.gif"
-							alt="다음페이지" /></a></span> <span class="next"><a href="#"><img
-							src="${contextPath}/resources/images/pagging/btn_end.gif"
-							alt="마지막페이지" /></a></span>
-				</p>
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
 
-			</div> <!-- t_content 전자도서관 -->
+			</div> <!-- t_content 기타 -->
+
+		</li>
+		<li <c:if test="${category==43 }">class="on"</c:if>>
+			<p class="tab" id="43">포럼</p>
+			<div class="t_content">
+				<!-- t_content 포럼 -->
+
+				<div class="list_type1">
+					<!-- list_type1 -->
+					<ul>
+						<li>
+							<dl>
+								<dt>
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
+								</dt>
+								<dt>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
+								</dt>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+				<!-- list_type1 -->
+
+
+				<div class="mar_top50 hei_type1">
+					<!-- 포럼 -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="포럼" /> 포럼
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<!-- 포럼 -->
+
+
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
+
+			</div> <!-- t_content 포럼 -->
+
+		</li>
+		<li <c:if test="${category==46 }">class="on"</c:if>>
+			<p class="tab" id="46">다운로드 및 Q&amp;A</p>
+			<div class="t_content">
+				<!-- t_content 다운로드 및 Q&amp;A -->
+
+				<div class="list_type1">
+					<!-- list_type1 -->
+					<ul>
+						<li>
+							<dl>
+								<dt> 	
+									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
+								</dt>
+								<dt>
+									정렬 <select id="sort" title="정렬">
+										<option value="score">유사도순</option>
+										<option value="post_time">최신순</option>
+									</select> 범위 <select id="range" title="범위">
+										<option value="all">전체</option>
+										<option value="post_subject">제목</option>
+										<option value="post_text">본문</option>
+									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+										<option value="total">전체</option>
+										<option value="week">1주</option>
+										<option value="month">1개월</option>
+										<option value="year">1년</option>
+										<option value="custom">직접 입력</option>
+									</select> <input type="text" class="sDate" name="sDate"
+										onchange="day_check()" /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label> <input type="hidden"
+										id="hsDate" value="${sDate}" /> <input type="hidden"
+										id="heDate" value="${eDate}" /> <input type="hidden"
+										id="researchQuery" value="${expression }" /> <input
+										type="hidden" id="researchField" value="${field }" />
+
+									<button class="btn_reset" onclick="clearDate()">
+										<span>날짜초기화</span>
+									</button>
+								</dt>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+				<!-- list_type1 -->
+
+
+				<div class="mar_top50 hei_type1">
+					<!-- 다운로드 및 Q&amp;A -->
+					<p class="line_type1"></p>
+					<span class="txt_bold"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+						alt="다운로드 및 Q&amp;A" /> 다운로드 및 Q&amp;A
+					</span>
+					<p class="line_type2"></p>
+
+
+					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a
+											href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<!-- 다운로드 및 Q&amp;A -->
+
+
+				<div id="page" class="page">
+					<jsp:include page="page.jsp"></jsp:include>
+				</div>
+			</div> <!-- t_content 다운로드 및 Q&amp;A -->
 		</li>
 	</ul>
-
 
 </div>
 <!-- tab_type1 -->

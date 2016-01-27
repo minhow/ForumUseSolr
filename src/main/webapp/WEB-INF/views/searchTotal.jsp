@@ -6,8 +6,20 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>통합 검색 결과 페이지</title>
+<script>
+	function hasExpression(){
+		if($("#researchQuery").val()==''){
+			alert('검색해야 합니다.');	
+		}
+		else{
+			searchTotal();
+		}
+		
+	}
+	
+</script>
 </head>
-<body>
+<body onload="hasExpression();">
 	<div class="layout_type2_1_wrap">
 		<div class="header">
 			<jsp:include page="common/header.jsp"></jsp:include>

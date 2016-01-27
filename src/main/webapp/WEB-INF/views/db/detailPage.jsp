@@ -1,22 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ include file="/WEB-INF/views/common/taglibs.jsp"%>	
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
+
 <body>
-	<c:forEach var="post" items="${postList }" varStatus="status">
-		∞‘Ω√±€ Id:${post.postId }<br>
-		≈‰«»ID:${post.topicId }<br>
-		∆˜∑≥ID;${post.forumId }<br>
-		±€æ¥¿ÃIP:${post.posterIp }<br>
-		¿€º∫¿⁄:${post.postUsername }<br>
-		¡¶∏Ò:${post.postSubject }<br>
-		${post.postText }<br>
-		-----------------------------------------------------------------------<br>
-	</c:forEach>
+	<div class="layout_type2_1_wrap">
+		<div class="header">
+			<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		</div>
+		<div id="container" class="container">
+			<div class="tab_type1">
+				<!-- tab_type1 -->
+				<ul>
+					<li class="on">
+						<p class="tab none_mar">ÏÉÅÏÑ∏ ÌéòÏù¥ÏßÄ</p>
+						<div class="t_content">
+							<!-- t_contentÌÜµÌï©Í≤ÄÏÉâ -->
+
+							<!-- ÌîÑÎ°úÏ†ùÌä∏ -->
+							<c:forEach var="post" items="${postList }" varStatus="status">
+								<div class="jfloat">
+									<div class="mar_top50 ">
+										<p class="line_type1"></p>
+										<span class="txt_bold"> <img
+											src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
+											alt="ÌîÑÎ°úÏ†ùÌä∏" /> ${post.postId }. ${post.postSubject }
+										</span>
+										<p class="line_type2"></p>
+
+
+										<ul class="list_type5">
+											<li>
+												<dl>
+													<dd>
+														<span class="bu_divi none_pl">ÏûëÏÑ±Ïûê :
+															${post.postUsername }</span> <a><span>ÏûëÏÑ± ÏïÑÏù¥Ìîº
+																:${post.posterIp }</span></a>
+													</dd>
+													<dd class="desc">
+														${post.postText }
+													</dd>
+												</dl>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</c:forEach>
+							<!-- ÌîÑÎ°úÏ†ùÌä∏ -->
+						</div> <!-- tab_type1 -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<input type="hidden" id="whichPageSearch" value="detail"/>
 </body>
 </html>

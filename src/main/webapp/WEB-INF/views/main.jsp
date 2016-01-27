@@ -212,11 +212,10 @@
 		<div class="header">
 		<jsp:include page="common/header.jsp"></jsp:include>
 		</div>
-		<div id="container" class="container">
+		
 		
 		 
 			<jsp:include page="intro.jsp"></jsp:include>
-		</div>		
 	</div>
 
 </body>
