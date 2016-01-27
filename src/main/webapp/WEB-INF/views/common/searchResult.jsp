@@ -49,6 +49,7 @@
 									<input type="hidden" id="researchQuery" value="${expression }"/>
 									<input type="hidden" id="researchField" value="${field }"/>
 									<input type="hidden" id="whichPageSearch" value="total"/>
+									<input type="hidden" id="page" value="1"/>
 									
 									<button class="btn_reset" onclick="clearDate()">
 										<span>날짜초기화</span>
