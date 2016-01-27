@@ -82,9 +82,7 @@
 			params += "&eDate=" + eDate.getTime();
 		} else if ($("#period").val() == "custom") {
 			var sdate = $("#sDate").val();
-			var edate = $("#eDate").val();
-			alert(sdate.substring(0, 4) + "/" + sdate.substring(4, 6) + "/"
-					+ sdate.substring(6, 8));
+			var edate = $("#eDate").val();			
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
 					sdate.substring(6, 8), 0, 0, 0, 0);
 			eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
@@ -92,7 +90,9 @@
 			params += "&sDate=" + sDate.getTime();
 			params += "&eDate=" + eDate.getTime();
 		}
-// 		alert(params);
+
+		params+="&page="+$("#page").val();
+		
 		$.ajax({
 			type : 'POST',
 			url : url,
@@ -183,6 +183,10 @@
 			$("#sDate").attr("disabled", false);
 			$("#eDate").attr("disabled", false);
 		}
+	}
+	function movePage(page){
+		$("#page").val(page);		
+		searchCategory($(".on .tab").attr("id"));		
 	}
 </script>
 <table>

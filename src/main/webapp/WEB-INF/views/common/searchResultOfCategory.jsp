@@ -6,6 +6,7 @@
 <div class="tab_type1">
 	<!-- tab_type1 -->
 	<input type="hidden" id="whichPageSearch" value="total"/>
+	<input type="hidden" id="page" value="${page }"/>
 	<ul>
 		<li>
 			<p class="tab none_mar" id="0">통합검색</p>

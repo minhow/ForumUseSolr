@@ -18,7 +18,7 @@ public class SearchParameterVO {
 	private String sort_type;
 	
 	//start,row
-	private int page;
+	private String page;
 	private int row;
 	
 	public SearchParameterVO(){
@@ -31,7 +31,7 @@ public class SearchParameterVO {
 		this.sort_field="score";
 		this.sort_type="desc";				
 		
-		this.page=1;
+		this.page="1";
 		this.row=10;		
 	}
 
@@ -74,14 +74,6 @@ public class SearchParameterVO {
 
 	public void setSort_type(String sort_type) {
 		this.sort_type = sort_type;
-	}
-
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
 	}
 
 	public int getRow() {
@@ -138,6 +130,14 @@ public class SearchParameterVO {
 
 	public void setResearchField(String researchField) {
 		this.researchField = researchField;
+	}
+
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
 	}
 
 	@Override

@@ -282,6 +282,7 @@ public class ForumMainController {
 
 	private int modifyPageType(HttpServletRequest request) {
 		int page;
+		System.out.println("page-->"+request.getParameter("page"));
 		if(request.getParameter("page") == null || request.getParameter("page").trim().equals("")){
 			page=1;
 		}else{

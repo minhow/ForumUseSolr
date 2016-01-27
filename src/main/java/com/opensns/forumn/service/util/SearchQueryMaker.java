@@ -44,7 +44,7 @@ public class SearchQueryMaker {
 	}
 
 	private String makeStartRowQuery(SearchParameterVO param) {
-		int page=param.getPage();
+		int page=Integer.parseInt(param.getPage());
 		int row=param.getRow();
 		int start=row*(page-1);
 		
