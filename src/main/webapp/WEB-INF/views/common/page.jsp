@@ -20,7 +20,7 @@
 			<c:forEach var="value" begin="${sPage }" end="${ePage }" step="1"> 			
 				<c:choose>
 					<c:when test="${cPage == value }">					
-						<span><a href="#">${value}</a></span> 						
+						<a href="#">${value}</a> 						
 					</c:when>
 					<c:otherwise>
 						<span>
