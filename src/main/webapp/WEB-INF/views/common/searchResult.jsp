@@ -32,16 +32,16 @@
 										<option value="post_text">본문</option>
 									</select> 
 									기간 
-									<select id="period" title="기간" onchange="periodCheck()">
+									<select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
 										<option value="year">1년</option>
 										<option value="custom">직접 입력</option>
 									</select> 
-									<input type="text" id="sDate" name="sDate" onchange="day_check()" />
+									<input type="text" class="sDate" name="sDate" onchange="day_check()" />
 									<label for="option2_1">부터</label> 
-									<input type="text" id="eDate" name="eDate" onchange="day_check()" />
+									<input type="text" class="eDate" name="eDate" onchange="day_check()" />
 									<label for="option2_2">까지</label>
 									
 									<input type="hidden" id="hsDate" value="${sDate}"/>

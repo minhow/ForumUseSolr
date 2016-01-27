@@ -37,9 +37,9 @@
 		$('.tab_type1 ul li .tab').click(function() {
 			$("#page").val("1");
 			reset_tab_type1();
-			alert($(this).attr('id'));
+// 			alert($(this).attr('id'));
 			if ($(this).attr('id') == "0") {
-				alert("total");
+// 				alert("total");
 				searchTotal();
 			} else {
 				searchCategory($(this).attr('id'));
