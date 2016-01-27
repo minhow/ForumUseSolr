@@ -9,7 +9,7 @@
 
 
 		<li class="on">
-			<p class="tab none_mar">통합검색</p>
+			<p class="tab none_mar" id="0">통합검색</p>
 			<div class="t_content">
 				<!-- t_content통합검색 -->
 
@@ -381,40 +381,31 @@
 					</div>
 				</div>
 				<!-- 다운로드 및 Q&A -->
-				
-
-
-
 			</div> <!-- t_content통합검색 -->
 		</li>
 
 
 
 		<li>
-			<p class="tab">프로젝트</p>
-
+			<p class="tab" id="3">프로젝트</p>
 		</li>
 		<li>
-			<p class="tab">개발이슈</p>
-
+			<p class="tab" id="36">개발이슈</p>
 		</li>
 		<li>
-			<p class="tab">지식공유</p>
-
+			<p class="tab" id="37">지식공유</p>
 		</li>
 		<li>
-			<p class="tab">그룹</p>
-
+			<p class="tab" id="7">그룹</p>
 		</li>
 		<li>
-			<p class="tab">기타</p>
-
+			<p class="tab" id="14">기타</p>
 		</li>
 		<li>
-			<p class="tab">포럼</p>
+			<p class="tab" id="43">포럼</p>
 		</li>
 		<li>
-			<p class="tab">다운로드 및 Q&A</p>
+			<p class="tab" id="46">다운로드 및 Q&A</p>
 		</li>
 	</ul>
 

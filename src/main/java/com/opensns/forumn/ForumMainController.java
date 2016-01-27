@@ -43,17 +43,7 @@ public class ForumMainController {
 	
 	private static Map<String,String> forum_map;
 	
-	static {
-		forum_map = new HashMap<String,String>();
-		forum_map.put("프로젝트","3");
-		forum_map.put("개발이슈","36");
-		forum_map.put("지식공유","37");
-		forum_map.put("그룹","7");
-		forum_map.put("기타","14");
-		forum_map.put("포럼","43");
-		forum_map.put("다운로드 및 Q&A","46");
-		
-	}
+
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request) {
@@ -174,28 +164,28 @@ public class ForumMainController {
 		vo.setRow(3);
 		System.out.println(vo.getExpression());
 		//project
-		vo.setForum_id(forum_map.get("프로젝트"));
+		vo.setForum_id("3");
 		SearchResult result1=service.getSearchResult(vo);
 		//개발이슈
-		vo.setForum_id(forum_map.get("개발이슈"));
+		vo.setForum_id("36");
 		SearchResult result2=service.getSearchResult(vo);
 		
 		//지식공유
-		vo.setForum_id(forum_map.get("지식공유"));
+		vo.setForum_id("37");
 		SearchResult result3=service.getSearchResult(vo);
 		
 		//그룹
-		vo.setForum_id(forum_map.get("그룹"));
+		vo.setForum_id("7");
 		SearchResult result4=service.getSearchResult(vo);
 		
 		//기타
-		vo.setForum_id(forum_map.get("기타"));
+		vo.setForum_id("14");
 		SearchResult result5=service.getSearchResult(vo);
 		//포럼
-		vo.setForum_id(forum_map.get("포럼"));
+		vo.setForum_id("43");
 		SearchResult result6=service.getSearchResult(vo);
 		//다운로드 및 Q&A
-		vo.setForum_id(forum_map.get("다운로드 및 Q&A"));
+		vo.setForum_id("46");
 		SearchResult result7=service.getSearchResult(vo);
 
 		
@@ -247,29 +237,27 @@ public class ForumMainController {
 		int page = modifyPageType(request);
 		
 		
-		vo.setForum_id(forum_map.get(vo.getForum_id()));
+//		System.out.println(vo.getForum_id());
+//		vo.setForum_id(forum_map.get(vo.getForum_id()));
 		
 		System.out.println(vo.getForum_id());
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		SearchResult result=service.getSearchResult(vo);
 		
-		List<Topic>resultList=result.getScdList();
-		for(Topic topic:resultList)
-		{
-			System.out.println(topic);
-		}
+//		List<Topic>resultList=result.getScdList();
+//		for (Topic topic : resultList) {
+//			System.out.println(topic);
+//		}
 		
 		
 		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
 //		SearchResult respInfo=getScdList(url);
 
-		mav.addObject("category",13);
+		mav.addObject("category",vo.getForum_id());
 		
 		String expression=vo.getExpression();
 		String field=vo.getField();
-		
-		
 		
 		mav.addObject("expression",expression );
 		mav.addObject("field",field);
@@ -277,6 +265,7 @@ public class ForumMainController {
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());
+//		mav.addObject("forumn_map",forum_map);
 //		mav.addObject("page",page);
 		
 		PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);

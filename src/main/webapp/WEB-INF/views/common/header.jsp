@@ -7,22 +7,22 @@
 <script type="text/javascript">
 	function cb_loadRightBody(result) {
 		$("#container").html(result);
+		reload();
 	}
 
 	function searchTotal() {
 		var url = "searchTotal.do"
 		var period = $("#period").val();
 		var research;
-		
-		if($("input:checkbox[id='research']").is(":checked")){
-			alert('체크 되어있습니다.');
-			research='y'
+
+		if ($("input:checkbox[id='research']").is(":checked")) {
+			// 			alert('체크 되어있습니다.');
+			research = 'y'
+		} else {
+			// 			alert('체크 안되 있습니다.');
+			research = 'n'
 		}
-		else{
-			alert('체크 안되 있습니다.');
-			research='n'
-		}
-		alert($("#researchQuery").val()+","+$("#researchField").val())
+		// 		alert($("#researchQuery").val()+","+$("#researchField").val())
 
 		$.ajax({
 			type : 'POST',
@@ -34,9 +34,9 @@
 				sDate : $("#hsDate").val(),
 				eDate : $("#heDate").val(),
 				period : period,
-				researchQuery:$("#researchQuery").val(),
-				researchField:$("#researchField").val(),
-				research:research
+				researchQuery : $("#researchQuery").val(),
+				researchField : $("#researchField").val(),
+				research : research
 			},
 			dataType : "text",
 			success : function(result) {
@@ -53,8 +53,8 @@
 		var params = "expression=" + $(".sch_input").val();
 		var sDate = new Date();
 		var eDate = new Date();
-		alert($("#sort").val());
-		alert(category);
+		// 		alert($("#sort").val());
+		// 		alert(category);
 		params += "&field=" + $("#range option:selected").val();
 		params += "&sort_field=" + $("#sort option:selected").val();
 		params += "&forum_id=" + category;
@@ -84,7 +84,7 @@
 			params += "&sDate=" + sDate.getTime();
 			params += "&eDate=" + eDate.getTime();
 		}
-		alert(params);
+// 		alert(params);
 		$.ajax({
 			type : 'POST',
 			url : url,
@@ -116,7 +116,7 @@
 		}
 	}
 	function periodCheck() {
-		alert('period');
+		// 		alert('period');
 		var period = $("#period option:selected").val();
 		var sDate = new Date();
 		var eDate = new Date();
@@ -161,19 +161,19 @@
 		//2013-12-27 날짜 초가화 선택시 카테고리 선택 풀리는 현상때문에 주석 
 		//$("#categoryId").val("");\
 	}
-	function serachInSearch(chkBox){
-		if(chkBox.checked){
-			$("#sort").attr("disabled",true);
-			$("#range").attr("disabled",true);
-			$("#period").attr("disabled",true);
-			$("#sDate").attr("disabled",true);
-			$("#eDate").attr("disabled",true);
-		}else{
-			$("#sort").attr("disabled",false);
-			$("#range").attr("disabled",false);
-			$("#period").attr("disabled",false);
-			$("#sDate").attr("disabled",false);
-			$("#eDate").attr("disabled",false);
+	function serachInSearch(chkBox) {
+		if (chkBox.checked) {
+			$("#sort").attr("disabled", true);
+			$("#range").attr("disabled", true);
+			$("#period").attr("disabled", true);
+			$("#sDate").attr("disabled", true);
+			$("#eDate").attr("disabled", true);
+		} else {
+			$("#sort").attr("disabled", false);
+			$("#range").attr("disabled", false);
+			$("#period").attr("disabled", false);
+			$("#sDate").attr("disabled", false);
+			$("#eDate").attr("disabled", false);
 		}
 	}
 </script>
@@ -204,9 +204,9 @@
 
 					<input class="sch_input" type="text" value="검색어를 입력하세요."
 						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" />
-											
-					<span class="sch_btn" onClick="searchTotal();"> 
-					<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
+
+					<span class="sch_btn" onClick="searchTotal();"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
 						alt="검색" /></span>
 				</div>
 				<!-- sch_bar -->
@@ -214,9 +214,9 @@
 				<br> <br>
 
 						<div class="sch_bar2">
-							&nbsp;&nbsp;
-							<input type="checkbox" id="research" onclick="serachInSearch(this);"/>
-							<label for="research">결과내 검색</label>
+							&nbsp;&nbsp; <input type="checkbox" id="research"
+								onclick="serachInSearch(this);" /> <label for="research">결과내
+								검색</label>
 						</div>
 
 
