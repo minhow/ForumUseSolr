@@ -14,6 +14,7 @@
 		var url = "searchTotal.do"
 		var period = $("#period").val();
 		var research;
+
 		var whichPageSearch = $("#whichPageSearch").val();
 		var sDate = new Date();
 		var eDate = new Date();
@@ -27,7 +28,9 @@
 			} else {
 				// 				alert('체크 안되 있습니다.');
 				research = 'n'
+
 			}
+
 			// 			alert($("#researchQuery").val()+","+$("#researchField").val())
 
 			if ($("#period").val() == "week") {

@@ -27,10 +27,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.opensns.forumn.common.DateUtil;
+import com.opensns.forumn.common.JStringUtil;
 import com.opensns.forumn.common.PageUtil;
 import com.opensns.forumn.search.Topic;
 import com.opensns.forumn.search.SearchResult;
 import com.opensns.forumn.service.SearchUsingSolrService;
+import com.opensns.forumn.service.StatusService;
+import com.opensns.forumn.service.status.Collection;
 import com.opensns.forumn.service.vo.SearchParameterVO;
 
 /**
@@ -111,7 +114,11 @@ public class ForumMainController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("main");
-		
+		StatusService statusService = new StatusService();
+		Collection collection = statusService.getClusterStatus();
+		JSONObject statusJson =  collection.toCyElementsJson();
+		System.out.println(statusJson.toJSONString());
+		mav.addObject("statusJson", statusJson);
 					
 		return mav;
 	}
@@ -151,6 +158,8 @@ public class ForumMainController {
 		String pageQuery = makePagingQuery(page);
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
+		
+		vo.setExpression(JStringUtil.removeSpecialLetter(vo.getExpression()));//특수기호 제거
 		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
 		
 		vo.setRow(3);
