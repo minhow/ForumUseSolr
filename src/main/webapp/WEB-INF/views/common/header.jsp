@@ -181,9 +181,6 @@
 	<tbody>
 		<tr>
 			<div class="searchBar_type2">
-
-
-
 				<p class="sch_txt">
 					<img src="${contextPath}/resources/images/searchBar/txt_search.png"
 						alt="search" />
