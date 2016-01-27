@@ -89,3 +89,4 @@
 .hidden {overflow:hidden !important;}
 
 .blind {left:0; top:0; width:1px; height:1px; line-height:0; overflow:hidden; font-size:0px; visibility:hidden; position:absolute;}
+.jfloat{width:100%; float: left;}

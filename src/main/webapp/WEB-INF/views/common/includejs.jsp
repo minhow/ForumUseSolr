@@ -36,8 +36,9 @@
 	function reload() {
 		$('.tab_type1 ul li .tab').click(function() {
 			reset_tab_type1();
-			$(this).parent().addClass('on');
-			if ($(this).attr('id') === "0") {
+			alert($(this).attr('id'));
+			if ($(this).attr('id') == "0") {
+				alert("total");
 				searchTotal();
 			} else {
 				searchCategory($(this).attr('id'));

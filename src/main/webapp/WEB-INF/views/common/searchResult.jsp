@@ -6,8 +6,6 @@
 <div class="tab_type1">
 	<!-- tab_type1 -->
 	<ul>
-
-
 		<li class="on">
 			<p class="tab none_mar" id="0">통합검색</p>
 			<div class="t_content">
@@ -50,6 +48,7 @@
 									<input type="hidden" id="heDate" value="${eDate}"/>
 									<input type="hidden" id="researchQuery" value="${expression }"/>
 									<input type="hidden" id="researchField" value="${field }"/>
+									<input type="hidden" id="whichPageSearch" value="total"/>
 									
 									<button class="btn_reset" onclick="clearDate()">
 										<span>날짜초기화</span>
@@ -67,8 +66,7 @@
 					<!-- 프로젝트 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="프로젝트" /> 프로젝트
+						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif" alt="프로젝트" /> 프로젝트
 					</span>
 					<p class="line_type2"></p>
 					
@@ -112,7 +110,8 @@
 
 				<div class="mar_top50 hei_type1">
 					<!-- 개발이슈 -->
-					<p class="line_type1"></p>
+					<p class="line_type1">
+					</p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
 						alt="개발이슈" /> 개발이슈

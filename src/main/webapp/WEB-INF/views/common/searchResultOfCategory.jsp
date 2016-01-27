@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="tab_type1">
 	<!-- tab_type1 -->
+	<input type="hidden" id="whichPageSearch" value="total"/>
 	<ul>
 		<li>
 			<p class="tab none_mar" id="0">통합검색</p>
@@ -13,7 +14,7 @@
 		<li <c:if test="${category==3 }">class="on"</c:if>>
 			<p class="tab" id="3">프로젝트</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 프로젝트 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -58,11 +59,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 프로젝트 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="프로젝트" /> 프로젝트
 					</span>
 					<p class="line_type2"></p>
 
@@ -96,20 +97,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 프로젝트 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 프로젝트 -->
 
 		</li>
 		<li <c:if test="${category==36 }">class="on"</c:if>>
 			<p class="tab" id="36">개발이슈</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 개발이슈 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -155,11 +156,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 개발이슈 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="개발이슈" /> 개발이슈
 					</span>
 					<p class="line_type2"></p>
 
@@ -193,20 +194,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 개발이슈 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 개발이슈 -->
 
 		</li>
 		<li <c:if test="${category==37 }">class="on"</c:if>>
 			<p class="tab" id="37">지식공유</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 지식공유 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -252,11 +253,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 지식공유 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="지식공유" /> 지식공유
 					</span>
 					<p class="line_type2"></p>
 
@@ -290,20 +291,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 지식공유 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 지식공유 -->
 
 		</li>
 		<li <c:if test="${category==7 }">class="on"</c:if>>
 			<p class="tab" id="7">그룹</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 그룹 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -349,11 +350,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 그룹 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="그룹" /> 그룹
 					</span>
 					<p class="line_type2"></p>
 
@@ -387,20 +388,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 그룹 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 그룹 -->
 
 		</li>
 		<li <c:if test="${category==14 }">class="on"</c:if>>
 			<p class="tab" id="14">기타</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 기타 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -446,11 +447,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 기타 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="기타" /> 기타
 					</span>
 					<p class="line_type2"></p>
 
@@ -484,20 +485,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 기타 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 기타 -->
 
 		</li>
 		<li <c:if test="${category==43 }">class="on"</c:if>>
 			<p class="tab" id="43">포럼</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 포럼 -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -543,11 +544,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 포럼 -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="포럼" /> 포럼
 					</span>
 					<p class="line_type2"></p>
 
@@ -581,20 +582,20 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 포럼 -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
 
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 포럼 -->
 
 		</li>
 		<li <c:if test="${category==46 }">class="on"</c:if>>
 			<p class="tab" id="46">다운로드 및 Q&amp;A</p>
 			<div class="t_content">
-				<!-- t_content 커뮤니티 -->
+				<!-- t_content 다운로드 및 Q&amp;A -->
 
 				<div class="list_type1">
 					<!-- list_type1 -->
@@ -640,11 +641,11 @@
 
 
 				<div class="mar_top50 hei_type1">
-					<!-- 커뮤니티 -->
+					<!-- 다운로드 및 Q&amp;A -->
 					<p class="line_type1"></p>
 					<span class="txt_bold"> <img
 						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-						alt="커뮤니티" /> 커뮤니티
+						alt="다운로드 및 Q&amp;A" /> 다운로드 및 Q&amp;A
 					</span>
 					<p class="line_type2"></p>
 
@@ -678,13 +679,13 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- 커뮤니티 -->
+				<!-- 다운로드 및 Q&amp;A -->
 
 
 				<div id="page" class="page">
 					<jsp:include page="page.jsp"></jsp:include>
 				</div>
-			</div> <!-- t_content 커뮤니티 -->
+			</div> <!-- t_content 다운로드 및 Q&amp;A -->
 		</li>
 	</ul>
 

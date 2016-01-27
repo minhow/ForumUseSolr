@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/taglibs.jsp"%>
 <%@ include file="/WEB-INF/views/common/includejs.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript">
 	function cb_loadRightBody(result) {
@@ -14,38 +14,46 @@
 		var url = "searchTotal.do"
 		var period = $("#period").val();
 		var research;
-
-		if ($("input:checkbox[id='research']").is(":checked")) {
-			// 			alert('체크 되어있습니다.');
-			research = 'y'
-		} else {
-			// 			alert('체크 안되 있습니다.');
-			research = 'n'
-		}
-		// 		alert($("#researchQuery").val()+","+$("#researchField").val())
-
-		$.ajax({
-			type : 'POST',
-			url : url,
-			data : {
-				expression : $(".sch_input").val(),
-				field : $("#range option:selected").val(),
-				sort_field : $("#sort option:selected").val(),
-				sDate : $("#hsDate").val(),
-				eDate : $("#heDate").val(),
-				period : period,
-				researchQuery : $("#researchQuery").val(),
-				researchField : $("#researchField").val(),
-				research : research
-			},
-			dataType : "text",
-			success : function(result) {
-				cb_loadRightBody(result);
-			},
-			error : function() {
-				alert("error");
+		var whichPageSearch=$("#whichPageSearch").val();
+			
+		
+		if(whichPageSearch=="total"){ 		//total 페이지에서 검색이 일어남.
+			if($("input:checkbox[id='research']").is(":checked")){
+				alert('체크 되어있습니다.');
+				research='y'
 			}
-		});
+			else{
+				alert('체크 안되 있습니다.');
+				research='n'
+			}
+			alert($("#researchQuery").val()+","+$("#researchField").val())
+
+			$.ajax({
+				type : 'POST',
+				url : url,
+				data : {
+					expression : $(".sch_input").val(),
+					field : $("#range option:selected").val(),
+					sort_field : $("#sort option:selected").val(),
+					sDate : $("#hsDate").val(),
+					eDate : $("#heDate").val(),
+					period : period,
+					researchQuery:$("#researchQuery").val(),
+					researchField:$("#researchField").val(),
+					research:research
+				},
+				dataType : "text",
+				success : function(result) {
+					cb_loadRightBody(result);
+				},
+				error : function() {
+					alert("error");
+				}
+			});
+		}
+		else if(whichPageSearch=="detail"){ //상세 페이지에서 검색이 일어남
+			location.replace("/forumn?expression="+$(".sch_input").val());
+		}							
 	}
 
 	function searchCategory(category) {
@@ -181,18 +189,16 @@
 	<tbody>
 		<tr>
 			<div class="searchBar_type2">
-
-
-
 				<p class="sch_txt">
 					<img src="${contextPath}/resources/images/searchBar/txt_search.png"
 						alt="search" />
 				</p>
 				<div class="sch_bar">
 					<p class="selected">
-						<span class="txt"></span> <span class="btn"><img class
-							src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif"
-							alt="리스트보기" /></span>
+						<span class="txt"></span> 
+						<span class="btn">
+							<img class src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif" alt="리스트보기" />
+						</span>
 					</p>
 					<ul>
 						<li>통합검색</li>
@@ -202,11 +208,12 @@
 						<li>전자도서관</li>
 					</ul>
 
-					<input class="sch_input" type="text" value="검색어를 입력하세요."
-						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" />
 
-					<span class="sch_btn" onClick="searchTotal();"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
+					<input class="sch_input" type="text" value="${expression }"
+						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" placeholder="검색어를 입력하세요."  />
+											
+					<span class="sch_btn" onClick="searchTotal();"> 
+					<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
 						alt="검색" /></span>
 				</div>
 				<!-- sch_bar -->
