@@ -38,7 +38,9 @@
 															${post.postUsername }</span> <a><span>작성 아이피
 																:${post.posterIp }</span></a>
 													</dd>
-													<dd class="desc">${post.postText }${post.postText }${post.postText }${post.postText }${post.postText }${post.postText }</dd>
+													<dd class="desc">
+														${post.postText }
+													</dd>
 												</dl>
 											</li>
 										</ul>
@@ -50,8 +52,8 @@
 					</li>
 				</ul>
 			</div>
-
-
 		</div>
+		
+		<input type="hidden" id="whichPageSearch" value="detail"/>
 </body>
 </html>

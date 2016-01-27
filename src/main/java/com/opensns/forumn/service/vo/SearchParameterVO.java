@@ -24,7 +24,7 @@ public class SearchParameterVO {
 	public SearchParameterVO(){
 		this.period="total";
 		this.field="all";
-		this.expression="*";
+		this.expression="";
 		this.forum_id="";
 		
 		this.research="n";

@@ -121,6 +121,7 @@ public class ForumMainController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("main");
+		
 					
 		return mav;
 	}
@@ -132,49 +133,15 @@ public class ForumMainController {
 	 * @author jaeho
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView searchTotalAll(HttpServletRequest request) {
+	public ModelAndView searchTotalAll(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		ModelAndView mav=new ModelAndView("searchTotal");
-		
-		String expression=request.getParameter("expression");
-		String field=request.getParameter("field");
-		
-		//������ ������� StringBuffer ����
-		StringBuffer request_param=new StringBuffer();
-		int page = modifyPageType(request);
-		
-				
-		//query												
-		String FieldQuery=makeFieldQuery(expression,field);
-		String dateRangeQuery=makeDateRangeQuery(request,mav);
-		//query!
-		
-		//�ΰ����� �Ķ���͵�
-		String pageQuery = makePagingQuery(page);
-		String sortQuery=makeSortQuery(request,mav);
-		
-	
-		request_param.append(FieldQuery).append(dateRangeQuery).append(pageQuery).append(sortQuery);
-		System.out.println(request_param.toString());
-		String url=makingUrl(request_param.toString());
-		System.out.println(url);
-		
-		
-		//��û url�� ��û�� �� ������ �Ľ����� �޾ƿ´�.
-		SearchResult respInfo=getScdList(url);
-
-		mav.addObject("expression", expression);
-		mav.addObject("field",field);
-		mav.addObject("scdList",respInfo.getScdList());
-		mav.addObject("total",respInfo.getTotalCnt());
-		mav.addObject("start",respInfo.getStart());
-		mav.addObject("page",page);
-		
-		PageUtil.setPaging(mav, (int)respInfo.getTotalCnt(), 10, page);
+		System.out.println("searchTotal");
+		mav.addObject("expression", vo.getExpression());
 					
 		return mav;
 	}
 	
-	@RequestMapping(value = "/searchTotal", method = RequestMethod.POST)
+	@RequestMapping(value = "/searchTotal", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView searchTotal(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		System.out.println(vo);
 		ModelAndView mav=new ModelAndView("common/searchResult");
@@ -246,6 +213,8 @@ public class ForumMainController {
 		System.out.println("e- >"+expression);
 		System.out.println("f- >"+field);
 		System.out.println("v- >"+vo.getResearch());
+		
+		System.out.println("expression -- > "+expression);
 		
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
