@@ -39,9 +39,9 @@
 										<option value="year">1년</option>
 										<option value="custom">직접 입력</option>
 									</select> 
-									<input type="text" id="sDate" name="sDate" onchange="day_check()" />
+									<input type="text" class="sDate" name="sDate" onchange="day_check()" />
 									<label for="option2_1">부터</label> 
-									<input type="text" id="eDate" name="eDate" onchange="day_check()" />
+									<input type="text" class="eDate" name="eDate" onchange="day_check()" />
 									<label for="option2_2">까지</label>
 									
 									<input type="hidden" id="hsDate" value="${sDate}"/>

@@ -19,14 +19,14 @@
 		
 		if(whichPageSearch=="total"){ 		//total 페이지에서 검색이 일어남.
 			if($("input:checkbox[id='research']").is(":checked")){
-				alert('체크 되어있습니다.');
+// 				alert('체크 되어있습니다.');
 				research='y'
 			}
 			else{
-				alert('체크 안되 있습니다.');
+// 				alert('체크 안되 있습니다.');
 				research='n'
 			}
-			alert($("#researchQuery").val()+","+$("#researchField").val())
+// 			alert($("#researchQuery").val()+","+$("#researchField").val())
 
 			$.ajax({
 				type : 'POST',
@@ -67,9 +67,10 @@
 		params += "&sort_field=" + $("#sort option:selected").val();
 		params += "&forum_id=" + category;
 		if ($("#period").val() == "week") {
-			alert(eDate.getMilliseconds());
+			Math.round(eDate/1000);
+			alert(Math.round(sDate/1000));
 			sDate.setDate(sDate.getDate() - 7);
-			alert(eDate.getMilliseconds());
+			alert(Math.round(sDate/1000));
 			params += "&sDate=" + sDate.getTime();
 			params += "&eDate=" + eDate.getTime();
 		} else if ($("#period").val() == "month") {
@@ -147,8 +148,8 @@
 			}
 			clearDate();
 		} else {
-			var sdate = $("#sDate").val();
-			var edate = $("#eDate").val();
+			var sdate = $(".sDate").val();
+			var edate = $(".eDate").val();
 			alert(sdate.substring(0, 4) + "/" + sdate.substring(4, 6) + "/"
 					+ sdate.substring(6, 8));
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
