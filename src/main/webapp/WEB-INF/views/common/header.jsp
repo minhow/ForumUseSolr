@@ -19,14 +19,11 @@
 		
 		if(whichPageSearch=="total"){ 		//total 페이지에서 검색이 일어남.
 			if($("input:checkbox[id='research']").is(":checked")){
-				alert('체크 되어있습니다.');
 				research='y'
 			}
 			else{
-				alert('체크 안되 있습니다.');
 				research='n'
 			}
-			alert($("#researchQuery").val()+","+$("#researchField").val())
 
 			$.ajax({
 				type : 'POST',

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.opensns.forumn.common.DateUtil;
+import com.opensns.forumn.common.JStringUtil;
 import com.opensns.forumn.common.PageUtil;
 import com.opensns.forumn.search.Topic;
 import com.opensns.forumn.search.SearchResult;
@@ -151,6 +152,8 @@ public class ForumMainController {
 		String pageQuery = makePagingQuery(page);
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
+		
+		vo.setExpression(JStringUtil.removeSpecialLetter(vo.getExpression()));//특수기호 제거
 		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
 		
 		vo.setRow(3);
