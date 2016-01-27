@@ -32,7 +32,7 @@
 										<option value="post_text">본문</option>
 									</select> 
 									기간 
-									<select id="period" title="기간" onchange="periodCheck()">
+									<select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
