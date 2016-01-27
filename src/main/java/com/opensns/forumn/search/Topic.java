@@ -41,8 +41,11 @@ public class Topic {
 	private String parentPostUsername;
 	private String postDate;
 	
+	private String forumName;
+	private String parentForumName;
 	private String hlPostText;
 	private String hlPostSubject;
+	private double score;
 			
 	public long getPostId() {
 		return postId;
@@ -236,10 +239,28 @@ public class Topic {
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	public String getParentForumName() {
+		return parentForumName;
+	}
+	public void setParentForumName(String parentForumName) {
+		this.parentForumName = parentForumName;
+	}
+	public String getForumName() {
+		return forumName;
+	}
+	public void setForumName(String forumName) {
+		this.forumName = forumName;
+	}
 	@Override
 	public String toString() {
-		return "Topic [poi_nm=" + poi_nm + ", postId=" + postId + ", topicId="
-				+ topicId + ", forumId=" + forumId + ", posterId=" + posterId
+		return "Topic [postId=" + postId + ", topicId=" + topicId
+				+ ", forumId=" + forumId + ", posterId=" + posterId
 				+ ", iconId=" + iconId + ", posterIp=" + posterIp
 				+ ", postTime=" + postTime + ", postApproved=" + postApproved
 				+ ", postReported=" + postReported + ", enableBbcode="
@@ -257,6 +278,7 @@ public class Topic {
 				+ parentPostSubject + ", parentPostText=" + parentPostText
 				+ ", parentPostUsername=" + parentPostUsername + ", postDate="
 				+ postDate + ", hlPostText=" + hlPostText + ", hlPostSubject="
-				+ hlPostSubject + "]";
+				+ hlPostSubject + ", score=" + score + "]";
 	}
+	
 }

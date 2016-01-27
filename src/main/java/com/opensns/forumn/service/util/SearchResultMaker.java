@@ -40,7 +40,7 @@ public class SearchResultMaker {
 	}
 
 	private List<Topic> getSCDList(JSONObject jObj) {
-		int wordCount =30;	//ÇÏÀÌ¶óÀÌÆÃ ¾ÈµÉ °æ¿ì ±ÛÀÚ¼ö
+		int wordCount =30;	//ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¼ï¿½
 		
 		JSONObject resp=(JSONObject)jObj.get("response");
 		JSONArray docs = (JSONArray) resp.get("docs");
@@ -53,7 +53,7 @@ public class SearchResultMaker {
 			if(doc.get("post_id")!=null){
 				topic.setPostId((Long) doc.get("post_id"));
 			}
-			if(doc.get("topic_id")!=null){
+			if(doc.get("topic_id")!=null){				
 				topic.setTopicId((Long) doc.get("topic_id"));
 			}
 			if(doc.get("forum_id")!=null){
@@ -156,8 +156,18 @@ public class SearchResultMaker {
 			if(doc.get("post_date")!=null){
 				topic.setPostDate((String) doc.get("post_date"));
 			}
+			if(doc.get("score")!=null){
+				topic.setScore((Double) doc.get("score"));
+			}
+			if(doc.get("parent_forum_name")!=null){
+				topic.setParentForumName((String) doc.get("parent_forum_name"));
+			}
+			if(doc.get("forum_name")!=null){
+				topic.setForumName((String) doc.get("forum_name"));
+			}
 			
-			if(jObj.get("highlighting")!=null){
+			
+			if(jObj.get("highlighting")!=null){							
 				JSONObject hObj=(JSONObject)jObj.get("highlighting");				
 				JSONObject hObj2=(JSONObject)hObj.get(Long.toString(topic.getPostId()));
 				
@@ -171,8 +181,10 @@ public class SearchResultMaker {
 				}
 				
 			}else{
-				System.out.println("ï¿½ï¿½ï¿½Ì¿ï¿½");
+				System.out.println("null..");
 			}
+			
+			
 			scdList.add(topic);
 		}
 		return scdList;

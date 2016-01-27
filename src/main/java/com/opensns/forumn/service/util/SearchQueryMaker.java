@@ -5,15 +5,14 @@ import com.opensns.forumn.service.vo.SearchParameterVO;
 
 public class SearchQueryMaker {
 
-	public String makeQuery(SearchParameterVO param, String coreUrl) {
+	public String makeSearchQuery(SearchParameterVO param, String coreUrl) {
 		StringBuffer searchQuery = new StringBuffer(coreUrl + "select?");
 
 		String pQuery = makePQuery(param); // complete
 		String sortQuery = makeSortQuery(param); // complete
 		String startNRowQuery = makeStartRowQuery(param); // TODO
 		String highlightQuery=makeHighlightQuery(param);
-
-		System.out.println("sortQuery" + sortQuery);
+		String flQuery=getFlColumList();
 
 		if (pQuery != null) {
 			searchQuery.append(pQuery);
@@ -23,6 +22,9 @@ public class SearchQueryMaker {
 		}
 		if (startNRowQuery != null) {
 			searchQuery.append(startNRowQuery);
+		}
+		if(flQuery!=null){
+			searchQuery.append(flQuery);
 		}
 		if(highlightQuery!=null){
 			searchQuery.append(highlightQuery);
@@ -46,7 +48,7 @@ public class SearchQueryMaker {
 		int row=param.getRow();
 		int start=row*(page-1);
 		
-		String startNRowQuery="&start="+start+"&row="+row;
+		String startNRowQuery="&start="+start+"&rows="+row;
 		
 		
 		return startNRowQuery;
@@ -69,27 +71,34 @@ public class SearchQueryMaker {
 		String field = param.getField();
 		String express = param.getExpression();
 		String forumId = param.getForum_id();
-		int sDate = param.getsDate();
-		int eDate = param.geteDate();
+		String sDate = param.getsDate();
+		String eDate = param.geteDate();
 
+		
 		if ("all".equals(field)) {
-			qQuery.append("post_text");
+			qQuery.append("(post_text");
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("||") + "+");
 			qQuery.append("post_subject");
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+			qQuery.append(")");
 		} else {
 			qQuery.append(field);
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
 		}
+		
+		if(param.getResearch().equals("y")){
+			qQuery.append(makingResearchQuery(param));
+		}
+		
 
 		if (forumId != null && !"".equals(forumId.trim())) {
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("&&") + "+");
-			qQuery.append("forum_id" + Encoder.encodingQueryToUTF8(":")
+			qQuery.append("parent_forum_id" + Encoder.encodingQueryToUTF8(":")
 					+ forumId);
 		}
 
-		if (sDate != 0 && eDate != 0) {
+		if (!param.getPeriod().toLowerCase().equals("total")) {
 			qQuery.append("+" + Encoder.encodingQueryToUTF8("&&") + "+");
 			qQuery.append("post_time" + Encoder.encodingQueryToUTF8(":["));
 			qQuery.append(sDate + "+TO+" + eDate);
@@ -102,8 +111,37 @@ public class SearchQueryMaker {
 
 	// //////////////////////////////////
 
+	private String makingResearchQuery(SearchParameterVO param) {
+		StringBuffer qQuery=new StringBuffer();
+		String fields[]=param.getResearchField().split(",");
+		String querys[]=param.getResearchQuery().split(",");
+		
+		System.out.println(querys.length);
+		for(String q:querys){
+			System.out.println(q);
+		}
+		for(int i=0;i<fields.length;i++){
+			String field=fields[i];
+			String express=querys[i];
+			
+			if ("all".equals(field)) {
+				qQuery.append(Encoder.encodingQueryToUTF8("&&")+"(");
+				qQuery.append("post_text");
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+				qQuery.append("+" + Encoder.encodingQueryToUTF8("||") + "+");
+				qQuery.append("post_subject");
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express)+")");
+			} else {
+				qQuery.append(field);
+				qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
+			}
+		}
+		
+		return qQuery.toString();
+	}
+
 	public String getHlQuery(String field) {
-		return "&hl=true&hl.fl=post_text,post_subject&hl.simple.pre=<em>&hl.simple.post=<%2Fem>";
+		return "&hl=true&hl.fl=post_text,post_subject&hl.simple.pre=<b>&hl.simple.post=<%2Fb>";
 	}
 
 	/**
@@ -119,7 +157,7 @@ public class SearchQueryMaker {
 	 * ï¿½âº»ï¿½ï¿½ï¿½ï¿½ fl column list
 	 */
 	public String getBasicFlColumList() {
-		String flColumns = "forum_id,forum_name,poster_ip,post_time,post_id,post_date,post_subject,post_text,parent_post_username,parent_post_id,parent_post_text,parent_post_subject";
+		String flColumns = "topic_id,post_id,forum_id,parent_forum_name,parent_post_subject,post_username,post_date,forum_name,post_text,score";
 		return flColumns;
 	}
 
@@ -129,8 +167,8 @@ public class SearchQueryMaker {
 		String coreUrl = "1.234.16.50:9000/solr/topic_posts/";
 		SearchParameterVO param = new SearchParameterVO();
 		param.setField("all");
-		param.setExpression("ÁØÈ£");
-		String url = qMaker.makeQuery(param, coreUrl);
-		System.out.println(url);
+		param.setExpression("ï¿½ï¿½È£");
+		//String url = qMaker.makeQuery(param, coreUrl);
+		//System.out.println(url);
 	}
 }

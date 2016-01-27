@@ -22,24 +22,35 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
+									정렬 
+									<select id="sort" title="정렬">
 										<option value="score">유사도순</option>
 										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
+									</select> 
+									범위
+									 <select id="range" title="범위">
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 
+									기간 
+									<select id="period" title="기간" onchange="periodCheck()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
 										<option value="year">1년</option>
 										<option value="custom">직접 입력</option>
 									</select> 
-									<input type="text" id="sDate" name="sDate"
-										onchange="day_check()" /><label for="option2_1">부터</label> 
-									<input type="text" id="eDate" name="eDate" onchange="day_check()" /><label
-										for="option2_2">까지</label>
+									<input type="text" id="sDate" name="sDate" onchange="day_check()" />
+									<label for="option2_1">부터</label> 
+									<input type="text" id="eDate" name="eDate" onchange="day_check()" />
+									<label for="option2_2">까지</label>
+									
+									<input type="hidden" id="hsDate" value="${sDate}"/>
+									<input type="hidden" id="heDate" value="${eDate}"/>
+									<input type="hidden" id="researchQuery" value="${expression }"/>
+									<input type="hidden" id="researchField" value="${field }"/>
+									
 									<button class="btn_reset" onclick="clearDate()">
 										<span>날짜초기화</span>
 									</button>
@@ -60,29 +71,30 @@
 						alt="프로젝트" /> 프로젝트
 					</span>
 					<p class="line_type2"></p>
-
+					
 
 					<ul class="list_type5">
-						<c:forEach var="scd" items="${scdList }" varStatus="status">
+						<c:forEach var="scd" items="${scdList1 }" varStatus="status">
 							<li>
 								<dl>
 									<dt>
-										<span class="bu_divi">${status.index }</span> <span
-											class="bu_divi">[${scd.forumId }]</span> <a href="#">${scd.hlPostSubject }</a>
-										<span> (유사도 : 99.9%)</span>
+										<span class="bu_divi">${scd.postId }</span> 
+										<span class="bu_divi">[${scd.parentForumName }]</span> 
+										<a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
 									</dt>
 
 									<dd>
 										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
-										<span>작성일 : ${scd.postDate }</span>
+										<a><span>작성일 : ${scd.postDate }</span></a>
 									</dd>
 									<dd>
-										<span class="bu_divi none_pl">하위카테고리 : ${scd.forumId }</span>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
 									</dd>
 
 									<dd class="desc">${scd.hlPostText }</dd>
 									<dd>
-										<span class="bu_divi none_pl">첨부파일 :
+										<span class="bu_divi none_pl">첨부파일수 :
 											${scd.postAttachment }</span> <br> <br> <br>
 									</dd>
 								</dl>
@@ -109,6 +121,32 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList2 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> 
+											<a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					
 					<div class="line_type3">
@@ -129,6 +167,31 @@
 					<p class="line_type2"></p>
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList3 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					<div class="line_type3">
 						<a href="#"><img
@@ -149,6 +212,31 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList4 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					<div class="line_type3">
 						<a href="#"><img
@@ -169,6 +257,31 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList5 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					<div class="line_type3">
 						<a href="#"><img
@@ -190,6 +303,31 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList6 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					<div class="line_type3">
 						<a href="#"><img
@@ -210,6 +348,31 @@
 
 
 					<ul class="list_type5">
+						<c:forEach var="scd" items="${scdList7 }" varStatus="status">
+							<li>
+								<dl>
+									<dt>
+										<span class="bu_divi">${scd.postId }</span> <span
+											class="bu_divi">[${scd.parentForumName }]</span> <a href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+										<span> (유사도 :${scd.score })</span>
+									</dt>
+
+									<dd>
+										<span class="bu_divi none_pl">작성자 : ${scd.postUsername }</span>
+										<span>작성일 : ${scd.postDate }</span>
+									</dd>
+									<dd>
+										<span class="bu_divi none_pl">카테고리 : ${scd.forumName }</span>
+									</dd>
+
+									<dd class="desc">${scd.hlPostText }</dd>
+									<dd>
+										<span class="bu_divi none_pl">첨부파일수 :
+											${scd.postAttachment }</span> <br> <br> <br>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
 					</ul>
 					<div class="line_type3">
 						<a href="#"><img

@@ -2,7 +2,7 @@
 /* CSS Document */
 
 /*Reset*/
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, a,
 address, big, cite, code, del, dfn, em, font, img, ins,
 q, s, samp, small, strike, strong, sub, sup, tt, var, b,
 u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin:0; padding:0; border:none 0;}
@@ -21,7 +21,7 @@ legend, caption {display:none;}
 hr {border-collapse:collapse; display:none;}
 input[type="checkbox"] {margin:0; padding:0; border:none 0; width:13px; height:13px;}
 
-a:link, a:visited, a:hover {text-decoration:none; color: #888; }
+a:link, a:visited, a:hover {text-decoration:none; color: #888 }
 
 /*hidden*/
 #accessibility,.skipnavi {position:absolute; width:0px; height:0px; font-size:0px; line-height:0px; overflow:hidden; visibility:hidden; text-indent:-1000px;}

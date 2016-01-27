@@ -1,3 +1,5 @@
+<%@page import="java.sql.Time"%>
+<%@page import="java.util.Date"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -9,7 +11,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 
 <!-- for search template -->
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comm.css"/>
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/patterns.css"/>
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/reset.css"/>
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comm.css?version=1.2"/>
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/patterns.css?version=1.2"/>
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/reset.css?version=1.2"/>
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />

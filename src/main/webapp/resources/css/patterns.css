@@ -72,8 +72,8 @@
 
 
 /* List Type5 */
-.list_type5 {background-color:#fff; margin-bottom:120px; margin-left:10px;}
-.list_type5 dl dt a {color:#0000cc; font-size:13px; text-decoration:underline; font-weight:bold;}
+.list_type5 {background-color:#fff; margin-bottom:120px; margin-left:10px;} /*제목 boldic 처리 때문에 bold 제거함*/
+.list_type5 dl dt a {color:#0000cc; font-size:13px; text-decoration:underline}
 .list_type5 dl span {color:#777; }
 .list_type5 dl dt .keyword {cursor:pointer; background:url(../images/list/type5/icon_keyword.gif) no-repeat 5px 1px; padding-left:20px;}
 .list_type5 dl dd.desc {color:#000; margin-top:5px; width:830px;}

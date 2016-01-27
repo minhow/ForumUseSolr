@@ -87,6 +87,7 @@ public class ForumMainController {
 		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
 		SearchResult respInfo=getScdList(url);
 
+		
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
 		mav.addObject("scdList",respInfo.getScdList());
@@ -124,8 +125,8 @@ public class ForumMainController {
 		return mav;
 	}
 	/**
-	 * ÀÎÆ®·Î°¡ ¾ø´Â ÇöÀç »óÈ²¿¡¼­ Ã¹ ÆäÀÌÁö¸¦ º¸¿©ÁÖ±â À§ÇÏ¿© ÀÛ¼ºÇÏ¿´À½. 
-	 * intro ¸¸µé¾îÁø ÈÄ¿¡ ÀÌ ºÎºÐÀº Ä¡È¯ÇÒ °ÍÀÓ.
+	 * ï¿½ï¿½Æ®ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Û¼ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½. 
+	 * intro ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ Ä¡È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	 * @param request
 	 * @return
 	 * @author jaeho
@@ -175,14 +176,9 @@ public class ForumMainController {
 	
 	@RequestMapping(value = "/searchTotal", method = RequestMethod.POST)
 	public ModelAndView searchTotal(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
-		System.out.println("Call searchTotal");
+		System.out.println(vo);
 		ModelAndView mav=new ModelAndView("common/searchResult");
 		
-		String expression="\"" + request.getParameter("expression") + "\"";
-		String field=request.getParameter("field");
-		
-		System.out.println("expression --> " +expression);
-		System.out.println("field --> "+ field);
 
 		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StringBuffer ï¿½ï¿½ï¿½ï¿½
 
@@ -191,7 +187,6 @@ public class ForumMainController {
 		
 				
 		//query												
-		String FieldQuery=makeFieldQuery(expression,field);
 		String dateRangeQuery=makeDateRangeQuery(request,mav);
 		//query!
 		
@@ -199,25 +194,71 @@ public class ForumMainController {
 		String pageQuery = makePagingQuery(page);
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
-		SearchResult result=service.getSearchResult(vo);
+		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
 		
-		List<Topic>resultList=result.getScdList();
-		for(Topic topic:resultList)
+		vo.setRow(3);
+		System.out.println(vo.getExpression());
+		//project
+		vo.setForum_id(forum_map.get("í”„ë¡œì íŠ¸"));
+		SearchResult result1=service.getSearchResult(vo);
+		//ê°œë°œì´ìŠˆ
+		vo.setForum_id(forum_map.get("ê°œë°œì´ìŠˆ"));
+		SearchResult result2=service.getSearchResult(vo);
+		
+		//ì§€ì‹ê³µìœ 
+		vo.setForum_id(forum_map.get("ì§€ì‹ê³µìœ "));
+		SearchResult result3=service.getSearchResult(vo);
+		
+		//ê·¸ë£¹
+		vo.setForum_id(forum_map.get("ê·¸ë£¹"));
+		SearchResult result4=service.getSearchResult(vo);
+		
+		//ê¸°íƒ€
+		vo.setForum_id(forum_map.get("ê¸°íƒ€"));
+		SearchResult result5=service.getSearchResult(vo);
+		//í¬ëŸ¼
+		vo.setForum_id(forum_map.get("í¬ëŸ¼"));
+		SearchResult result6=service.getSearchResult(vo);
+		//ë‹¤ìš´ë¡œë“œ ë° Q&A
+		vo.setForum_id(forum_map.get("ë‹¤ìš´ë¡œë“œ ë° Q&A"));
+		SearchResult result7=service.getSearchResult(vo);
+
+		
+		mav.addObject("scdList1",result1.getScdList());
+		mav.addObject("scdList2",result2.getScdList());
+		mav.addObject("scdList3",result3.getScdList());
+		mav.addObject("scdList4",result4.getScdList());
+		mav.addObject("scdList5",result5.getScdList());
+		mav.addObject("scdList6",result6.getScdList());
+		mav.addObject("scdList7",result7.getScdList());
+		
+		for(Topic vo2:result1.getScdList())
 		{
-			System.out.println(topic);
+			System.out.println(vo2);
 		}
 		
+		String expression=vo.getExpression();
+		String field=vo.getField();
+		if(vo.getResearch().equals("y")){
+			expression+=","+vo.getResearchQuery();
+			field+=","+vo.getResearchField();
+		}
+		System.out.println("e- >"+expression);
+		System.out.println("f- >"+field);
+		System.out.println("v- >"+vo.getResearch());
 		
-		//ï¿½ï¿½Ã» urlï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Â´ï¿½.
-
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
-		mav.addObject("scdList",result.getScdList());
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
+		/*mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
-		mav.addObject("start",result.getStart());
-		mav.addObject("page",page);
+		mav.addObject("start",result.getStart());*/
+		//mav.addObject("page",page);
 		
-		PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
+		//PageUtil.setPaging(mav, (int)result.getTotalCnt(), 10, page);
 					
 		return mav;
 	}
@@ -229,8 +270,7 @@ public class ForumMainController {
 		System.out.println("Call searchCategory");
 		ModelAndView mav=new ModelAndView("common/searchResultOfCategory");
 		int page = modifyPageType(request);
-		String expression=request.getParameter("expression");
-		String field=request.getParameter("field");
+		
 		
 		vo.setForum_id(forum_map.get(vo.getForum_id()));
 		
@@ -250,8 +290,15 @@ public class ForumMainController {
 //		SearchResult respInfo=getScdList(url);
 
 		mav.addObject("category",13);
-		mav.addObject("expression", expression);
+		
+		String expression=vo.getExpression();
+		String field=vo.getField();
+		
+		
+		
+		mav.addObject("expression",expression );
 		mav.addObject("field",field);
+		mav.addObject("research",vo.getResearch());
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());
@@ -290,7 +337,7 @@ public class ForumMainController {
 	 * @param request
 	 * @return
 	 * @description
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+	 * this method make query..
 	 */
 	private String makePagingQuery(int page) {
 		StringBuffer query=new StringBuffer();		

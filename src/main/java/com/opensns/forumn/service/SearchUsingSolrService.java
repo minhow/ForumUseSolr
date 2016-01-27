@@ -43,7 +43,8 @@ public class SearchUsingSolrService {
 	public SearchResult getSearchResult(SearchParameterVO param)
 	{
 		String coreUrl=url+core;
-		String url=qMaker.makeQuery(param, coreUrl);
+		String url=qMaker.makeSearchQuery(param, coreUrl);
+		System.out.println(url);
 		
 		return sMaker.getScdList(url);
 	}
