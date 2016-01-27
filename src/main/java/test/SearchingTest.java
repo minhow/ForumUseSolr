@@ -13,7 +13,7 @@ public class SearchingTest {
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		SearchParameterVO vo=new SearchParameterVO();
 		vo.setField("post_subject");
-		vo.setExpression("ÁØÈ£");
+		vo.setExpression("ï¿½ï¿½È£");
 		SearchResult result=service.getSearchResult(vo);
 		
 		List<Topic>resultList=result.getScdList();

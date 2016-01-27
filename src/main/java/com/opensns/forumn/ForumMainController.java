@@ -108,9 +108,21 @@ public class ForumMainController {
 	 * @return
 	 * @author jaeho
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
-		System.out.println("hi");
+		ModelAndView mav=new ModelAndView("main");
+					
+		return mav;
+	}
+	/**
+	 * ��Ʈ�ΰ� ��� ���� ��Ȳ���� ù �������� �����ֱ� ���Ͽ� �ۼ��Ͽ���. 
+	 * intro ������� �Ŀ� �� �κ��� ġȯ�� ����.
+	 * @param request
+	 * @return
+	 * @author jaeho
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView searchTotalAll(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		
 		String expression=request.getParameter("expression");
@@ -157,6 +169,19 @@ public class ForumMainController {
 		System.out.println(vo);
 		ModelAndView mav=new ModelAndView("common/searchResult");
 		
+
+		//������ ������� StringBuffer ����
+
+		StringBuffer request_param=new StringBuffer();
+		int page = modifyPageType(request);
+		
+				
+		//query												
+		String dateRangeQuery=makeDateRangeQuery(request,mav);
+		//query!
+		
+		//�ΰ����� �Ķ���͵�
+		String pageQuery = makePagingQuery(page);
 		
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
