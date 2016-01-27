@@ -117,8 +117,21 @@ public class ForumMainController {
 	 * @return
 	 * @author jaeho
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
+		ModelAndView mav=new ModelAndView("main");
+					
+		return mav;
+	}
+	/**
+	 * 인트로가 없는 현재 상황에서 첫 페이지를 보여주기 위하여 작성하였음. 
+	 * intro 만들어진 후에 이 부분은 치환할 것임.
+	 * @param request
+	 * @return
+	 * @author jaeho
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView searchTotalAll(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		
 		String expression=request.getParameter("expression");
@@ -165,7 +178,7 @@ public class ForumMainController {
 		System.out.println("Call searchTotal");
 		ModelAndView mav=new ModelAndView("common/searchResult");
 		
-		String expression=request.getParameter("expression");
+		String expression="\"" + request.getParameter("expression") + "\"";
 		String field=request.getParameter("field");
 		
 		System.out.println("expression --> " +expression);
