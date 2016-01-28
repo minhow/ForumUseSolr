@@ -14,15 +14,47 @@
 		var url = "searchTotal.do"
 		var period = $("#period").val();
 		var research;
-		var whichPageSearch=$("#whichPageSearch").val();
-			
-		
-		if(whichPageSearch=="total"){ 		//total 페이지에서 검색이 일어남.
-			if($("input:checkbox[id='research']").is(":checked")){
-				research='y'
+
+		var whichPageSearch = $("#whichPageSearch").val();
+		var sDate = new Date();
+		var eDate = new Date();
+		var sDateParam;
+		var eDateParam;
+
+		if (whichPageSearch == "total") { //total 페이지에서 검색이 일어남.
+			if ($("input:checkbox[id='research']").is(":checked")) {
+				// 				alert('체크 되어있습니다.');
+				research = 'y'
+			} else {
+				// 				alert('체크 안되 있습니다.');
+				research = 'n'
+
 			}
-			else{
-				research='n'
+
+			// 			alert($("#researchQuery").val()+","+$("#researchField").val())
+
+			if ($("#period").val() == "week") {
+				sDate.setDate(sDate.getDate() - 7);
+				sDateParam = Math.round(sDate / 1000);
+				eDateParam = Math.round(eDate / 1000);
+
+			} else if ($("#period").val() == "month") {
+				sDate.setMonth(sDate.getMonth() - 1);
+				sDateParam = Math.round(sDate / 1000);
+				eDateParam = Math.round(eDate / 1000);
+			} else if ($("#period").val() == "year") {
+				sDate.setFullYear(sDate.getFullYear() - 1);
+				sDateParam = Math.round(sDate / 1000);
+				eDateParam = Math.round(eDate / 1000);
+			} else if ($("#period").val() == "custom") {
+				var sdate = $("#sDate").val();
+				var edate = $("#eDate").val();
+				sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
+						sdate.substring(6, 8), 0, 0, 0, 0);
+				eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
+						edate.substring(6, 8), 0, 0, 0, 0);
+				sDateParam = Math.round(sDate / 1000);
+				eDateParam = Math.round(eDate / 1000);
 			}
 
 			$.ajax({
@@ -32,12 +64,12 @@
 					expression : $(".sch_input").val(),
 					field : $("#range option:selected").val(),
 					sort_field : $("#sort option:selected").val(),
-					sDate : $("#hsDate").val(),
-					eDate : $("#heDate").val(),
+					sDate : sDateParam,
+					eDate : eDateParam,
 					period : period,
-					researchQuery:$("#researchQuery").val(),
-					researchField:$("#researchField").val(),
-					research:research
+					researchQuery : $("#researchQuery").val(),
+					researchField : $("#researchField").val(),
+					research : research
 				},
 				dataType : "text",
 				success : function(result) {
@@ -47,53 +79,58 @@
 					alert("error");
 				}
 			});
+		} else if (whichPageSearch == "detail") { //상세 페이지에서 검색이 일어남
+			location.replace("/forumn?expression=" + $(".sch_input").val());
 		}
-		else if(whichPageSearch=="detail"){ //상세 페이지에서 검색이 일어남
-			location.replace("/forumn?expression="+$(".sch_input").val());
-		}							
 	}
 
 	function searchCategory(category) {
 		var url = "searchCategory.do"
-		var params = "expression=" + $(".sch_input").val();
+		var period = $("#period").val();
 		var sDate = new Date();
 		var eDate = new Date();
-		// 		alert($("#sort").val());
-		// 		alert(category);
-		params += "&field=" + $("#range option:selected").val();
-		params += "&sort_field=" + $("#sort option:selected").val();
-		params += "&forum_id=" + category;
+		var sDateParam;
+		var eDateParam;
+
 		if ($("#period").val() == "week") {
-			alert(eDate.getMilliseconds());
 			sDate.setDate(sDate.getDate() - 7);
-			alert(eDate.getMilliseconds());
-			params += "&sDate=" + sDate.getTime();
-			params += "&eDate=" + eDate.getTime();
+			sDateParam = Math.round(sDate / 1000);
+			eDateParam = Math.round(eDate / 1000);
+
 		} else if ($("#period").val() == "month") {
 			sDate.setMonth(sDate.getMonth() - 1);
-			params += "&sDate=" + sDate.getTime();
-			params += "&eDate=" + eDate.getTime();
+			sDateParam = Math.round(sDate / 1000);
+			eDateParam = Math.round(eDate / 1000);
 		} else if ($("#period").val() == "year") {
 			sDate.setFullYear(sDate.getFullYear() - 1);
-			params += "&sDate=" + sDate.getTime();
-			params += "&eDate=" + eDate.getTime();
+			sDateParam = Math.round(sDate / 1000);
+			eDateParam = Math.round(eDate / 1000);
 		} else if ($("#period").val() == "custom") {
 			var sdate = $("#sDate").val();
-			var edate = $("#eDate").val();			
+			var edate = $("#eDate").val();
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
 					sdate.substring(6, 8), 0, 0, 0, 0);
 			eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
 					edate.substring(6, 8), 0, 0, 0, 0);
-			params += "&sDate=" + sDate.getTime();
-			params += "&eDate=" + eDate.getTime();
+			sDateParam = Math.round(sDate / 1000);
+			eDateParam = Math.round(eDate / 1000);
 		}
 
-		params+="&page="+$("#page").val();
-		
 		$.ajax({
 			type : 'POST',
 			url : url,
-			data : params,
+			data : {
+				forum_id : category,
+				expression : $(".sch_input").val(),
+				field : $("#range option:selected").val(),
+				sort_field : $("#sort option:selected").val(),
+				sDate : sDateParam,
+				eDate : eDateParam,
+				period : period,
+				researchQuery : $("#researchQuery").val(),
+				researchField : $("#researchField").val(),
+				research : research
+			},
 			dataType : "text",
 			success : function(result) {
 				cb_loadRightBody(result);
@@ -144,8 +181,8 @@
 			}
 			clearDate();
 		} else {
-			var sdate = $("#sDate").val();
-			var edate = $("#eDate").val();
+			var sdate = $(".sDate").val();
+			var edate = $(".eDate").val();
 			alert(sdate.substring(0, 4) + "/" + sdate.substring(4, 6) + "/"
 					+ sdate.substring(6, 8));
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
@@ -181,9 +218,9 @@
 			$("#eDate").attr("disabled", false);
 		}
 	}
-	function movePage(page){
-		$("#page").val(page);		
-		searchCategory($(".on .tab").attr("id"));		
+	function movePage(page) {
+		$("#page").val(page);
+		searchCategory($(".on .tab").attr("id"));
 	}
 </script>
 <table>
@@ -196,9 +233,9 @@
 				</p>
 				<div class="sch_bar">
 					<p class="selected">
-						<span class="txt"></span> 
-						<span class="btn">
-							<img class src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif" alt="리스트보기" />
+						<span class="txt"></span> <span class="btn"> <img class
+							src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif"
+							alt="리스트보기" />
 						</span>
 					</p>
 					<ul>
@@ -211,34 +248,34 @@
 
 
 					<input class="sch_input" type="text" value="${expression }"
-						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}" placeholder="검색어를 입력하세요."  />
-											
-					<span class="sch_btn" onClick="searchTotal();"> 
-					<img src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
+						onkeydown="if (event.keyCode == 13) { searchTotal(); return false;}"
+						placeholder="검색어를 입력하세요." /> <span class="sch_btn"
+						onClick="searchTotal();"> <img
+						src="${contextPath}/resources/images/searchBar/btn_type2_sch.gif"
 						alt="검색" /></span>
 				</div>
 				<!-- sch_bar -->
 
 				<br> <br>
 
-						<div class="sch_bar2">
-							&nbsp;&nbsp; <input type="checkbox" id="research"
-								onclick="serachInSearch(this);" /> <label for="research">결과내
-								검색</label>
-						</div>
+				<div class="sch_bar2">
+					&nbsp;&nbsp; <input type="checkbox" id="research"
+						onclick="serachInSearch(this);" /> <label for="research">결과내
+						검색</label>
+				</div>
 
 
-						<dl>
-							<dt>
-								<img
-									src="${contextPath}/resources/images/searchBar/icon_keyword.png"
-									alt="키워드" />
-							</dt>
-							<dd>검색어01</dd>
-							<dd>검색어02</dd>
-							<dd>검색어03</dd>
-							<dd class="none_bg">검색어04</dd>
-						</dl>
+				<dl>
+					<dt>
+						<img
+							src="${contextPath}/resources/images/searchBar/icon_keyword.png"
+							alt="키워드" />
+					</dt>
+					<dd>검색어01</dd>
+					<dd>검색어02</dd>
+					<dd>검색어03</dd>
+					<dd class="none_bg">검색어04</dd>
+				</dl>
 			</div>
 			<!-- searchBar_type2-->
 		</tr>

@@ -33,7 +33,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -49,7 +49,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -129,7 +129,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -144,8 +144,8 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+									<button class="btn_reset" onclick="searchCategory()">
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -226,7 +226,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -242,7 +242,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -323,7 +323,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -339,7 +339,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -420,7 +420,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -436,7 +436,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -517,7 +517,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -533,7 +533,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
@@ -614,7 +614,7 @@
 										<option value="all">전체</option>
 										<option value="post_subject">제목</option>
 										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="periodCheck()">
+									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
 										<option value="total">전체</option>
 										<option value="week">1주</option>
 										<option value="month">1개월</option>
@@ -630,7 +630,7 @@
 										type="hidden" id="researchField" value="${field }" />
 
 									<button class="btn_reset" onclick="clearDate()">
-										<span>날짜초기화</span>
+										<span>적용</span>
 									</button>
 								</dt>
 							</dl>
