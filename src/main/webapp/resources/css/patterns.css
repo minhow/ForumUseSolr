@@ -41,7 +41,7 @@
 
 
 /* searchBar type2 */
-.searchBar_type2 {width:600px; padding:20px; margin-left:110px;}
+.searchBar_type2 {width:700px; padding:20px; margin-left:110px;}
 .searchBar_type2 .sch_txt {float:left; padding:10px 15px 10px 0; margin-top:37px;}
 .searchBar_type2:after {content:''; display:block; clear:both;}
 .searchBar_type2 .sch_bar {position:relative; height:37px; background-color:#222; border:1px solid #3a3a3a; padding:4px; margin-top:37px; margin-bottom:5px; float:left;}

@@ -122,6 +122,18 @@ public class ForumMainController {
 					
 		return mav;
 	}
+	
+	@RequestMapping(value = "/intro", method = RequestMethod.GET)
+	public ModelAndView statusNode(HttpServletRequest request){
+		ModelAndView mav=new ModelAndView("intro");
+		StatusService statusService = new StatusService();
+		Collection collection = statusService.getClusterStatus();
+		JSONObject statusJson =  collection.toCyElementsJson();
+		System.out.println(statusJson.toJSONString());
+		mav.addObject("statusJson", statusJson);
+					
+		return mav;
+	}
 	/**
 	 * ��Ʈ�ΰ� ��� ���� ��Ȳ���� ù �������� �����ֱ� ���Ͽ� �ۼ��Ͽ���. 
 	 * intro ������� �Ŀ� �� �κ��� ġȯ�� ����.

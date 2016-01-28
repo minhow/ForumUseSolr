@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+</head>
 <body>
 	<div class="layout_type2_1_wrap">
 		<div class="header">
