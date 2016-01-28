@@ -18,6 +18,7 @@
 .tab_type1 ul li.on .t_content {display:inline-block; position:absolute; left:0; top:38px; border:2px solid #050505;  background-color:#fff; padding:15px 10px; word-wrap: break-word;}
 
 
+
 /* List Type1   */
 .list_type1 {width:800px; border:1px solid #dbdbdb; padding:12px 16px 60PX; background-color:#fff;  margin-top:20px;  margin-left:10px; float:center;}
 .list_type1 dl {text-align :center; padding-top:5px; margin-left:50px; }

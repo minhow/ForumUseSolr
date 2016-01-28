@@ -11,7 +11,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 
 <!-- for search template -->
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comm.css?version=1.4"/>
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/patterns.css?version=1.4"/>
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/comm.css?version=1.1"/>
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/patterns.css?version=1.1"/>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/reset.css?version=1.4"/>
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />

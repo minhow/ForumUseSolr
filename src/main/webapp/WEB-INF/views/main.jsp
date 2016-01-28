@@ -9,7 +9,7 @@
 		<div class="header">
 			<%@ include file="/WEB-INF/views/common/header.jsp"%>
 		</div>
-		<%-- <div id="container" class="container">
+		<div id="container" class="container">
 			<div class="tab_type1">
 				<!-- tab_type1 -->
 				<ul>
@@ -27,12 +27,9 @@
 					</li>
 				</ul>
 			</div>
-		</div> --%>
-	</div>
-	
-		<div>
-			<center><iframe src="${contextPath }/intro" width="70%" height="1000px"></iframe></center>
 		</div>
+	</div>
+
 		<input type="hidden" id="whichPageSearch" value="total"/>
 </body>
 </html>
