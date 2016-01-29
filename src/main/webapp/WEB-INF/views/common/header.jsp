@@ -115,6 +115,13 @@
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
+		if ($("input:checkbox[id='research']").is(":checked")) {
+			// 				alert('체크 되어있습니다.');
+			research = 'y'
+		} else {
+			// 				alert('체크 안되 있습니다.');
+			research = 'n'
+		}
 
 		$.ajax({
 			type : 'POST',

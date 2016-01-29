@@ -66,8 +66,8 @@
 				<div class="mar_top50 hei_type1">
 					<!-- 프로젝트 -->
 					<p class="line_type1"></p>
-					<span class="txt_bold"> <img
-						src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif" alt="프로젝트" /> 프로젝트
+					<span class="txt_bold"> 
+						<img src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif" alt="프로젝트" /> 프로젝트
 					</span>
 					<p class="line_type2"></p>
 					
@@ -101,7 +101,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(3)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -150,7 +150,7 @@
 					</ul>
 					
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(36)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -194,7 +194,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(37)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -239,7 +239,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(7)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -284,7 +284,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(14)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -330,7 +330,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(43)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
@@ -375,7 +375,7 @@
 						</c:forEach>
 					</ul>
 					<div class="line_type3">
-						<a href="#"><img
+						<a href="#" onclick="searchCategory(46)"><img
 							src="${contextPath}/resources/images/searchBar/btn_add.gif"
 							alt="addshow" /></a>
 					</div>
