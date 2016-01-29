@@ -33,20 +33,20 @@
 
 			// 			alert($("#researchQuery").val()+","+$("#researchField").val())
 
-			if ($("#period").val() == "week") {
+			if (period == "week") {
 				sDate.setDate(sDate.getDate() - 7);
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
 
-			} else if ($("#period").val() == "month") {
+			} else if (period == "month") {
 				sDate.setMonth(sDate.getMonth() - 1);
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
-			} else if ($("#period").val() == "year") {
+			} else if (period == "year") {
 				sDate.setFullYear(sDate.getFullYear() - 1);
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
-			} else if ($("#period").val() == "custom") {
+			} else if (period == "custom") {
 				var sdate = $("#sDate").val();
 				var edate = $("#eDate").val();
 				sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
@@ -92,20 +92,31 @@
 		var sDateParam;
 		var eDateParam;
 
-		if ($("#period").val() == "week") {
+		var research;
+
+		if ($("input:checkbox[id='research']").is(":checked")) {
+			// 				alert('체크 되어있습니다.');
+			research = 'y'
+		} else {
+			// 				alert('체크 안되 있습니다.');
+			research = 'n'
+
+		}
+
+		if (period == "week") {
 			sDate.setDate(sDate.getDate() - 7);
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 
-		} else if ($("#period").val() == "month") {
+		} else if (period == "month") {
 			sDate.setMonth(sDate.getMonth() - 1);
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
-		} else if ($("#period").val() == "year") {
+		} else if (period == "year") {
 			sDate.setFullYear(sDate.getFullYear() - 1);
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
-		} else if ($("#period").val() == "custom") {
+		} else if (period == "custom") {
 			var sdate = $("#sDate").val();
 			var edate = $("#eDate").val();
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
@@ -115,7 +126,7 @@
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
-
+		alert("Call AJAX");
 		$.ajax({
 			type : 'POST',
 			url : url,
@@ -239,11 +250,14 @@
 						</span>
 					</p>
 					<ul>
-						<li>통합검색</li>
-						<li>게시판</li>
-						<li>지식샘</li>
-						<li>커뮤니티</li>
-						<li>전자도서관</li>
+						<li id="0">통합검색</li>
+						<li id="3">프로젝트</li>
+						<li id="36">개발이슈</li>
+						<li id="37">지식공유</li>
+						<li id="7">그룹</li>
+						<li id="14">기타</li>
+						<li id="43">포럼</li>
+						<li id="46">다운로드 및 Q&A</li>
 					</ul>
 
 
@@ -260,8 +274,7 @@
 
 				<div class="sch_bar2">
 					&nbsp;&nbsp; <input type="checkbox" id="research"
-						onclick="serachInSearch(this);" /> <label for="research">결과내
-						검색</label>
+						onclick="serachInSearch(this);" /> <label for="research">결과 내 검색</label>
 				</div>
 
 
