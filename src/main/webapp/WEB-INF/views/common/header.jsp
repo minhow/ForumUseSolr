@@ -126,7 +126,8 @@
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
-		alert("Call AJAX");
+
+
 		$.ajax({
 			type : 'POST',
 			url : url,
@@ -284,10 +285,10 @@
 							src="${contextPath}/resources/images/searchBar/icon_keyword.png"
 							alt="키워드" />
 					</dt>
-					<dd>검색어01</dd>
-					<dd>검색어02</dd>
-					<dd>검색어03</dd>
-					<dd class="none_bg">검색어04</dd>
+					<dd>이재호</dd>
+					<dd>유민호</dd>
+					<dd>주현태</dd>
+					<dd class="none_bg">솔라</dd>
 				</dl>
 			</div>
 			<!-- searchBar_type2-->
