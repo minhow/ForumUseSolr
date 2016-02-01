@@ -236,6 +236,11 @@ public class ForumMainController {
 		mav.addObject("sDate", vo.getsDate());
 		mav.addObject("eDate", vo.geteDate());
 		mav.addObject("total",total);
+		mav.addObject("field", vo.getField());
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
 		/*mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());*/
@@ -283,6 +288,12 @@ public class ForumMainController {
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());
+		mav.addObject("field", vo.getField());
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
+		
 //		mav.addObject("forumn_map",forum_map);
 //		mav.addObject("page",page);
 		

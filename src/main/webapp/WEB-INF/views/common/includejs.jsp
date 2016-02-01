@@ -25,28 +25,36 @@
 		reload();
 	});
 
-	function reset_tab_type1() {
+	function reset_tab_type1(tabName) {
 		$('.tab_type1 ul li').each(function(index, element) {
 			if ($(this).attr('class') === 'on') {
 				$(this).removeClass('on');
 			}
 		});
+		
+// 		$('.tab_type1 ul li').each(function(index, element) {
+// 			if ($(this).children("p").text() === tabName) {
+// 				$(this).addClass('on');
+// 			}
+// 		});
 	}
 
 	function reload() {
 		$('.tab_type1 ul li .tab').click(function() {
 			$("#page").val("1");
-			reset_tab_type1();
- 			alert($(this).attr('id'));
+			
+//  			alert($(this).attr('id'));
 			if ($(this).attr('id') == "0") {
- 				alert("total");
+//  				alert("total");
 				searchTotal();
 			} 
 			else {
-				alert($(this).attr('id'));
+// 				alert($(this).attr('id'));
 				
 				searchCategory($(this).attr('id'));
 			}
+			
+			reset_tab_type1($(this).text());
 		});
 
 		var clareCalendar = {

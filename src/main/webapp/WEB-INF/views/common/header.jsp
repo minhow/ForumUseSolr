@@ -11,10 +11,12 @@
 	}
 
 	function searchTotal() {
+// 		alert("into search");
 		var url = "searchTotal.do"
-		var period = $("#period").val();
+		var period = $(".on .period").val();
 		var research;
-
+// 		alert(period);
+// 		alert($(".on .tab").text());
 		var whichPageSearch = $("#whichPageSearch").val();
 		var sDate = new Date();
 		var eDate = new Date();
@@ -47,8 +49,8 @@
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
 			} else if (period == "custom") {
-				var sdate = $("#sDate").val();
-				var edate = $("#eDate").val();
+				var sdate = $(".on .sDate").val();
+				var edate = $(".on .eDate").val();
 				sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
 						sdate.substring(6, 8), 0, 0, 0, 0);
 				eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
@@ -56,14 +58,14 @@
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
 			}
-
+// 			alert("before call ajax");
 			$.ajax({
 				type : 'POST',
 				url : url,
 				data : {
 					expression : $(".sch_input").val(),
-					field : $("#range option:selected").val(),
-					sort_field : $("#sort option:selected").val(),
+					field : $(".on .range option:selected").val(),
+					sort_field : $(".on .sort option:selected").val(),
 					sDate : sDateParam,
 					eDate : eDateParam,
 					period : period,
@@ -86,12 +88,14 @@
 
 	function searchCategory(category) {
 		var url = "searchCategory.do"
-		var period = $("#period").val();
+		var period = $(".on .period").val();
+		
 		var sDate = new Date();
 		var eDate = new Date();
 		var sDateParam;
 		var eDateParam;
-
+// 		alert(period);
+// 		alert($(".on .tab").text());
 		var research;
 
 		if ($("input:checkbox[id='research']").is(":checked")) {
@@ -117,8 +121,8 @@
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		} else if (period == "custom") {
-			var sdate = $("#sDate").val();
-			var edate = $("#eDate").val();
+			var sdate = $(".on .sDate").val();
+			var edate = $(".on .eDate").val();
 			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
 					sdate.substring(6, 8), 0, 0, 0, 0);
 			eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
@@ -134,8 +138,8 @@
 			data : {
 				forum_id : category,
 				expression : $(".sch_input").val(),
-				field : $("#range option:selected").val(),
-				sort_field : $("#sort option:selected").val(),
+				field : $(".on .range option:selected").val(),
+				sort_field : $(".on .sort option:selected").val(),
 				sDate : sDateParam,
 				eDate : eDateParam,
 				period : period,
@@ -169,52 +173,16 @@
 			switchPeriod();
 		}
 	}
-	function periodCheck() {
-		// 		alert('period');
-		var period = $("#period option:selected").val();
-		var sDate = new Date();
-		var eDate = new Date();
-		if (period != "custom") {
-			if (period == "week") {
-				sDate.setDate(sDate.getDate() - 7);
-				$("#hsDate").val(sDate.getTime());
-				$("#heDate").val(eDate.getTime());
-			} else if (period == "month") {
-				sDate.setMonth(sDate.getMonth() - 1);
-				$("#hsDate").val(sDate.getTime());
-				$("#heDate").val(eDate.getTime());
-			} else if (period == "year") {
-				sDate.setFullYear(sDate.getFullYear() - 1);
-				$("#hsDate").val(sDate.getTime());
-				$("#heDate").val(eDate.getTime());
-			} else {
-				$("#hsDate").val("");
-				$("#heDate").val("");
-			}
-			clearDate();
-		} else {
-			var sdate = $(".sDate").val();
-			var edate = $(".eDate").val();
-			alert(sdate.substring(0, 4) + "/" + sdate.substring(4, 6) + "/"
-					+ sdate.substring(6, 8));
-			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
-					sdate.substring(6, 8), 0, 0, 0, 0);
-			eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
-					edate.substring(6, 8), 0, 0, 0, 0);
-			$("#hsDate").val(sDate.getTime());
-			$("#heDate").val(eDate.getTime());
-		}
-		alert($("#hsDate").val() + ", " + $("#heDate").val());
-
-	}
+	
 
 	/* 날짜 초기화 */
 	function clearDate() {
-		$("#sDate").val("");
-		$("#eDate").val("");
+		$(".on #sDate").val("");
+		$(".on #eDate").val("");
 		//2013-12-27 날짜 초가화 선택시 카테고리 선택 풀리는 현상때문에 주석 
 		//$("#categoryId").val("");\
 	}
+	
 	function serachInSearch(chkBox) {
 		if (chkBox.checked) {
 			$("#sort").attr("disabled", true);
@@ -230,6 +198,7 @@
 			$("#eDate").attr("disabled", false);
 		}
 	}
+	
 	function movePage(page) {
 		$("#page").val(page);
 		searchCategory($(".on .tab").attr("id"));
@@ -244,6 +213,7 @@
 						alt="search" />
 				</p>
 				<div class="sch_bar">
+				
 					<p class="selected">
 						<span class="txt"></span> <span class="btn"> <img class
 							src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif"

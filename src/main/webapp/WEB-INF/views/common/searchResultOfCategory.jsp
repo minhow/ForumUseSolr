@@ -26,18 +26,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -48,7 +48,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -122,18 +122,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -219,18 +219,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -241,7 +241,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -316,18 +316,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -338,7 +338,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -413,18 +413,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -435,7 +435,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -510,18 +510,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -532,7 +532,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -607,18 +607,18 @@
 									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
 								</dt>
 								<dt>
-									정렬 <select id="sort" title="정렬">
-										<option value="score">유사도순</option>
-										<option value="post_time">최신순</option>
-									</select> 범위 <select id="range" title="범위">
-										<option value="all">전체</option>
-										<option value="post_subject">제목</option>
-										<option value="post_text">본문</option>
-									</select> 기간 <select id="period" title="기간" onchange="clearDate()">
-										<option value="total">전체</option>
-										<option value="week">1주</option>
-										<option value="month">1개월</option>
-										<option value="year">1년</option>
+									정렬 <select class="sort" title="정렬">
+										<option value="score" <c:if test="${sort_field==\"score\" }">selected="selected"</c:if>>유사도순</option>
+										<option value="post_time" <c:if test="${sort_field==\"post_time\" }">selected="selected"</c:if>>최신순</option>
+									</select> 범위 <select class="range" title="범위">
+										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
+										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
+										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
+										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
+										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
+										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
+										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom">직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" /> <label for="option2_1">부터</label> <input
@@ -629,7 +629,7 @@
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
 
-									<button class="btn_reset" onclick="clearDate()">
+									<button class="btn_reset" onclick="searchCategory()">
 										<span>적용</span>
 									</button>
 								</dt>
