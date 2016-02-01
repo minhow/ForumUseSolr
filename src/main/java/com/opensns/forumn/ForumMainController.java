@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.opensns.forumn.common.DateUtil;
 import com.opensns.forumn.common.JStringUtil;
 import com.opensns.forumn.common.PageUtil;
-import com.opensns.forumn.search.Topic;
 import com.opensns.forumn.search.SearchResult;
+import com.opensns.forumn.search.Topic;
 import com.opensns.forumn.service.SearchUsingSolrService;
 import com.opensns.forumn.service.StatusService;
 import com.opensns.forumn.service.status.Collection;
@@ -99,7 +98,7 @@ public class ForumMainController {
 	 * @return
 	 * @author
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/", method = RequestMethod.POST)*/
 	public ModelAndView getDocument(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		return mav;
@@ -111,7 +110,7 @@ public class ForumMainController {
 	 * @return
 	 * @author jaeho
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView indexHome(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("main");
 		StatusService statusService = new StatusService();
@@ -141,7 +140,7 @@ public class ForumMainController {
 	 * @return
 	 * @author jaeho
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)*/
 	public ModelAndView searchTotalAll(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		System.out.println("searchTotal");
