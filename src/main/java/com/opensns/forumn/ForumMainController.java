@@ -153,7 +153,7 @@ public class ForumMainController {
 	public ModelAndView searchTotal(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		System.out.println(vo);
 		ModelAndView mav=new ModelAndView("common/searchResult");
-		
+		int total;
 
 		//������ ������� StringBuffer ����
 
@@ -226,8 +226,16 @@ public class ForumMainController {
 		
 		System.out.println("expression -- > "+expression);
 		
+		total = (int) (result1.getTotalCnt() +result2.getTotalCnt() +result3.getTotalCnt() +result4.getTotalCnt() +result5.getTotalCnt() +result6.getTotalCnt() +result7.getTotalCnt());
+		
 		mav.addObject("expression", expression);
 		mav.addObject("field",field);
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
+		mav.addObject("total",total);
+		mav.addObject("field", vo.getField());
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
 		mav.addObject("sDate", vo.getsDate());
@@ -279,6 +287,12 @@ public class ForumMainController {
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());
+		mav.addObject("field", vo.getField());
+		mav.addObject("sort_field", vo.getSort_field());
+		mav.addObject("period", vo.getPeriod());
+		mav.addObject("sDate", vo.getsDate());
+		mav.addObject("eDate", vo.geteDate());
+		
 //		mav.addObject("forumn_map",forum_map);
 //		mav.addObject("page",page);
 		

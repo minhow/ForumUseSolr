@@ -9,7 +9,7 @@
 <script>
 	function hasExpression(){
 		if($("#researchQuery").val()==''){
-			alert('검색해야 합니다.');	
+// 			alert('검색해야 합니다.');	
 		}
 		else{
 			searchTotal();
