@@ -51,10 +51,17 @@
 			} else if (period == "custom") {
 				var sdate = $(".on .sDate").val();
 				var edate = $(".on .eDate").val();
-				sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
-						sdate.substring(6, 8), 0, 0, 0, 0);
-				eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
-						edate.substring(6, 8), 0, 0, 0, 0);
+				
+				sDate.setFullYear(sdate.substring(0, 4));
+				sDate.setMonth(sdate.substring(4, 6));
+				sDate.setMonth(sDate.getMonth() - 1);
+				sDate.setDate(sdate.substring(6, 8));
+		
+				eDate.setFullYear(edate.substring(0, 4));
+				eDate.setMonth(edate.substring(4, 6));
+				eDate.setMonth(eDate.getMonth() - 1);
+				eDate.setDate(edate.substring(6, 8));
+				
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
 			}
@@ -123,10 +130,17 @@
 		} else if (period == "custom") {
 			var sdate = $(".on .sDate").val();
 			var edate = $(".on .eDate").val();
-			sDate = new Date(sdate.substring(0, 4), sdate.substring(4, 6),
-					sdate.substring(6, 8), 0, 0, 0, 0);
-			eDate = new Date(edate.substring(0, 4), edate.substring(4, 6),
-					edate.substring(6, 8), 0, 0, 0, 0);
+			
+			sDate.setFullYear(sdate.substring(0, 4));
+			sDate.setMonth(sdate.substring(4, 6));
+			sDate.setMonth(sDate.getMonth() - 1);
+			sDate.setDate(sdate.substring(6, 8));
+	
+			eDate.setFullYear(edate.substring(0, 4));
+			eDate.setMonth(edate.substring(4, 6));
+			eDate.setMonth(eDate.getMonth() - 1);
+			eDate.setDate(edate.substring(6, 8));
+			
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
@@ -156,17 +170,27 @@
 			}
 		});
 	}
+	
+	function apply() {
+		var url; 
+		var curPage = $(".on .tab").attr('id');
+		if(curPage=="0"){
+			searchTotal();
+		} else {
+			searchCategory(curPage);
+		}
+	}
 
 	function switchPeriod() {
-		$("#container #period").val("custom").prop("selected", true);
+		$("#container .on .period").val("custom").prop("selected", true);
 	}
 
 	/* 날짜 유효성 체크 */
 	function day_check() {
 
-		if ($("#sDate").val() != '' && $("#eDate").val() != '') {
-			if ($("#sDate").val() > $("#eDate").val()) {
-				$("#eDate").val('');
+		if ($(".on .sDate").val() != '' && $(".on .eDate").val() != '') {
+			if ($(".on .sDate").val() > $(".on .eDate").val()) {
+				$(".on .eDate").val('');
 				alert("시작날짜는 종료날짜 보다 작아야 합니다.");
 			}
 		} else {
@@ -177,8 +201,8 @@
 
 	/* 날짜 초기화 */
 	function clearDate() {
-		$(".on #sDate").val("");
-		$(".on #eDate").val("");
+		$(".on .sDate").val("");
+		$(".on .eDate").val("");
 		//2013-12-27 날짜 초가화 선택시 카테고리 선택 풀리는 현상때문에 주석 
 		//$("#categoryId").val("");\
 	}
