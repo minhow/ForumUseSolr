@@ -31,12 +31,6 @@
 				$(this).removeClass('on');
 			}
 		});
-		
-// 		$('.tab_type1 ul li').each(function(index, element) {
-// 			if ($(this).children("p").text() === tabName) {
-// 				$(this).addClass('on');
-// 			}
-// 		});
 	}
 
 	function reload() {

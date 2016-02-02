@@ -38,17 +38,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -134,17 +131,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -231,17 +225,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -328,17 +319,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -425,17 +413,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -522,17 +507,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>
@@ -619,17 +601,14 @@
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
-										<option value="custom">직접 입력</option>
+										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
 									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" />
+										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
-										id="hsDate" value="${sDate}" /> <input type="hidden"
-										id="heDate" value="${eDate}" /> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
 										type="hidden" id="researchField" value="${field }" />
-
-									<button class="btn_reset" onclick="searchCategory()">
+									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
 								</dt>

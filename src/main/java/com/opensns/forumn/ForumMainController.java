@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -209,10 +210,10 @@ public class ForumMainController {
 		mav.addObject("scdList6",result6.getScdList());
 		mav.addObject("scdList7",result7.getScdList());
 		
-		for(Topic vo2:result1.getScdList())
-		{
-			System.out.println(vo2);
-		}
+//		for(Topic vo2:result1.getScdList())
+//		{
+//			System.out.println(vo2);
+//		}
 		
 		String expression=vo.getExpression();
 		String field=vo.getField();
@@ -232,14 +233,17 @@ public class ForumMainController {
 		mav.addObject("field",field);
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
-		mav.addObject("sDate", vo.getsDate());
-		mav.addObject("eDate", vo.geteDate());
 		mav.addObject("total",total);
 		mav.addObject("field", vo.getField());
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
-		mav.addObject("sDate", vo.getsDate());
-		mav.addObject("eDate", vo.geteDate());
+		if(vo.getPeriod().equals("custom")){
+			SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+			System.out.println("timestamp --> "+vo.getsDate());
+			System.out.println("convert date --> " + sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
+			mav.addObject("sDate", sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
+			mav.addObject("eDate", sdf.format(new Date(Long.parseLong(vo.geteDate())*1000L)));	
+		}
 		/*mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());
 		mav.addObject("start",result.getStart());*/
@@ -290,8 +294,13 @@ public class ForumMainController {
 		mav.addObject("field", vo.getField());
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
-		mav.addObject("sDate", vo.getsDate());
-		mav.addObject("eDate", vo.geteDate());
+		if(vo.getPeriod().equals("custom")){
+			SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+			System.out.println("timestamp --> "+vo.getsDate());
+			System.out.println("convert date --> " + sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
+			mav.addObject("sDate", sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
+			mav.addObject("eDate", sdf.format(new Date(Long.parseLong(vo.geteDate())*1000L)));	
+		}
 		
 //		mav.addObject("forumn_map",forum_map);
 //		mav.addObject("page",page);
