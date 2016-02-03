@@ -7,6 +7,8 @@
 	<!-- tab_type1 -->
 	<input type="hidden" id="whichPageSearch" value="total"/>
 	<input type="hidden" id="page" value="${page }"/>
+	<input type="hidden" id="researchQuery" value="${expression }" /> 
+	<input type="hidden" id="researchField" value="${researchField }" />
 	<ul>
 		<li>
 			<p class="tab none_mar" id="0">통합검색</p>
@@ -42,9 +44,10 @@
 									</select> <input type="text" class="sDate" name="sDate"
 										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
-									<label for="option2_2">까지</label> <input type="hidden"
-										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+									<label for="option2_2">까지</label> 
+									
+									 <input type="hidden" id="researchQuery" value="${expression }" />
+									 <input type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -137,7 +140,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -231,7 +234,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -325,7 +328,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -419,7 +422,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -513,7 +516,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>
@@ -607,7 +610,7 @@
 										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> <input type="hidden"
 										id="researchQuery" value="${expression }" /> <input
-										type="hidden" id="researchField" value="${field }" />
+										type="hidden" id="researchField" value="${researchField }" />
 									<button class="btn_reset" onclick="apply()">
 										<span>적용</span>
 									</button>

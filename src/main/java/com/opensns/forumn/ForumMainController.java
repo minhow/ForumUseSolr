@@ -141,7 +141,8 @@ public class ForumMainController {
 	 * @return
 	 * @author jaeho
 	 */
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)*/
+	
+	@RequestMapping(value = "/searchForum", method = RequestMethod.GET)
 	public ModelAndView searchTotalAll(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		System.out.println("searchTotal");
@@ -176,7 +177,8 @@ public class ForumMainController {
 		StringBuffer ex=new StringBuffer();
 		if(vo.getExpression().length()==0){
 			ex.append("\"\"");
-		}else{
+		}
+		else{
 			String express=vo.getExpression().replaceAll("\\s+", ",");
 			String[] ex_arr=express.split(",");
 			
@@ -192,7 +194,7 @@ public class ForumMainController {
 		vo.setExpression(ex.toString());
 		
 		vo.setRow(3);
-		System.out.println(vo.getExpression());
+		
 		//project
 		vo.setForum_id("3");
 		SearchResult result1=service.getSearchResult(vo);
@@ -227,10 +229,6 @@ public class ForumMainController {
 		mav.addObject("scdList6",result6.getScdList());
 		mav.addObject("scdList7",result7.getScdList());
 		
-//		for(Topic vo2:result1.getScdList())
-//		{
-//			System.out.println(vo2);
-//		}
 		
 		String expression=vo.getExpression();
 		String field=vo.getField();
@@ -238,16 +236,17 @@ public class ForumMainController {
 			expression+=","+vo.getResearchQuery();
 			field+=","+vo.getResearchField();
 		}
-		System.out.println("e- >"+expression);
-		System.out.println("f- >"+field);
-		System.out.println("v- >"+vo.getResearch());
+		System.out.println("[ "+vo.getExpression()+", "+vo.getField()+" ]");
+		System.out.println("[ "+vo.getResearchQuery()+", "+vo.getResearchField()+" ]");
+		
 		
 		System.out.println("expression -- > "+expression);
 		
 		total = (int) (result1.getTotalCnt() +result2.getTotalCnt() +result3.getTotalCnt() +result4.getTotalCnt() +result5.getTotalCnt() +result6.getTotalCnt() +result7.getTotalCnt());
 		
+		
 		mav.addObject("expression", expression);
-		mav.addObject("field",field);
+		mav.addObject("researchField",field);
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
 		mav.addObject("total",total);
@@ -302,8 +301,17 @@ public class ForumMainController {
 		String expression=vo.getExpression();
 		String field=vo.getField();
 		
+		if(vo.getResearch().equals("y")){
+			expression+=","+vo.getResearchQuery();
+			field+=","+vo.getResearchField();
+		}
+		System.out.println("[ "+vo.getExpression()+", "+vo.getField()+" ]");
+		System.out.println("[ "+vo.getResearchQuery()+", "+vo.getResearchField()+" ]");
+		System.out.println("e:"+expression+", f:"+field);
+		
+		
 		mav.addObject("expression",expression );
-		mav.addObject("field",field);
+		mav.addObject("researchField",field);
 		mav.addObject("research",vo.getResearch());
 		mav.addObject("scdList",result.getScdList());
 		mav.addObject("total",result.getTotalCnt());

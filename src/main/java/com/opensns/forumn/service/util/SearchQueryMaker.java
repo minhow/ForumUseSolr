@@ -74,7 +74,7 @@ public class SearchQueryMaker {
 		String sDate = param.getsDate();
 		String eDate = param.geteDate();
 
-		
+		System.out.println("make Query param -- >"+param);
 		if ("all".equals(field)) {
 			qQuery.append("(post_text");
 			qQuery.append(Encoder.encodingQueryToUTF8(":" + express));
@@ -88,6 +88,7 @@ public class SearchQueryMaker {
 		}
 		
 		if(param.getResearch().equals("y")){
+			
 			qQuery.append(makingResearchQuery(param));
 		}
 		
@@ -116,11 +117,10 @@ public class SearchQueryMaker {
 		String fields[]=param.getResearchField().split(",");
 		String querys[]=param.getResearchQuery().split(",");
 		
-		System.out.println(querys.length);
-		for(String q:querys){
-			System.out.println(q);
-		}
-		for(int i=0;i<fields.length;i++){
+		System.out.println("fields --> "+param.getResearchField());
+		System.out.println("querys --> "+param.getResearchQuery());
+		
+		for(int i=0;i<querys.length;i++){
 			String field=fields[i];
 			String express=querys[i];
 			
