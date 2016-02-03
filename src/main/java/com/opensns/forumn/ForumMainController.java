@@ -255,7 +255,7 @@ public class ForumMainController {
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
 		if(vo.getPeriod().equals("custom")){
-			SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			System.out.println("timestamp --> "+vo.getsDate());
 			System.out.println("convert date --> " + sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
 			mav.addObject("sDate", sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
@@ -312,7 +312,7 @@ public class ForumMainController {
 		mav.addObject("sort_field", vo.getSort_field());
 		mav.addObject("period", vo.getPeriod());
 		if(vo.getPeriod().equals("custom")){
-			SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			System.out.println("timestamp --> "+vo.getsDate());
 			System.out.println("convert date --> " + sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
 			mav.addObject("sDate", sdf.format(new Date(Long.parseLong(vo.getsDate())*1000L)));
