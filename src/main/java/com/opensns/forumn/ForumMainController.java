@@ -172,7 +172,24 @@ public class ForumMainController {
 		SearchUsingSolrService service=SearchUsingSolrService.getInstance();
 		
 		vo.setExpression(JStringUtil.removeSpecialLetter(vo.getExpression()));//특수기호 제거
-		vo.setExpression(vo.getExpression().replaceAll(" ", "+"));
+		
+		StringBuffer ex=new StringBuffer();
+		if(vo.getExpression().length()==0){
+			ex.append("\"\"");
+		}else{
+			String express=vo.getExpression().replaceAll("\\s+", ",");
+			String[] ex_arr=express.split(",");
+			
+			for(int i=0;i<ex_arr.length;i++){
+				if(ex_arr.length-1==i){
+					ex.append(ex_arr[i]);
+				}else{
+					ex.append(ex_arr[i]+"+");
+				}			
+			}
+		}
+		
+		vo.setExpression(ex.toString());
 		
 		vo.setRow(3);
 		System.out.println(vo.getExpression());
