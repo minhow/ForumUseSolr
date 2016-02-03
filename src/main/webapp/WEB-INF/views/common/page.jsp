@@ -6,14 +6,14 @@
 	<p class="pagging_type1 mar_top10">
 		<c:if test="${cPage != 1 }">
 			<span class="pre">
-				<a href="#">				
+				<a href="javascript:movePage('1');">				
 					<img src="${contextPath}/resources/images/pagging/btn_first.gif" alt="첫페이지" />				
 				</a>
 			</span> 
 		</c:if>
 		<c:if test="${cPage - 1 > 0 }">
 			<span class="pre">
-				<a href="#">				
+				<a href="javascript:movePage('${cPage - 1 }');">				
 					<img src="${contextPath}/resources/images/pagging/btn_pre.gif" alt="이전페이지" />				
 				</a>
 			</span>
@@ -32,14 +32,14 @@
 			</c:forEach>
 		<c:if test="${cPage + 1 <= tPage }">
 			<span class="next">
-				<a href="#">
+				<a href="javascript:movePage('${cPage + 1 }');">
 					<img src="${contextPath}/resources/images/pagging/btn_next.gif" alt="다음페이지" />
 				</a>
 			</span>
 		</c:if>
 		<c:if test="${cPage != tPage && tPage != 0 }">
 			<span class="next">
-				<a href="#">
+				<a href="javascript:movePage('${tPage }');">
 					<img src="${contextPath}/resources/images/pagging/btn_end.gif" alt="마지막페이지" />
 				</a>
 			</span>
