@@ -159,7 +159,8 @@
 				period : period,
 				researchQuery : $("#researchQuery").val(),
 				researchField : $("#researchField").val(),
-				research : research
+				research : research,
+				page : $("#page").val()
 			},
 			dataType : "text",
 			success : function(result) {
