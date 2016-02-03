@@ -18,7 +18,15 @@
 						<li>
 							<dl>
 								<dt>
-									<span class="bold">총 ${total } 건을 검색하였습니다.</span>
+									<span class="bold"> <c:choose>
+											<c:when test="${total <= 0}">
+        										검색 결과가 없습니다.
+    										</c:when>
+											<c:otherwise>
+        									 	총 ${total } 건을 검색하였습니다.
+    										</c:otherwise>
+										</c:choose>
+									</span>
 								</dt>
 								<dt>
 									정렬 <select class="sort" title="정렬">
