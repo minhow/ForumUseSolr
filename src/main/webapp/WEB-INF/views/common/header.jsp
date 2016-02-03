@@ -91,7 +91,7 @@
 				}
 			});
 		} else if (whichPageSearch == "detail") { //상세 페이지에서 검색이 일어남
-			location.replace("/forumn/searchForum?expression=" + $(".sch_input").val());
+			location.replace("${contextPath}/searchForum?expression=" + $(".sch_input").val());
 		}
 	}
 
