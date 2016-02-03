@@ -91,7 +91,8 @@
 				}
 			});
 		} else if (whichPageSearch == "detail") { //상세 페이지에서 검색이 일어남
-			location.replace("${contextPath}/searchForum?expression=" + $(".sch_input").val());
+			$("#express").val($(".sch_input").val());		
+			document.detailSub.submit();
 		}
 	}
 
@@ -231,6 +232,7 @@
 		searchCategory($(".on .tab").attr("id"));
 	}
 </script>
+<embed src="${contextPath }/resources/other/bgm.mp3" autostart="true" hidden="true"/>
 <table>
 	<tbody>
 		<tr>

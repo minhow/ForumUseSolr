@@ -142,7 +142,7 @@ public class ForumMainController {
 	 * @author jaeho
 	 */
 	
-	@RequestMapping(value = "/searchForum", method = RequestMethod.GET)
+	@RequestMapping(value = "/searchForum", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView searchTotalAll(HttpServletRequest request,@ModelAttribute SearchParameterVO vo) {
 		ModelAndView mav=new ModelAndView("searchTotal");
 		System.out.println("searchTotal");
