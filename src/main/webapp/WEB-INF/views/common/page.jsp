@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+	<input type="hidden" id="page" value=""/>
 	<p class="pagging_type1 mar_top10">
 		<c:if test="${cPage != 1 }">
 			<span class="pre">

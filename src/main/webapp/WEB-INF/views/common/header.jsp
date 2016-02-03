@@ -23,6 +23,8 @@
 		var sDateParam;
 		var eDateParam;
 
+		
+		
 		if (whichPageSearch == "total") { //total 페이지에서 검색이 일어남.
 			if ($("input:checkbox[id='research']").is(":checked")) {
 				// 				alert('체크 되어있습니다.');
@@ -33,7 +35,7 @@
 
 			}
 
-			// 			alert($("#researchQuery").val()+","+$("#researchField").val())
+			
 
 			if (period == "week") {
 				sDate.setDate(sDate.getDate() - 7);
@@ -89,7 +91,7 @@
 				}
 			});
 		} else if (whichPageSearch == "detail") { //상세 페이지에서 검색이 일어남
-			location.replace("/forumn?expression=" + $(".sch_input").val());
+			location.replace("/forumn/searchForum?expression=" + $(".sch_input").val());
 		}
 	}
 
@@ -144,7 +146,7 @@
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
-
+		
 
 		$.ajax({
 			type : 'POST',
@@ -159,7 +161,8 @@
 				period : period,
 				researchQuery : $("#researchQuery").val(),
 				researchField : $("#researchField").val(),
-				research : research
+				research : research,
+				page : $("#page").val()
 			},
 			dataType : "text",
 			success : function(result) {
