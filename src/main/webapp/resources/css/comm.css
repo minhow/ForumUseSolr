@@ -81,6 +81,7 @@
 
 /* 배경색상 관련 클래스 */
 .bg_white {background-color:#fff;}
+.ClickBgColor{background-color:#D7F1FA;}
 
 .src_wrap {margin-top:100px;}
 .src_wrap p {margin-top:30px; font-size:1.2em; font-weight:bold; color:#1525b6;}

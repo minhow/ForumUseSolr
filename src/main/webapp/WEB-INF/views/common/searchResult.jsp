@@ -78,7 +78,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -126,7 +126,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -174,7 +174,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -222,7 +222,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -270,7 +270,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -318,7 +318,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 
@@ -366,7 +366,7 @@
 										<dt>
 											<span class="bu_divi">${scd.postId }</span> <span
 												class="bu_divi">[${scd.parentForumName }]</span> <a
-												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }">${scd.hlPostSubject }</a>
+												href="${contextPath}/forumDB/detailPage?topic_id=${scd.topicId }&post_id=${scd.postId}"">${scd.hlPostSubject }</a>
 											<span> (유사도 :${scd.score })</span>
 										</dt>
 

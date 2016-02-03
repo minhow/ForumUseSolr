@@ -27,27 +27,38 @@
 								<div class="jfloat">
 									<div class="mar_top50 ">
 										<p class="line_type1"></p>
-										<span class="txt_bold"> <img
-											src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-											alt="프로젝트" /> ${post.postId }. ${post.postSubject }
-										</span>
+										<c:if test="${postId==post.postId }">
+											<span class="txt_bold">
+											<img src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif" alt="프로젝트" />
+										</c:if> 
+										<c:if test="${postId!=post.postId }">
+											&nbsp&nbsp&nbsp&nbsp
+										</c:if> 
+										
+																																								 
+											${post.postId }. ${post.postSubject }
+											
+										<c:if test="${postId==post.postId }">
+											</span>
+										</c:if>
 										<p class="line_type2"></p>
 
-
-										<ul class="list_type5">
-											<li>
-												<dl>
-													<dd>
-														<span class="bu_divi none_pl">작성자 :
-															${post.postUsername }</span> <a><span>작성 아이피
-																:${post.posterIp }</span></a>
-													</dd>
-													<dd class="desc">
-														${post.postText }
-													</dd>
-												</dl>
-											</li>
-										</ul>
+										
+											<ul class="list_type5">												
+												<li>
+													<dl>
+														<dd>
+															<span class="bu_divi none_pl">작성자 :
+																${post.postUsername }</span> <a><span>작성 아이피
+																	:${post.posterIp }</span></a>
+														</dd>
+														<dd class="desc">
+															${post.postText }
+														</dd>
+													</dl>
+												</li>												
+											</ul>
+										
 									</div>
 								</div>
 							</c:forEach>
