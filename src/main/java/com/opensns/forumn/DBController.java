@@ -23,13 +23,17 @@ public class DBController {
 	public ModelAndView home(HttpServletRequest request) {
 		ModelAndView mav=new ModelAndView("db/detailPage");
 		String topic_id=request.getParameter("topic_id");
+		String post_id=request.getParameter("post_id");
 		System.out.println(topic_id);
 		HashMap<String, Object>	map=new HashMap<String, Object>();
 		map.put("topic_id", Integer.parseInt(topic_id));
 		
+		System.out.println("post_id -->"+post_id);
+		
 		
 		
 		List<PostVO> postList=postService.getPostList(map);
+		
 		
 		System.out.println(postList.size());
 		for(PostVO vo:postList)
@@ -37,6 +41,7 @@ public class DBController {
 			System.out.println(vo);
 		}
 		
+		mav.addObject("postId",post_id);
 		mav.addObject("postList",postList);
 		
 					
