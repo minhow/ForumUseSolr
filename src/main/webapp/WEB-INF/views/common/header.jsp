@@ -232,7 +232,7 @@
 		searchCategory($(".on .tab").attr("id"));
 	}
 </script>
-<embed src="${contextPath }/resources/other/bgm.mp3" autostart="true" hidden="true"/>
+<%-- <embed src="${contextPath }/resources/other/bgm.mp3" autostart="true" hidden="true"/> --%>
 <table>
 	<tbody>
 		<tr>
