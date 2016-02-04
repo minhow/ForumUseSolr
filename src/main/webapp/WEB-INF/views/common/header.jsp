@@ -9,7 +9,7 @@
 		$("#container").html(result);
 		reload();
 	}
-
+	
 	function searchTotal() {
 // 		alert("into search");
 		var url = "searchTotal.do"
@@ -232,7 +232,6 @@
 		searchCategory($(".on .tab").attr("id"));
 	}
 </script>
-<embed src="${contextPath }/resources/other/bgm.mp3" autostart="true" hidden="true"/>
 <table>
 	<tbody>
 		<tr>
@@ -284,10 +283,12 @@
 							src="${contextPath}/resources/images/searchBar/icon_keyword.png"
 							alt="키워드" />
 					</dt>
-					<dd>이재호</dd>
-					<dd>유민호</dd>
-					<dd>주현태</dd>
-					<dd class="none_bg">솔라</dd>
+					<dd>xten</dd>
+					<dd>검색</dd>
+					<dd>엔진</dd>
+					<dd>운영</dd>
+					<dd>유지</dd>
+					<dd class="none_bg">보수</dd>
 				</dl>
 			</div>
 			<!-- searchBar_type2-->

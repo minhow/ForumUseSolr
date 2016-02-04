@@ -36,15 +36,16 @@
 										<option value="all" <c:if test="${field==\"all\" }">selected="selected"</c:if>>전체</option>
 										<option value="post_subject" <c:if test="${field==\"post_subject\" }">selected="selected"</c:if>>제목</option>
 										<option value="post_text" <c:if test="${field==\"post_text\" }">selected="selected"</c:if>>본문</option>
+										<option value="post_username" <c:if test="${field==\"post_username\" }">selected="selected"</c:if>>작성자</option>
 									</select> 기간 <select class="period" title="기간" onchange="clearDate()">
 										<option value="total" <c:if test="${period==\"total\" }">selected="selected"</c:if>>전체</option>
 										<option value="week" <c:if test="${period==\"week\" }">selected="selected"</c:if>>1주</option>
 										<option value="month" <c:if test="${period==\"month\" }">selected="selected"</c:if>>1개월</option>
 										<option value="year" <c:if test="${period==\"year\" }">selected="selected"</c:if>>1년</option>
 										<option value="custom" <c:if test="${period==\"custom\" }">selected="selected"</c:if>>직접 입력</option>
-									</select> <input type="text" class="sDate" name="sDate"
-										onchange="day_check()" <c:if test="${sDate!=null }">value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
-										type="text" class="eDate" name="eDate" onchange="day_check()" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
+									</select> <input type="text" class="sDate" name="sDate" 
+										onchange="day_check()" readonly="true" <c:if test="${sDate!=null }"> value=${sDate }</c:if> /> <label for="option2_1">부터</label> <input
+										type="text" class="eDate" name="eDate" onchange="day_check()" readonly="true" <c:if test="${sDate!=null }">value=${eDate }</c:if> />
 									<label for="option2_2">까지</label> 
 									<input type="hidden" id="researchQuery" value="${expression }" /> 
 									<input type="hidden" id="researchField" value="${researchField }" />
@@ -350,11 +351,11 @@
 
 				<c:if test="${scdList7.size()>0 }">
 					<div class="mar_top50 hei_type1">
-						<!-- 다운로드 및 Q&A -->
+						<!-- 다운로드 및 Q&amp;A -->
 						<p class="line_type1"></p>
 						<span class="txt_bold"> <img
 							src="${contextPath}/resources/images/searchBar/btn_type3_arr_rgt.gif"
-							alt="다운로드 및 Q&A" /> 다운로드 및 Q&A
+							alt="다운로드 및 Q&amp;A" /> 다운로드 및 Q&amp;A
 						</span>
 						<p class="line_type2"></p>
 
@@ -419,7 +420,7 @@
 			<p class="tab" id="43">포럼</p>
 		</li>
 		<li>
-			<p class="tab" id="46">다운로드 및 Q&A</p>
+			<p class="tab" id="46">다운로드 및 Q&amp;A</p>
 		</li>
 	</ul>
 

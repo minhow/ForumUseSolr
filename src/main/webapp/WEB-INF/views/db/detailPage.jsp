@@ -18,7 +18,7 @@
 				<!-- tab_type1 -->
 				<ul>
 					<li class="on">
-						<p class="tab none_mar">상세 페이지</p>
+						<p class="tab none_mar" id="detail">상세 페이지</p>
 						<div class="t_content">
 							<!-- t_content통합검색 -->
 

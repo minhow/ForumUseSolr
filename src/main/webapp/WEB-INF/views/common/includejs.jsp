@@ -41,14 +41,14 @@
 			if ($(this).attr('id') == "0") {
 //  				alert("total");
 				searchTotal();
+				reset_tab_type1($(this).text());
 			} 
-			else {
+			else if($(this).attr('id') != "detail"){
 // 				alert($(this).attr('id'));
 				
 				searchCategory($(this).attr('id'));
+				reset_tab_type1($(this).text());
 			}
-			
-			reset_tab_type1($(this).text());
 		});
 
 		var clareCalendar = {
