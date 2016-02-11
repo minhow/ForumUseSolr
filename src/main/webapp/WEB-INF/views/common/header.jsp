@@ -9,22 +9,25 @@
 		$("#container").html(result);
 		reload();
 	}
-	
-	function searchTotal() {
-// 		alert("into search");
+
+	function searchTotal(keyword) {
+		// 		alert("into search");
+		// 		alert(keyword);
+		if (keyword == undefined) {
+			keyword = $(".sch_input").val();
+		}
+
 		var url = "searchTotal.do"
 		var period = $(".on .period").val();
 		var research;
-// 		alert(period);
-// 		alert($(".on .tab").text());
+		// 		alert(period);
+		// 		alert($(".on .tab").text());
 		var whichPageSearch = $("#whichPageSearch").val();
 		var sDate = new Date();
 		var eDate = new Date();
 		var sDateParam;
 		var eDateParam;
 
-		
-		
 		if (whichPageSearch == "total") { //total 페이지에서 검색이 일어남.
 			if ($("input:checkbox[id='research']").is(":checked")) {
 				// 				alert('체크 되어있습니다.');
@@ -34,8 +37,6 @@
 				research = 'n'
 
 			}
-
-			
 
 			if (period == "week") {
 				sDate.setDate(sDate.getDate() - 7);
@@ -53,26 +54,27 @@
 			} else if (period == "custom") {
 				var sdate = $(".on .sDate").val();
 				var edate = $(".on .eDate").val();
-				
+
 				sDate.setFullYear(sdate.substring(0, 4));
 				sDate.setMonth(sdate.substring(4, 6));
 				sDate.setMonth(sDate.getMonth() - 1);
 				sDate.setDate(sdate.substring(6, 8));
-		
+
 				eDate.setFullYear(edate.substring(0, 4));
 				eDate.setMonth(edate.substring(4, 6));
 				eDate.setMonth(eDate.getMonth() - 1);
 				eDate.setDate(edate.substring(6, 8));
-				
+
 				sDateParam = Math.round(sDate / 1000);
 				eDateParam = Math.round(eDate / 1000);
 			}
-// 			alert("before call ajax");
+			// 			alert("before call ajax");
 			$.ajax({
 				type : 'POST',
 				url : url,
 				data : {
-					expression : $(".sch_input").val(),
+					// 					expression : $(".sch_input").val(),
+					expression : keyword,
 					field : $(".on .range option:selected").val(),
 					sort_field : $(".on .sort option:selected").val(),
 					sDate : sDateParam,
@@ -91,7 +93,7 @@
 				}
 			});
 		} else if (whichPageSearch == "detail") { //상세 페이지에서 검색이 일어남
-			$("#express").val($(".sch_input").val());		
+			$("#express").val($(".sch_input").val());
 			document.detailSub.submit();
 		}
 	}
@@ -99,13 +101,13 @@
 	function searchCategory(category) {
 		var url = "searchCategory.do"
 		var period = $(".on .period").val();
-		
+
 		var sDate = new Date();
 		var eDate = new Date();
 		var sDateParam;
 		var eDateParam;
-// 		alert(period);
-// 		alert($(".on .tab").text());
+		// 		alert(period);
+		// 		alert($(".on .tab").text());
 		var research;
 
 		if ($("input:checkbox[id='research']").is(":checked")) {
@@ -133,21 +135,20 @@
 		} else if (period == "custom") {
 			var sdate = $(".on .sDate").val();
 			var edate = $(".on .eDate").val();
-			
+
 			sDate.setFullYear(sdate.substring(0, 4));
 			sDate.setMonth(sdate.substring(4, 6));
 			sDate.setMonth(sDate.getMonth() - 1);
 			sDate.setDate(sdate.substring(6, 8));
-	
+
 			eDate.setFullYear(edate.substring(0, 4));
 			eDate.setMonth(edate.substring(4, 6));
 			eDate.setMonth(eDate.getMonth() - 1);
 			eDate.setDate(edate.substring(6, 8));
-			
+
 			sDateParam = Math.round(sDate / 1000);
 			eDateParam = Math.round(eDate / 1000);
 		}
-		
 
 		$.ajax({
 			type : 'POST',
@@ -174,12 +175,12 @@
 			}
 		});
 	}
-	
+
 	function apply() {
-		var url; 
+		var url;
 		var curPage = $(".on .tab").attr('id');
-		if(curPage=="0"){
-			searchTotal();
+		if (curPage == "0") {
+			searchTotal($(".sch_input").val());
 		} else {
 			searchCategory(curPage);
 		}
@@ -201,7 +202,6 @@
 			switchPeriod();
 		}
 	}
-	
 
 	/* 날짜 초기화 */
 	function clearDate() {
@@ -210,7 +210,7 @@
 		//2013-12-27 날짜 초가화 선택시 카테고리 선택 풀리는 현상때문에 주석 
 		//$("#categoryId").val("");\
 	}
-	
+
 	function serachInSearch(chkBox) {
 		if (chkBox.checked) {
 			$("#sort").attr("disabled", true);
@@ -226,7 +226,7 @@
 			$("#eDate").attr("disabled", false);
 		}
 	}
-	
+
 	function movePage(page) {
 		$("#page").val(page);
 		searchCategory($(".on .tab").attr("id"));
@@ -238,11 +238,13 @@
 		<tr>
 			<div class="searchBar_type2">
 				<p class="sch_txt">
-					<img src="${contextPath}/resources/images/searchBar/txt_search.png"
+					<a href="${contextPath}"> <img
+						src="${contextPath}/resources/images/searchBar/txt_search.png"
 						alt="search" />
+					</a>
 				</p>
 				<div class="sch_bar">
-				
+
 					<p class="selected">
 						<span class="txt"></span> <span class="btn"> <img class
 							src="${contextPath}/resources/images/searchBar/btn_type2_arr_off.gif"
@@ -274,11 +276,12 @@
 
 				<div class="sch_bar2">
 					&nbsp;&nbsp; <input type="checkbox" id="research"
-						onclick="serachInSearch(this);" /> <label for="research">결과 내 검색</label>
+						onclick="serachInSearch(this);" /> <label for="research">결과
+						내 검색</label>
 				</div>
 
 
-				<dl>
+				<dl class="keyword_list">
 					<dt>
 						<img
 							src="${contextPath}/resources/images/searchBar/icon_keyword.png"

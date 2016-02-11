@@ -22,6 +22,10 @@
 						'.tab_type1 ul li.on .t_content').css(
 						'border-left-width'))) * 2;
 		$('.tab_type1 ul li .t_content').width(cont_wid);
+		$('.keyword_list dd').click(function() {
+			$('.sch_input').val($(this).text());
+			searchTotal($(this).text());
+		})
 		reload();
 	});
 
@@ -51,6 +55,8 @@
 			}
 		});
 
+		
+		
 		var clareCalendar = {
 			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
 					'9월', '10월', '11월', '12월' ],

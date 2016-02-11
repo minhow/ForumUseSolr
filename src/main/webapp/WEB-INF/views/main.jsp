@@ -25,9 +25,7 @@
 							<!-- 프로젝트 -->
 
 							<div class="jfloat">
-								<iframe
-									src="http://1.234.16.50:5601/app/kibana#/dashboard/sample_dashboard_20160204?embed&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now%2FM,mode:quick,to:now%2FM))&_a=(filters:!(),options:(darkTheme:!f),panels:!((col:1,id:artist_knm,panelIndex:1,row:1,size_x:6,size_y:4,type:visualization),(col:7,id:xtenhome_apache_log_ip,panelIndex:2,row:1,size_x:6,size_y:4,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),title:sample_dashboard_20160204,uiState:(P-1:(spy:(mode:(fill:!f,name:!n)))))"
-									height="600" width="800"></iframe>
+								<iframe src="http://1.234.16.50:5601/app/kibana#/dashboard/sample_dashboard_20160204?embed&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now%2FM,mode:quick,to:now%2FM))&_a=(filters:!(),options:(darkTheme:!f),panels:!((col:1,id:artist_knm,panelIndex:1,row:5,size_x:12,size_y:4,type:visualization),(col:1,id:xtenhome_apache_log_ip,panelIndex:2,row:1,size_x:12,size_y:4,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),title:sample_dashboard_20160204,uiState:())" height="890" width="100%"></iframe>
 							</div>
 						</div> <!-- tab_type1 -->
 					</li>
